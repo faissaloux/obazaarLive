@@ -335,7 +335,7 @@ main {
 
 				<div class="content-box">
 					<h4 class="content-box-title">{{__('Payment Method')}}</h4>
-					<div class="payment-card amex">{{ $content->payement->method }} </div>
+					<div class="payment-card amex">@if ($content->payement->method == 'paypal') {{ __('paypal') }} @elseif ($content->payement->method == 'stripe') {{ __('Credit Card') }}  @elseif ($content->payement->method == 'facture') {{ __('facture') }} @endif</div>
 				</div>
 
 				<dl class="cf">

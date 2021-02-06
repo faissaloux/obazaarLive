@@ -12,6 +12,8 @@
     "width": "عرض",
     "height": "ارتفاع",
     "size": "سایز",
+    "store activate": "فروشگاه فعال کنید",
+    "store deactivate": "غیرفعال کردن فروشگاه",
     "stock": "موجودی کالا",
     "paypal info": "اطلاعات پیپال",
     "pickup": "دریافت کردن",

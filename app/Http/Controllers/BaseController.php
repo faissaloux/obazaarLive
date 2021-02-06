@@ -17,7 +17,7 @@ class BaseController extends Controller
         
         $sliders = HomeSlider::get();
         
-        $stores  = Stores::with('owner')->paginate(12);
+        $stores  = Stores::with('owner')->where('hide',null)->paginate(12);
 
         $view = $this->theme.'home';
         

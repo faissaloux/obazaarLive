@@ -19,12 +19,17 @@ class ProductCategories extends Base
     use SoftDeletes;
 
     protected $table = 'productscategories';
-       protected $translatable  = ['name'];
+    protected $translatable  = ['name'];
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-
+    public function getNameAttribute($value)
+    {
+      return \App::getLocale() == 'ir'
+              ? json_decode($this->attributes['name'])->de
+              : $value;
+    }
 
     public function products() {
     	return $this->hasMany('App\Models\Product','categoryID');

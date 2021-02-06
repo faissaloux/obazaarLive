@@ -71,6 +71,7 @@
                         <th><i class=" icon-list-ordered"></i><b>{{ __('total') }}</b></th>
                         <th><i class=" icon-checkmark"></i><b>{{ __('statue') }}</b></th>
                         <th><i class=" icon-checkmark"></i><b>{{ __('serial') }}</b></th>
+                        <th><i class=" icon-checkmark"></i><b>{{ __('change status') }}</b></th>
                         <th><i class=" icon-checkmark"></i><b>{{ __('details') }}</b></th>
                     </tr>
                 </thead>
@@ -85,6 +86,14 @@
                         <td data-label="{{ __('statue  ') }}">€ {{ $order->total }}</td>
                         <td data-label="{{ __('statue  ') }}">{{ $order->statue() }}</td>
                         <td data-label="{{ __('statue  ') }}">{{ $order->serial }}</td>
+                        <td data-label="{{ __('change statue  ') }}">
+                        <select id="change_statue" data-statue="{{ $order->statue }}" class="form-control">
+                            <option data-type-statue='pending'  value="{{ route('admin.orders.change2',['id'=> $order->id , 'statue' => 'pending']) }}" <?php if($order->statue == 'pending'): echo 'selected'; endif?>>{{ __('order.statue.pending') }}</option>
+                            <option  data-type-statue='delivred' value="{{ route('admin.orders.change2',['id'=> $order->id , 'statue' => 'delivred']) }}" <?php if($order->statue == 'delivred'): echo 'selected'; endif?>>{{ __('order.statue.delivred') }}</option>
+                            <option  data-type-statue='canceled' value="{{ route('admin.orders.change2',['id'=> $order->id , 'statue' => 'canceled']) }}" <?php if($order->statue == 'canceled'): echo 'selected';  endif?>>{{ __('order.statue.canceled') }}</option>
+                            <option  data-type-statue='success' value="{{ route('admin.orders.change2',['id'=> $order->id , 'statue' => 'success']) }}" <?php if($order->statue == 'success' ): echo 'selected'; endif?>>{{ __('order.success') }}</option>
+                        </select>
+                        </td>
                         <td data-label="{{ __('statue  ') }}"> <a href="{{ route('admin.orders.edit',['id' => $order->id  ]) }}">   {{ __('view details') }}  </a> </td>
                     </tr>
                     @endforeach

@@ -166,8 +166,8 @@ $(document).on('click', 'body .zaydnaks .up', function (e) {
     $(this).closest('.zaydnaks').find('.instantQuantity').val(num);
     var input = $(this).closest('.zaydnaks').find('.instantQuantity');
     updatequantitiy(input);
+    $('.TotalPriceM').removeAttr('data-price');
     ikhaaaaan(input);
-
 });
 
 $(document).on('click', 'body .zaydnaks .down', function (e) {
@@ -176,10 +176,9 @@ $(document).on('click', 'body .zaydnaks .down', function (e) {
         $(this).closest('.zaydnaks').find('.instantQuantity').val(num);
         var input = $(this).closest('.zaydnaks').find('.instantQuantity');
         updatequantitiy(input);
+        $('.TotalPriceM').removeAttr('data-price');
         ikhaaaaan(input);
     }
-
-
 });
 
 
@@ -362,10 +361,6 @@ $(document).on('click', 'body #addtocard', function (e) {
                 success: function (data) {
                     $('body .ps-cart__content').html(data);
                     var quantity = $('#cartcount').val();
-                    // $('body .TotalPriceM').html('');
-                    // $('.TotalPriceM').html('');
-                    //$('#cart-mobile .ps-cart__footer').html('');
-
 
                     $('#cart-mobile .TotalPriceM').html($('#cart-mobile .jahnama').text());
 

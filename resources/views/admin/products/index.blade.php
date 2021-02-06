@@ -101,8 +101,10 @@
                             <label class="control-label col-lg-12"> select product </label>
                             <div class="col-lg-12">
                                <div class="product-q">
-                                    <select class="form-control" name="product_id" >
-                                    <option value="N-A" > اختيار المنتوج</option>
+
+
+                                        <select class="form-control selectpicker" name="product_id"  id="select-country" data-live-search="true">
+                                            <option value="N-A" > اختيار المنتوج</option>
                                             @foreach($allProduct as $product) 
                                                     <option value="{{ $product->id }}"> {{ $product->name }}</option>
                                             @endforeach
@@ -415,10 +417,17 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet" />
+
+
 <script>
     $('#paginatenbr').submit(function(){
       var nbr = $(this [name="inputpaginationnbr"]).val();
       window.location.replace("?page="+nbr);
     });
+    $(function() {
+  $('.selectpicker').selectpicker();
+});
 </script>
 @endif @endsection

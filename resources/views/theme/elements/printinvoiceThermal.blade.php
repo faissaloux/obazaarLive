@@ -69,7 +69,7 @@ body {
     <h2 class="title_1"> Plz : <?php echo $content->addresse->postal_code; ?></h2>
     <h2 class="title_1"> E-Mail : <?php echo $content->user->email; ?> </h2>
     <h2 class="title_1"> Telefonnummer : <?php echo $content->user->phone; ?> </h2>
-    <h2 class="title_1"> Versand : <?php echo  $content->shipping->name; ?> </h2>
+    <h2 class="title_1"> Versand :  @if ($content->shipping->name == 'مرور واستلام')  Abholen @else {echo  $content->shipping->name} @endif </h2>
     <h2 class="title_1"> Datum : <?php echo $content->user->created_at; ?> </h2>
     <h2 class="title_1"> Seriennummer : <?php echo $content->serial; ?> </h2>
 

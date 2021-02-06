@@ -185,6 +185,7 @@ Route::post('/importproduct', 'ProductsController@importproduct')->name('importp
         Route::get('/bulkdelete', 'OrdersController@bulkdelete')->name('bulkdelete');
         Route::get('/truncate', 'OrdersController@truncate')->name('truncate');
         Route::get('/statue/{id}/{statue}', 'OrdersController@change')->name('change');
+        Route::get('/statue/change/{id}/{statue}', 'OrdersController@change2')->name('change2');
     }); 
 
 

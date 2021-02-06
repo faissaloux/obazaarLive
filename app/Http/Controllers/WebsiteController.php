@@ -334,14 +334,8 @@ class WebsiteController extends Controller
         else
         {
             $id             = Stores::where('slug', $request->store)->first()->id;
-            $currentLang    = \App::getLocale();
             $products       = Product::where('store_id', $id)->where('active', 1)->paginate(12);
             $sliders        = Slider::Merchant()->get();
-            if($currentLang == 'ir'){
-                \App::setLocale('de');
-                $products   = Product::where('store_id', $id)->where('active', 1)->where('lang', 'de')->paginate(12);
-            };
-            \App::setLocale($currentLang);
             return view($this->theme . 'index', compact('products', 'sliders'));
         }
 
@@ -692,7 +686,10 @@ class WebsiteController extends Controller
         $extraNotificationData = ["message" => $notification, "moredata" => 'dd'];
 
         $token = \Auth::user()->device_token;
-        //$token = \App\Models\Stores::where('id',\Auth::user()->id)->get('device_token');
+
+        $token = 'eV6EbavCTIm5kguCPJlsv4:APA91bEBzb0Sh1XFy4kMWzvbRm9-Lb6HKPLCaq0EDU6KhnebcWhTQaDx_jjGT0ev5BdwH-V8XGONIB9Wqe9gB5I4ftQliJ8Yd38PtyfYgZHmCJKgN-ikHtwBNNY3N5rUtnxkkREpHF4n';
+
+        //$token = \App\Models\User::where('store_id',\Session::get('store_id'))->get('device_token');
 
         $fcmNotification = ['to' => $token, 'notification' => $notification, 'data' => ["uri" => "https://o-bazaar.com/merchant/orders/edit/".$order_id, "msg_type" => "Hello ", "request_id" => 7, "image_url" => 'https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png', "user_name" => "abdulwahab", "msg" => "msg"]];
 

@@ -14,6 +14,20 @@ class ManagerStoresController extends Controller {
         return view('manager.store.index',compact('stores'));  
     }
 
+    public function deactivate(Request $request,$id) {        
+        $store = Stores::find($id);
+        $store->hide = 1;
+        $store->save();
+        return redirect()->route('manager.stores.home')->with('success',trans('store.updated'));
+    }
+
+    public function activate(Request $request,$id) {
+        $store = Stores::find($id);
+        $store->hide = NULL;
+        $store->save();
+        return redirect()->route('manager.stores.home')->with('success',trans('store.updated'));
+    }
+
    
     public function create() {
         return view('manager.store.create');

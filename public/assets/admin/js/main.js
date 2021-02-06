@@ -35,8 +35,6 @@ if($('#menuareaselected').length){
 
 
 
-
-
 var orderSelect = $('#order_statue');
   if(orderSelect.length){
 }
@@ -48,6 +46,15 @@ $('#order_statue').on('change', function () {
         window.location = url; // redirect
     }
     return false;
+});
+
+
+$('#change_statue').on('change', function () {
+  var url = $(this).val(); // get selected value
+  if (url) { // require a URL
+      window.location = url; // redirect
+  }
+  return false;
 });
 
 

@@ -43,7 +43,7 @@
                                           {{ $addresse->phone }}                                          
                                     </p>
                                     <a class="ps-btn" href="{{ route('account.shipping.edit',['id' =>  $addresse->id ]) }}"> {{ __('Edit') }}</a>
-                                    <a class="ps-btn" href="{{ route('account.shipping.delete',['id' =>  $addresse->id]) }}"> {{ __('Delete') }}</a>
+                                    <a class="ps-btn" style="display:none" href="{{ route('account.shipping.delete',['id' =>  $addresse->id]) }}"> {{ __('Delete') }}</a>
                                     @if(!$addresse->is_primary) 
                                     <a class="ps-btn" href="{{ route('account.shipping.default',['id' =>  $addresse->id]) }}"> {{ __('set As Default') }}</a>
                                     @endif

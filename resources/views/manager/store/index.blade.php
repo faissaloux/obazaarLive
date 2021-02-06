@@ -102,6 +102,7 @@
         <thead>
             <tr>
                 <th ><i class=" icon-blog"></i><b>{{ __('Thumbnail') }}</b></th>
+                <th><i class=" icon-images3"></i><b>{{ __('status') }}</b></th>
                 <th ><i class=" icon-user"></i><b>{{ __('Name') }}</b></th>
                 <th ><i class=" icon-user"></i><b>{{ __('Owner') }}</b></th>
                 <th ><i class=" icon-map5"></i><b>{{ __('Adresse') }}</b></th>
@@ -119,6 +120,14 @@
                 </div>
         
              </td>       
+             <td data-label="{{ __('status') }}">
+                @if($store->hide == 1)
+                <span class="label label-danger">{{ __('deactivated') }}</span>
+                @endif
+                @if($store->hide == null)
+                <span class="label label-success">{{ __('activated') }}</span>
+                @endif
+            </td>
              <td data-label="{{ __('Name') }}">{{ $store->name }}</td>
              <td data-label="{{ __('Owner') }}">{{ $store->owner->name }}</td>
              <td data-label="{{ __('Adresse ') }}">{{ $store->street }}</td>
@@ -151,6 +160,19 @@
                 <i class="icon-cross2 position-left"></i>{{ __('Delete') }}
                 </a>
                 </li>
+
+                <li>
+                    <a href="{{ route('manager.stores.activate',['id' => $store->id]) }}" class="text-bg-info">
+                        <i class="icon-file-check position-left"></i>{{ __('store activate') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('manager.stores.deactivate',['id' => $store->id]) }}" class="text-bg-info">
+                        <i class="icon-file-minus position-left"></i>{{ __('store deactivate') }}
+                    </a>
+                </li>
+
+                
               
                 </ul>
                 </li>

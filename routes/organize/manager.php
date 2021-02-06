@@ -95,6 +95,8 @@ Route::group(['prefix' => '/manager', 'as' => 'manager.', 'middleware' => 'manag
         Route::get('/view/{id}', 'ManagerStoresController@view')->name('view');
         Route::get('/duplicate/{id}', 'ManagerStoresController@duplicate')->name('duplicate');
         Route::any('{id}', 'ManagerStoresController@create')->name('view');
+        Route::any('/activate/{id}', 'ManagerStoresController@activate')->name('activate');
+        Route::any('/deactivate/{id}', 'ManagerStoresController@deactivate')->name('deactivate');
     });
 
 

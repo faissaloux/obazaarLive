@@ -46,11 +46,14 @@ class Setting extends Base
      */
     public function get($key, $default = null)
     {
-
         if ($option = self::Lang()->where('key', $key)->first()) {
             return $option->value;
         }
-
+        if(\App::getLocale() == 'ir'){
+            if ($option = self::where('lang', 'de')->where('key', $key)->first()) {
+                return $option->value;
+            }
+        }
         return $default;
     }
 

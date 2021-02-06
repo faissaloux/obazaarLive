@@ -38737,3 +38737,11 @@ a.reset_password {
 a.tit {
     right: 10px !important;
 }
+
+ul.ps-block__contact {
+    height: 120px;
+}
+
+.wrapper {
+    overflow-x: hidden;
+}

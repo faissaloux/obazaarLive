@@ -22,7 +22,12 @@ class Product extends Base {
    protected $fillable = ['name', 'description'];
    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-
+   public function getNameAttribute($value)
+   {
+     return \App::getLocale() == 'ir'
+            ? json_decode($this->attributes['name'])->de
+            : $value;
+   }
 
     public function scopeByCategory($query,$id) {
          return $query->where('categoryID',$id);

@@ -68,7 +68,7 @@
                   @endif
                </div>
                @if(\System::shoppingCartIsNotEmpty())
-                  <div class="ps-cart__footer">
+                  <div class="ps-cart__footer origin">
                      <h3>{{ __('Total') }}<strong>{{ System::currency() }} <span class="TotalPriceM">{{  number_format((float)ShoppingCart::total(), 2, '.', '') }}</span> </strong></h3>
                      <figure><a class="ps-btn" href="{{ route('checkout', ['store' => $store ]) }}">{{ __('Checkout') }}</a></figure>
                   </div>

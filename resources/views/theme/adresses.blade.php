@@ -33,7 +33,7 @@
                      </p>
                      <div>
                         <a class="ps-btn sm" href="{{ route('shipping.edit',['id' =>  $addresse->id  ,'store' => $store ]) }}"> {{ __('Edit') }}</a>
-                        <a class="ps-btn sm delete" href="{{ route('shipping.delete',['id' =>  $addresse->id ,'store' => $store ]) }}"> {{ __('Delete') }}</a>
+                        <a class="ps-btn sm delete" style="display:none" href="{{ route('shipping.delete',['id' =>  $addresse->id ,'store' => $store ]) }}"> {{ __('Delete') }}</a>
                         @if(!$addresse->is_primary) 
                         <a class="ps-btn" href="{{ route('shipping.default',['id' =>  $addresse->id ,'store' => $store ]) }}"> {{ __('set As Default') }}</a>
                         @endif

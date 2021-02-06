@@ -18,7 +18,7 @@ class Shipping extends Base
    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
    public function PresentCost() {
-            return '$'.$this->cost;
+            return $this->cost;
   }
 
 

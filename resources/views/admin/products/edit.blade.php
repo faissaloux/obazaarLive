@@ -104,7 +104,7 @@
 
 
 
-                <div class="panel panel-flat" style="display: none;">
+                <div class="panel panel-flat">
                     <div class="panel-body">
                         <fieldset class="content-group">
                             <legend class="text-bold">{{ __('create new product') }}</legend>

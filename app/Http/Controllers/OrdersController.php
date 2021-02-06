@@ -27,6 +27,13 @@ class OrdersController extends Controller {
         return redirect()->route('admin.orders.edit',['id'=>$id])->with('success',trans('order.changed'));
     }
 
+    public function change2($id,$statue) {
+        $content = Orders::find($id);
+        $content->statue = $statue ;
+        $content->save();
+        return redirect()->back();
+    }
+
  
     public function edit($id) {
         $content = Orders::find($id);
