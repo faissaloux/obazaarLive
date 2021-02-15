@@ -29,7 +29,7 @@ if (! function_exists('option')) {
                 if (is_array($key)) {
                     return app('option')->set($key);
                 }
-                 return $_SESSION['website_options'][$key]['value'] ?? '';
+                //  return $_SESSION['website_options'][$key]['value'] ?? '';
             
         
                 return app('option')->get($key, $default);

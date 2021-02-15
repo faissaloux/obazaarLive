@@ -72,13 +72,12 @@
                 <aside class="widget widget_footer">
                     <ul class="ps-list--link">
                            <li><a href="/join">{{ __('joinus') }}</a></li>
-                        <li><a href="/faq">{{ __('Faq') }}</a></li>
+                        <!--li><a href="/faq">{{ __('Faq') }}</a></li-->
                         {{-- <li><a href="/payments-method">{{ __('Payment Methods') }}</a></li>
                         <li><a href="/how-it-works">{{ __('How it works') }}</a></li> --}}
        
                     </ul>
                 </aside>
-
                 
 
 

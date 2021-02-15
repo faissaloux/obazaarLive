@@ -46,9 +46,13 @@ class Options extends Base
      */
     public function get($key, $default = null)
     {
-
         if ($option = self::Lang()->Merchant()->where('key', $key)->first()) {
             return $option->value;
+        }
+        if(\App::getLocale() == 'ir'){
+            if ($option = self::where('lang', 'de')->Merchant()->where('key', $key)->first()) {
+                return $option->value;
+            }
         }
 
         return $default;
