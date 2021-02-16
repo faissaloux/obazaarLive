@@ -13,12 +13,14 @@ class Controller extends BaseController
 {
 
     public $theme ;
+    public $mobile_theme;
 
     public $langs = ['ar' => 'العربية' ,'en'  => 'English' ,'de'  => 'Deutsch' ,'tr'  => 'Turkish'];
 
 
     public function __construct(){
-        $this->theme = \System::$ACTIVE_THEME_PATH.'/';
+        $this->theme        = \System::$ACTIVE_THEME_PATH.'/';
+        $this->mobile_theme = \System::$ACTIVE_MOBILE_THEME_PATH.'/';
     }
 
     

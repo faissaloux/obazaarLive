@@ -1,0 +1,14 @@
+.card.weekly-product-card,
+.product-thumbnail-side,
+.product-thumbnail-side img,
+.product-thumbnail.d-block {
+    height: 100%;
+}
+
+.product-thumbnail-side img{
+    max-height: 100% !important;
+}
+
+p{
+    font-size: 11px;
+}
