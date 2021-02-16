@@ -12,5 +12,6 @@ Route::group(['prefix' => '/mobile', 'as' => 'mobile.'], function(){
     Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
         Route::get('/', 'MobileControllers\WebsiteController@home');
         Route::get('/products', 'MobileControllers\WebsiteController@products')->name('products');
+        Route::get('/product/{id}', 'MobileControllers\ShopController@product')->name('product');
     });
 });

@@ -102,7 +102,7 @@
                     <a class="wishlist-btn" href="#">
                       <i class="lni lni-heart"></i>
                     </a>
-                    <a class="product-thumbnail d-block" href="single-product.html">
+                    <a class="product-thumbnail d-block" href="{{ route('mobile.store.product', ['store' => \Session::get('store'), 'id' => $product->id]) }}">
                       <img class="mb-2" src="{{ $product->thumbnail }}">
                     </a>
                     <a class="product-title d-block" href="single-product.html">{{ $product->name }}</a>

@@ -62,19 +62,19 @@
       <!-- Product Slides-->
       <div class="product-slides owl-carousel">
         <!-- Single Hero Slide-->
-        <div class="single-product-slide" style="background-image: url('img/bg-img/6.jpg')"></div>
+        <div class="single-product-slide" style="background-image: url('{{ $product->thumbnail }}')"></div>
         <!-- Single Hero Slide-->
-        <div class="single-product-slide" style="background-image: url('img/bg-img/10.jpg')"></div>
+        <div class="single-product-slide" style="background-image: url('{{ $product->thumbnail }}')"></div>
         <!-- Single Hero Slide-->
-        <div class="single-product-slide" style="background-image: url('img/bg-img/11.jpg')"></div>
+        <div class="single-product-slide" style="background-image: url('{{ $product->thumbnail }}')"></div>
       </div>
       <div class="product-description pb-3">
         <!-- Product Title & Meta Data-->
         <div class="product-title-meta-data bg-white mb-3 py-3">
           <div class="container d-flex justify-content-between">
             <div class="p-title-price">
-              <h6 class="mb-1">Flower Ceramic Pots</h6>
-              <p class="sale-price mb-0">$38<span>$41</span></p>
+              <h6 class="mb-1">{{ $product->name }}</h6>
+              <p class="sale-price mb-0">{{ $product->price }}</p>
             </div>
             <div class="p-wishlist-share"><a href="wishlist-grid.html"><i class="lni lni-heart"></i></a></div>
           </div>
@@ -112,58 +112,6 @@
             </div>
           </div>
         </div>
-        <!-- Selection Panel-->
-        <div class="selection-panel bg-white mb-3 py-3">
-          <div class="container d-flex align-items-center justify-content-between">
-            <!-- Choose Color-->
-            <div class="choose-color-wrapper">
-              <p class="mb-1 font-weight-bold">Color</p>
-              <div class="choose-color-radio d-flex align-items-center">
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0">
-                  <input class="form-check-input blue" id="colorRadio1" type="radio" name="colorRadio" checked>
-                  <label class="form-check-label" for="colorRadio1"></label>
-                </div>
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0">
-                  <input class="form-check-input yellow" id="colorRadio2" type="radio" name="colorRadio">
-                  <label class="form-check-label" for="colorRadio2"></label>
-                </div>
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0">
-                  <input class="form-check-input green" id="colorRadio3" type="radio" name="colorRadio">
-                  <label class="form-check-label" for="colorRadio3"></label>
-                </div>
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0">
-                  <input class="form-check-input purple" id="colorRadio4" type="radio" name="colorRadio">
-                  <label class="form-check-label" for="colorRadio4"></label>
-                </div>
-              </div>
-            </div>
-            <!-- Choose Size-->
-            <div class="choose-size-wrapper text-end">
-              <p class="mb-1 font-weight-bold">Size</p>
-              <div class="choose-size-radio d-flex align-items-center">
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0 me-2">
-                  <input class="form-check-input" id="sizeRadio1" type="radio" name="sizeRadio">
-                  <label class="form-check-label" for="sizeRadio1">S</label>
-                </div>
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0 me-2">
-                  <input class="form-check-input" id="sizeRadio2" type="radio" name="sizeRadio" checked>
-                  <label class="form-check-label" for="sizeRadio2">M</label>
-                </div>
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0">
-                  <input class="form-check-input" id="sizeRadio3" type="radio" name="sizeRadio">
-                  <label class="form-check-label" for="sizeRadio3">L</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <!-- Add To Cart-->
         <div class="cart-form-wrapper bg-white mb-3 py-3">
           <div class="container">
@@ -181,67 +129,7 @@
         <div class="p-specification bg-white mb-3 py-3">
           <div class="container">
             <h6>Specifications</h6>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, eum? Id, culpa? At officia quisquam laudantium nisi mollitia nesciunt, qui porro asperiores cum voluptates placeat similique recusandae in facere quos vitae?</p>
-            <ul class="mb-3 ps-3">
-              <li><i class="lni lni-checkmark-circle"> </i> 100% Good Reviews</li>
-              <li><i class="lni lni-checkmark-circle"> </i> 7 Days Returns</li>
-              <li> <i class="lni lni-checkmark-circle"> </i> Warranty not Aplicable</li>
-              <li> <i class="lni lni-checkmark-circle"> </i> 100% Brand New Product</li>
-            </ul>
-            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, eum? Id, culpa? At officia quisquam laudantium nisi mollitia nesciunt, qui porro asperiores cum voluptates placeat similique recusandae in facere quos vitae?</p>
-          </div>
-        </div>
-        <!-- Rating & Review Wrapper-->
-        <div class="rating-and-review-wrapper bg-white py-3 mb-3">
-          <div class="container">
-            <h6>Ratings &amp; Reviews</h6>
-            <div class="rating-review-content">
-              <ul class="ps-0">
-                <li class="single-user-review d-flex">
-                  <div class="user-thumbnail"><img src="img/bg-img/7.jpg" alt=""></div>
-                  <div class="rating-comment">
-                    <div class="rating"><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i></div>
-                    <p class="comment mb-0">Very good product. It's just amazing!</p><span class="name-date">Designing World 12 Dec 2021</span>
-                  </div>
-                </li>
-                <li class="single-user-review d-flex">
-                  <div class="user-thumbnail"><img src="img/bg-img/8.jpg" alt=""></div>
-                  <div class="rating-comment">
-                    <div class="rating"><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i></div>
-                    <p class="comment mb-0">Very excellent product. Love it.</p><span class="name-date">Designing World 8 Dec 2021</span>
-                  </div>
-                </li>
-                <li class="single-user-review d-flex">
-                  <div class="user-thumbnail"><img src="img/bg-img/9.jpg" alt=""></div>
-                  <div class="rating-comment">
-                    <div class="rating"><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i></div>
-                    <p class="comment mb-0">What a nice product it is. I am looking it's.</p><span class="name-date">Designing World 28 Nov 2021</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- Ratings Submit Form-->
-        <div class="ratings-submit-form bg-white py-3">
-          <div class="container">
-            <h6>Submit A Review</h6>
-            <form action="#" method="">
-              <div class="stars mb-3">
-                <input class="star-1" type="radio" name="star" id="star1">
-                <label class="star-1" for="star1"></label>
-                <input class="star-2" type="radio" name="star" id="star2">
-                <label class="star-2" for="star2"></label>
-                <input class="star-3" type="radio" name="star" id="star3">
-                <label class="star-3" for="star3"></label>
-                <input class="star-4" type="radio" name="star" id="star4">
-                <label class="star-4" for="star4"></label>
-                <input class="star-5" type="radio" name="star" id="star5">
-                <label class="star-5" for="star5"></label><span></span>
-              </div>
-              <textarea class="form-control mb-3" id="comments" name="comment" cols="30" rows="10" data-max-length="200" placeholder="Write your review..."></textarea>
-              <button class="btn btn-sm btn-primary" type="submit">Save Review</button>
-            </form>
+            <p>{!! $product->description !!}</p>
           </div>
         </div>
       </div>
