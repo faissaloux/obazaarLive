@@ -5,6 +5,19 @@
     height: 100%;
 }
 
+.top-products-area .product-thumbnail.d-block {
+    height: 70%;
+}
+
+.top-products-area .card.top-product-card {
+    height: 100%;
+}
+
+.top-products-area img {
+    height: 100%;
+    object-fit: contain;
+}
+
 .product-thumbnail-side img{
     max-height: 100% !important;
 }

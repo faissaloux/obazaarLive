@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   
+<head>
   @include('mobile/inc/head')
+  </head>
   <body>
     @include('mobile/inc/preloader')
     <!-- Header Area-->
@@ -70,43 +72,49 @@
     <div class="page-content-wrapper">
       <div class="container">
         <div class="pt-3">
-          <!-- Hero Slides-->
           <div class="hero-slides owl-carousel">
             @foreach($sliders as $slider)
               <div class="single-hero-slide" style="background-image: url('{{ asset('uploads/'.$slider->image) }}')">
+                <div class="slide-content h-100 d-flex align-items-center">
+                </div>
               </div>
             @endforeach
           </div>
         </div>
       </div>
-      <!-- Weekly Best Sellers-->
-      <div class="weekly-best-seller-area py-3">
+      <div class="flash-sale-wrapper mt-3">
         <div class="container">
+          <div class="flash-sale-slide owl-carousel">
+            {!! app('SiteSetting')->MerchantStoreCategories() !!}
+          </div>
+        </div>
+      </div>
+      <div class="top-products-area clearfix py-3">
+        <div class="container">
+          <div class="section-heading d-flex align-items-center justify-content-between">
+            <h6>Top Products</h6><a class="btn btn-danger btn-sm" href="{{ route('mobile.store.products', ['store' => \Session::get('store')]) }}">View All</a>
+          </div>
           <div class="row g-3">
-            @foreach($stores as $store)
-              <div class="col-12 col-md-6">
-                <div class="card weekly-product-card">
-                  <div class="card-body d-flex align-items-center">
-                    <div class="product-thumbnail-side">
-                      <a class="product-thumbnail d-block" href="{{ $store->slug }}">
-                        <img src="{{ asset('uploads/'.$store->thumbnail) }}" alt="">
-                      </a>
+            @foreach($products as $product)
+              <div class="col-6 col-md-4 col-lg-3">
+                <div class="card top-product-card">
+                  <div class="card-body">
+                    <a class="wishlist-btn" href="#">
+                      <i class="lni lni-heart"></i>
+                    </a>
+                    <a class="product-thumbnail d-block" href="single-product.html">
+                      <img class="mb-2" src="{{ $product->thumbnail }}">
+                    </a>
+                    <a class="product-title d-block" href="single-product.html">{{ $product->name }}</a>
+                    <p class="sale-price">{{ $product->price }}</p>
+                    <div class="product-rating">
+                      <i class="lni lni-star-filled"></i>
+                      <i class="lni lni-star-filled"></i>
+                      <i class="lni lni-star-filled"></i>
+                      <i class="lni lni-star-filled"></i>
+                      <i class="lni lni-star-filled"></i>
                     </div>
-                    <div class="product-description">
-                      <a class="product-title d-block" href="{{ $store->slug }}">{{ $store->name }}</a>
-                      <p class="product-description-location">
-                        <i class="lni lni-map-marker"></i>
-                        <span>{{ $store->street }}</span>
-                      </p>
-                      <p class="product-description-email">
-                        <i class="lni lni-envelope"></i>
-                        <span>{{ $store->owner->email }}</span>
-                      </p>
-                      <p class="product-description-phone">
-                        <i class="lni lni-phone"></i>
-                        <span>{{ $store->owner->phone }}</span>
-                      </p>
-                    </div>
+                    <a class="btn btn-success btn-sm" href="#"><i class="lni lni-plus"></i></a>
                   </div>
                 </div>
               </div>

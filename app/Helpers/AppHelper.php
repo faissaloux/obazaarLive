@@ -32,6 +32,12 @@ class AppHelper {
         }
     }
 
+    public function MerchantStoreCategories() {
+        $menu = Menus::Lang()->Merchant()->where('area', 'homeCategories')->first();
+        if($menu) return $menu->store_categories_mobile();
+        return '';
+    }
+
     public function dirAttribute() {
         return in_Array(App::getLocale() , System::$RTL_LANG) ? 'dir=rtl' : 'dir=ltr';
     }
@@ -61,7 +67,6 @@ class AppHelper {
     }
 
     public function currentstorecategories() {
-      //  dd(\Session::get('store_id'));
         $categories = ProductCategories::where('store_id',\Session::get('store_id'))->orderby('id','desc')->get();
         $html = '';
         $slug  = \Session::get('store').'/category/';
