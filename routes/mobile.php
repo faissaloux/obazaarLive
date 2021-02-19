@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-// /mobile
+/**
+ * mobile.
+ */
 
 Route::view('/',                'mobile/intro'                                  );
 Route::view('/login',           'mobile/login'                                  )->name('login-view'            );

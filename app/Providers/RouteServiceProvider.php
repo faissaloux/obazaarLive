@@ -80,7 +80,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware'    => 'web',
-            'prefix'        => '/mobile',
+            'domain'        => 'mobile.'.env('APP_DOMAIN'),
             'as'            => 'mobile.',
             'namespace'     => $this->namespace
         ], function () {
