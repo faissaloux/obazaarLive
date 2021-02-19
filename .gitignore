@@ -1,5 +1,5 @@
 .env
-.env2
+.env_2
 .env.local
 .env.staging
 public/uploads/
