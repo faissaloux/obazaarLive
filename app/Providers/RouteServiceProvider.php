@@ -30,8 +30,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
     }
 
@@ -44,9 +42,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
+        $this->mapMobileRoutes();
 
-        //
+        $this->mapWebRoutes();
     }
 
     /**
@@ -76,5 +74,17 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    protected function mapMobileRoutes()
+    {
+        Route::group([
+            'middleware'    => 'web',
+            'prefix'        => '/mobile',
+            'as'            => 'mobile.',
+            'namespace'     => $this->namespace
+        ], function () {
+            require base_path('routes/mobile.php');
+        });
     }
 }

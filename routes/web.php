@@ -5,7 +5,6 @@ use Symfony\Component\Process\Process;
 
 
 require base_path().'/app/Helpers.php';
-require_once 'mobile.php';
 
 Route::get('/tojson', function(){
   $products = App\Models\Product::get(['id','name'])->all();
