@@ -10,3 +10,4 @@
 <script src="{{ asset('assets/mobile/js/default/no-internet.js') }}"></script>
 <script src="{{ asset('assets/mobile/js/default/active.js') }}"></script>
 <script src="{{ asset('assets/mobile/js/pwa.js') }}"></script>
+<script src="{{ asset('assets/mobile/js/scripts.js') }}"></script>

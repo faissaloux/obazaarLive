@@ -13,14 +13,16 @@
           <div class="col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5"><img class="big-logo" src="img/core-img/logo-white.png" alt="">
             <!-- Register Form-->
             <div class="register-form mt-5 px-4">
-              <form action="https://designing-world.com/suha-v2.3.0/home.html" method="">
+              <form action="{{ route('mobile.login-auth') }}" method="post">
+                @csrf
+                 
                 <div class="form-group text-start mb-4"><span>Username</span>
                   <label for="username"><i class="lni lni-user"></i></label>
-                  <input class="form-control" id="username" type="text" placeholder="info@example.com">
+                  <input class="form-control" name="username" id="username" type="text" placeholder="info@example.com">
                 </div>
                 <div class="form-group text-start mb-4"><span>Password</span>
                   <label for="password"><i class="lni lni-lock"></i></label>
-                  <input class="form-control" id="password" type="password" placeholder="********************">
+                  <input class="form-control" name="password" id="password" type="password" placeholder="********************">
                 </div>
                 <button class="btn btn-success btn-lg w-100" type="submit">Log In</button>
               </form>
