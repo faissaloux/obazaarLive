@@ -89,7 +89,7 @@
                   <div class="card-body d-flex align-items-center">
                     <div class="product-thumbnail-side">
                       <a class="product-thumbnail d-block" href="{{ $store->slug }}">
-                        <img src="{{ asset('uploads/'.$store->thumbnail) }}" alt="">
+                        <img class="h-auto" src="{{ asset('uploads/'.$store->thumbnail) }}" alt="">
                       </a>
                     </div>
                     <div class="product-description">

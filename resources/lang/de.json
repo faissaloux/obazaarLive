@@ -660,7 +660,7 @@
     "user.pwd.wrong": "falsches Passwort",
     "user.pwd.wrong.match": "Passwörter unübertroffen",
     "user.account.updated": "userAccountUpdated",
-    "user.wrong.auth": "userWrongAuth",
+    "user.wrong.auth": "Verkeerde inloggegevens",
     "login.wrong": "loginWrong",
     "order.deleted": "orderDeleted",
     "view": "Aussicht",

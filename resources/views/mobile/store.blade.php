@@ -4,7 +4,7 @@
 <head>
   @include('mobile/inc/head')
   </head>
-  <body class="@yield('bodyClass')  @if(Auth::check())  has-logged   @endif @if(!\System::shoppingCartIsNotEmpty()) cart-empty @endif" data-auth-id="{{ \System::userId() }}" data-slug="{{$store}}" data-store-id="{{ \System::currentStoreId() }}">
+  <body class="@yield('bodyClass')  @if(Auth::check())  has-logged   @endif @if(!\System::shoppingCartIsNotEmpty()) cart-empty @endif" data-auth-id="{{ \System::userId() }}" data-slug="{{ \Session::get('store') }}" data-store-id="{{ \System::currentStoreId() }}">
     @include('mobile/inc/preloader')
     
     <!-- Unauth Modal -->
@@ -62,10 +62,13 @@
           </ul>
         </li>
         <li><a href="pages.html"><i class="lni lni-empty-file"></i>All Pages</a></li>
-        <li class="suha-dropdown-menu"><a href="wishlist-grid.html"><i class="lni lni-heart"></i>My Wishlist</a>
+        <li class="suha-dropdown-menu">
+          <a href="#">
+            <i class="lni lni-heart"></i>My Wishlist<span class="ms-3 badge badge-warning">{{ $wishlist_count ?? '' }}</span>
+          </a>
           <ul>
-            <li><a href="wishlist-grid.html">- Wishlist Grid</a></li>
-            <li><a href="wishlist-list.html">- Wishlist List</a></li>
+            <li><a href="{{ route('mobile.store.wishlist.grid' ,[  'store' => \Session::get('store')] ) }}">- Wishlist Grid</a></li>
+            <li><a href="{{ route('mobile.store.wishlist.list' ,[  'store' => \Session::get('store')] ) }}">- Wishlist List</a></li>
           </ul>
         </li>
         <li><a href="settings.html"><i class="lni lni-cog"></i>Settings</a></li>
@@ -128,7 +131,11 @@
                       <i class="lni lni-star-filled"></i>
                       <i class="lni lni-star-filled"></i>
                     </div>
-                    <a  id="addtocard" href="{{ route('cart.add', ['id' => $product->id , 'store' => $store]) }}"  data-product-id='{{$product->id}}' class="btn btn-success btn-sm" href="#"><i class="lni lni-plus"></i></a>
+                    <a  class="btn btn-success btn-sm" id="addtocardMb" 
+                      href="{{ route('mobile.store.cart.add', ['id' => $product->id , 'store' => \Session::get('store')]) }}"  
+                      data-product-id='{{$product->id}}'>
+                      <i class="lni lni-plus"></i>
+                    </a>
                   </div>
                 </div>
               </div>

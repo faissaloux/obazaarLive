@@ -2,7 +2,7 @@
 <html lang="en">
   
   @include('mobile/inc/head')
-  <body>
+  <body  data-slug="{{ \Session::get('store') }}" >
     @include('mobile/inc/preloader')
     <!-- Header Area-->
     <div class="header-area" id="headerArea">
@@ -48,8 +48,8 @@
         <li><a href="pages.html"><i class="lni lni-empty-file"></i>All Pages</a></li>
         <li class="suha-dropdown-menu"><a href="wishlist-grid.html"><i class="lni lni-heart"></i>My Wishlist</a>
           <ul>
-            <li><a href="wishlist-grid.html">- Wishlist Grid</a></li>
-            <li><a href="wishlist-list.html">- Wishlist List</a></li>
+            <li><a href="{{ route('mobile.store.wishlist.grid' ,[  'store' => \Session::get('store')] ) }}">- Wishlist Grid</a></li>
+            <li><a href="{{ route('mobile.store.wishlist.list' ,[  'store' => \Session::get('store')] ) }}">- Wishlist List</a></li>
           </ul>
         </li>
         <li><a href="settings.html"><i class="lni lni-cog"></i>Settings</a></li>
@@ -63,67 +63,60 @@
       <div class="top-products-area py-3">
         <div class="container">
           <div class="section-heading d-flex align-items-center justify-content-between">
-            <h6>Your Wishlist (4)</h6>
+            @if($wishlist->count() != 0)
+                <div class="ps-section__header">
+                  <h3>{{ __('Wishlist') }} ( {{$wishlist->count()}} )</h3>
+                </div>
+            @endif
             <!-- Layout Options-->
-            <div class="layout-options"><a href="wishlist-grid.html"><i class="lni lni-grid-alt"></i></a><a class="active" href="wishlist-list.html"><i class="lni lni-radio-button"></i></a></div>
+            <div class="layout-options">
+              <a href="{{ route('mobile.store.wishlist.grid' ,[  'store' => \Session::get('store')] ) }}"><i class="lni lni-grid-alt"></i></a>
+              <a class="active" href="{{ route('mobile.store.wishlist.list' ,[  'store' => \Session::get('store')] ) }}"><i class="lni lni-radio-button"></i></a>
+            </div>
           </div>
           <div class="row g-3">
-            <!-- Single Weekly Product Card-->
-            <div class="col-12 col-md-6">
-              <div class="card weekly-product-card">
-                <div class="card-body d-flex align-items-center">
-                  <div class="product-thumbnail-side"><span class="badge badge-success">Sale</span><a class="wishlist-btn" href="#"><i class="lni lni-heart"></i></a><a class="product-thumbnail d-block" href="single-product.html"><img src="img/product/10.png" alt=""></a></div>
-                  <div class="product-description"><a class="product-title d-block" href="single-product.html">Modern Red Sofa</a>
-                    <p class="sale-price"><i class="lni lni-dollar"></i>$64<span>$89</span></p>
-                    <div class="product-rating"><i class="lni lni-star-filled"></i>4.88 (39)</div><a class="btn btn-success btn-sm" href="#"><i class="me-1 lni lni-cart"></i>Buy Now</a>
+            <!-- Wishlist Product -->
+            @if($wishlist->count() != 0)
+              @foreach($wishlist as $wishlistItem)
+                <div class="col-12 col-md-6">
+                  <div class="card weekly-product-card">
+                    <div class="card-body d-flex align-items-center">
+                      <div class="product-thumbnail-side">
+                        <a class="product-thumbnail d-block"  href="{{ route('mobile.store.product',['id' => $wishlistItem->productID , 'store' => \Session::get('store')]) }}">
+                          <img class="h-auto mb-2" src="{{ $wishlistItem->product->thumbnail }}">
+                        </a>
+                      </div>
+                      <div class="product-description">
+                        <a class="product-title d-block" href="{{ route('mobile.store.product',['id' => $wishlistItem->productID , 'store' => \Session::get('store')]) }}">{{$wishlistItem->product->name }}</a>
+                        <p class="sale-price">{{ $wishlistItem->product->price }} €</p>
+                        <a id="addtocardMb" class="btn btn-success btn-sm"   href="{{ route('mobile.store.cart.add', ['id' => $wishlistItem->product->id , 'store' => \Session::get('store')]) }}"  data-product-id='{{$wishlistItem->product->id}}'>
+                          <i class="lni lni-plus"></i>Buy Now
+                        </a>
+                        </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <!-- Single Weekly Product Card-->
-            <div class="col-12 col-md-6">
-              <div class="card weekly-product-card">
-                <div class="card-body d-flex align-items-center">
-                  <div class="product-thumbnail-side"><span class="badge badge-primary">Sale</span><a class="wishlist-btn" href="#"><i class="lni lni-heart"></i></a><a class="product-thumbnail d-block" href="single-product.html"><img src="img/product/7.png" alt=""></a></div>
-                  <div class="product-description"><a class="product-title d-block" href="single-product.html">Office Chair</a>
-                    <p class="sale-price"><i class="lni lni-dollar"></i>$100<span>$160</span></p>
-                    <div class="product-rating"><i class="lni lni-star-filled"></i>4.82 (125)</div><a class="btn btn-success btn-sm" href="#"><i class="me-1 lni lni-cart"></i>Buy Now</a>
+              @endforeach
+            @else
+            <div class="ps-table--invoices">
+                  <div class="row text-center">
+                      <div class="empty-order">
+                          <i class="icon-heart"></i>
+                          <p>{{ __('You have no favorites') }}</p>
+                          <a class="ps-btn" href="/{{ $store }}">{{ __('Continue Shopping') }}</a>
+                      </div>
                   </div>
-                </div>
               </div>
-            </div>
-            <!-- Single Weekly Product Card-->
-            <div class="col-12 col-md-6">
-              <div class="card weekly-product-card">
-                <div class="card-body d-flex align-items-center">
-                  <div class="product-thumbnail-side"><span class="badge badge-danger">-10%</span><a class="wishlist-btn" href="#"><i class="lni lni-heart"></i></a><a class="product-thumbnail d-block" href="single-product.html"><img src="img/product/12.png" alt=""></a></div>
-                  <div class="product-description"><a class="product-title d-block" href="single-product.html">Sun Glasses</a>
-                    <p class="sale-price"><i class="lni lni-dollar"></i>$24<span>$32</span></p>
-                    <div class="product-rating"><i class="lni lni-star-filled"></i>4.79 (63)</div><a class="btn btn-success btn-sm" href="#"><i class="me-1 lni lni-cart"></i>Buy Now</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Single Weekly Product Card-->
-            <div class="col-12 col-md-6">
-              <div class="card weekly-product-card">
-                <div class="card-body d-flex align-items-center">
-                  <div class="product-thumbnail-side"><span class="badge badge-warning">New</span><a class="wishlist-btn" href="#"><i class="lni lni-heart"></i></a><a class="product-thumbnail d-block" href="single-product.html"><img src="img/product/13.png" alt=""></a></div>
-                  <div class="product-description"><a class="product-title d-block" href="single-product.html">Wall Clock</a>
-                    <p class="sale-price"><i class="lni lni-dollar"></i>$31<span>$47</span></p>
-                    <div class="product-rating"><i class="lni lni-star-filled"></i>4.99 (7)</div><a class="btn btn-success btn-sm" href="#"><i class="me-1 lni lni-cart"></i>Buy Now</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endif
+
             <!-- Select All Products-->
-            <div class="col-12">
-              <div class="select-all-products-btn"><a class="btn btn-danger w-100" href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-cart-check me-1" viewBox="0 0 16 16">
-<path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-<path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-</svg>Add All To Cart</a></div>
-            </div>
+            @if($wishlist->count() != 0)
+              <div class="col-12">
+                <div class="select-all-products-btn"><a class="btn btn-danger w-100" href="#">
+                  <i class="lni lni-heart"></i>{{ __('clear wishlist') }}</a></div>
+              </div>
+            @endif
+
           </div>
         </div>
       </div>

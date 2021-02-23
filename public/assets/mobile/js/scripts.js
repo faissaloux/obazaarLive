@@ -1,3 +1,10 @@
+
+var slug = $("body").attr("data-slug");
+var wishlist = "";
+var cartupdate = "/" + slug + "/cart/update";
+var addtocard = "/" + slug + "/cart/add/";
+var loadcartAgain = "/loadcartAgain/" + slug + "";
+
 $(document).on('click', 'body #wishlistMb', function (e) {
     if (!$('body').hasClass('has-logged')) {
       $('#modalUnauth').modal('show');
@@ -21,21 +28,18 @@ $(document).on('click', 'body #wishlistMb', function (e) {
         $("#overlay").fadeIn(300);
       },
       success: function success(data) {
-        $('body').addClass('has-logged');
         $("#overlay").fadeOut(0);
         $('body .wishlist_count').html(data);
         $('#modalwishlist').modal('show');
       },
       error: function error(response) {
-        console.log('error');
         console.log(response);
       }
     });
   });
-
   
 // add product to cart
-$(document).on('click', 'body #addtocard', function (e) {
+$(document).on('click', 'body #addtocardMb', function (e) {
 
 
   e.preventDefault();
@@ -52,6 +56,7 @@ $(document).on('click', 'body #addtocard', function (e) {
   if (typeof attr !== typeof undefined && attr !== false) {
       // ...
   }
+
 
 
   var quantity = 1;
@@ -95,7 +100,6 @@ $(document).on('click', 'body #addtocard', function (e) {
               success: function (data) {
                   $('body .ps-cart__content').html(data);
                   var quantity = $('#cartcount').val();
-
                   $('#cart-mobile .TotalPriceM').html($('#cart-mobile .jahnama').text());
 
 
