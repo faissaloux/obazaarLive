@@ -40,7 +40,10 @@ $(document).on('click', 'body #wishlistMb', function (e) {
   
 // add product to cart
 $(document).on('click', 'body #addtocardMb', function (e) {
-
+  if (!$('body').hasClass('has-logged')) {
+    $('#modalUnauth').modal('show');
+    return false;
+  }
 
   e.preventDefault();
   var formData = new FormData();

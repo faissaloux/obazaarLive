@@ -2044,6 +2044,9 @@ li.suha-dropdown-menu {
     bottom: 12px;
     font-size: 1rem;
     z-index: 9; }
+  .top-product-card .btn-danger {
+    right: 50px;
+    bottom: 12px; }
   .top-product-card:hover .product-title, .top-product-card:focus .product-title {
     color: #100DD1; }
 

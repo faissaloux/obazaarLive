@@ -23,17 +23,18 @@ class WishlistController extends Controller
             }
             return redirect()->back()->with('success',trans('wishlist.added')); 
         }
-        return view ($this->mobile_theme.'user');  
+        return view ($this->mobile_theme.'login-view');  
     }
 
-      //remove
+    //remove
     public function remove($store,$id,Request $request){
         $wish = WishList::find($id);
         if($wish){
             $wish->delete();
-            return redirect()->route('mobile.store.wishlist.list',['store' => $request->store ])->with('success',trans('wishlist.removed'));   
+            return redirect()->back()->with('success',trans('wishlist.removed'));   
         }
-        return redirect()->route('mobile.store.wishlist.list',['store' => $request->store ]);   
+        
+        return redirect()->back();   
     }
 
     //clear
