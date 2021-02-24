@@ -49,8 +49,8 @@
           <li><a href="{{ route('mobile.store.wishlist.list' ,[  'store' => \Session::get('store')] ) }}">- Wishlist List</a></li>
         </ul>
       </li>
-      <li><a href="settings.html"><i class="lni lni-cog"></i>Settings</a></li>
-      <li><a href="intro.html"><i class="lni lni-power-switch"></i>Sign Out</a></li>
+      <li><a href="#"><i class="lni lni-cog"></i>Settings</a></li>
+      <li><a href="{{ route('logout') }}"><i class="lni lni-power-switch"></i>Sign Out</a></li>
     </ul>
     <!-- Go Back Button-->
     <div class="go-home-btn" id="goHomeBtn"><i class="lni lni-arrow-left"></i></div>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/',                'mobile/intro'                                  );
 Route::view('/login',           'mobile/login'                                  )->name('login-view'            );
 Route::post('/login',           'MobileControllers\AccountController@userAuth'  )->name('login-auth'            );
+Route::get('/logout',           'Auth\LoginController@logout'                   )->name('logout');
 Route::view('/register',        'mobile/register'                               )->name('register-view'         );
 Route::view('/forget-password', 'mobile/forget-password'                        )->name('forget-password-view'  );
 Route::get('/stores',           'MobileControllers\BaseController@index'        );
