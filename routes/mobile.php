@@ -20,12 +20,12 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
     Route::get('/product/{id}', 'MobileControllers\ShopController@product'      )->name('product'               );
     
     // add and remove product from wishlist
-    Route::group(['as' => 'wishlist.'], function(){
-        Route::get('/wishlistList',          'MobileControllers\WebsiteController@wishlistList')->name('list'            )->middleware(['user']);
-        Route::get('/wishlistGrid',          'MobileControllers\WebsiteController@wishlistGrid')->name('grid'            )->middleware(['user']);
-        Route::get('/wishlist/add/{id}',     'MobileControllers\WishlistController@add')->name('add'                 );
-        Route::get('/wishlist/remove/{id}',  'MobileControllers\WishlistController@remove')->name('remove');
-        Route::get('/wishlist/clear',        'MobileControllers\WishlistController@clear')->name('clear');
+    Route::group(['as' => 'wishlist.', 'middleware' => 'MAccount'], function(){
+        Route::get('/wishlistList',          'MobileControllers\WebsiteController@wishlistList')->name('list'   );
+        Route::get('/wishlistGrid',          'MobileControllers\WebsiteController@wishlistGrid')->name('grid'   );
+        Route::get('/wishlist/add/{id}',     'MobileControllers\WishlistController@add')->name('add'            );
+        Route::get('/wishlist/remove/{id}',  'MobileControllers\WishlistController@remove')->name('remove'      );
+        Route::get('/wishlist/clear',        'MobileControllers\WishlistController@clear')->name('clear'        );
     });
 
     // add and remove product from wishlist
