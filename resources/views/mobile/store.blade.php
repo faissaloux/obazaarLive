@@ -1,28 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   
-<head>
-  @include('mobile/inc/head')
+  <head>
+    @include('mobile/inc/head')
   </head>
   <body class="@yield('bodyClass')  @if(Auth::check())  has-logged   @endif @if(!\System::shoppingCartIsNotEmpty()) cart-empty @endif" data-auth-id="{{ \System::userId() }}" data-slug="{{ \Session::get('store') }}" data-store-id="{{ \System::currentStoreId() }}">
     @include('mobile/inc/preloader')
     
-    <!-- Unauth Modal -->
-    <div class="modal" id="modalUnauth" tabindex="-1" role="dialog" >
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-         <div class="modal-content">
-            <div class="modal-body">
-               <h5 class="modaltitle">{{ __('You have to login') }}</h5>
-               <center>
-                  <a href="{{ route('mobile.login-view') }}" class="ps-btn">{{ __('Login') }}</a>
-               </center>
-            </div>
-         </div>
-      </div>
-   </div>
     
    <!-- Header Area -->
-   @include('mobile/components/headerArea')
+   @include('mobile/components/headerAreaMain')
+
+   <!-- NavBar -->
+   @include('mobile/components/navBar')
+
+
     <!-- PWA Install Alert-->
     <div class="toast pwa-install-alert shadow bg-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000" data-bs-autohide="true">
       <div class="toast-body">
@@ -62,14 +54,18 @@
               <div class="col-6 col-md-4 col-lg-3">
                 <div class="card top-product-card">
                   <div class="card-body">
-                    <a class="wishlist-btn" id="wishlistMb"  href="javascript:;" data-link="{{ route('mobile.store.wishlist.add', ['store' => \Session::get('store'), 'id' => $product->id ]) }}">
+                    <a class="wishlist-btn" 
+                      id="wishlistMb"  
+                      href="javascript:;" 
+                      data-link="{{ route('mobile.store.wishlist.add', ['store' => \Session::get('store'), 'id' => $product->id ]) }}">
                       <i class="lni lni-heart"></i>
                     </a>
-                    <a class="product-thumbnail d-block" href="{{ route('mobile.store.product', ['store' => \Session::get('store'), 'id' => $product->id]) }}">
+                    <a class="product-thumbnail d-block" 
+                      href="{{ route('mobile.store.product', ['store' => \Session::get('store'), 'id' => $product->id]) }}">
                       <img class="mb-2" src="{{ $product->thumbnail }}">
                     </a>
                     <a class="product-title d-block" href="single-product.html">{{ $product->name }}</a>
-                    <p class="sale-price">{{ $product->price }}</p>
+                    <p class="sale-price">{{ $product->price }} €</p>
                     <div class="product-rating">
                       <i class="lni lni-star-filled"></i>
                       <i class="lni lni-star-filled"></i>
@@ -78,7 +74,7 @@
                       <i class="lni lni-star-filled"></i>
                     </div>
                     <a class="btn btn-success btn-sm" 
-                      id="addtocardMb"
+                      id="addtocard"
                       href="{{ route('mobile.store.cart.add', ['id' => $product->id , 'store' => \Session::get('store')]) }}" 
                       data-product-id='{{$product->id}}'>
                         <i class="lni lni-plus"></i>

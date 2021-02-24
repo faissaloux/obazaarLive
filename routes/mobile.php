@@ -15,6 +15,9 @@ Route::view('/forget-password', 'mobile/forget-password'                        
 Route::get('/stores',           'MobileControllers\BaseController@index'        );
 
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
+    Route::get('/goBack', function(){
+        return Redirect::back(); 
+    })->name('goBack');
     Route::get('/',             'MobileControllers\WebsiteController@home'      );
     Route::get('/products',     'MobileControllers\WebsiteController@products'  )->name('products'              );
     Route::get('/product/{id}', 'MobileControllers\ShopController@product'      )->name('product'               );
@@ -30,6 +33,7 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
 
     // add and remove product from wishlist
     Route::group(['as' => 'cart.'], function(){
+        Route::get('/cart/index', 'MobileControllers\CartController@index')->name('index');
         Route::any('/cart/add/{id}', 'MobileControllers\CartController@add')->name('add');
     });
 });

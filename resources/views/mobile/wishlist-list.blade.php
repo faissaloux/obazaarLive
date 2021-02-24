@@ -6,7 +6,10 @@
     @include('mobile/inc/preloader')
 
     <!-- Header Area -->
-    @include('mobile/components/headerArea')
+    @include('mobile/components/headerAreaMain')
+
+    <!-- Nav Bar -->
+    @include('mobile/components/navBar')
    
     <div class="page-content-wrapper">
       <!-- Top Products-->
