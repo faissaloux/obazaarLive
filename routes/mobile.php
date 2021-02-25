@@ -32,6 +32,7 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
     Route::group(['as' => 'cart.'], function(){
         Route::get('/cart/index', 'MobileControllers\CartController@index')->name('index');
         Route::any('/cart/add/{id}', 'MobileControllers\CartController@add')->name('add');
+        Route::post('/cart/update', 'MobileControllers\CartController@update')->name('update');
     });
 });
 

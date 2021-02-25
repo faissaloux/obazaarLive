@@ -19,10 +19,25 @@
           <div class="modal-body">
              <h5 class="modaltitle">{{ __('item.added.cart.modal') }}</h5>
              <center>
-                <a class="btn btn-warning" href="{{ route('mobile.store.cart.index',['store'  => $store ]) }}"  class="ps-btn">{{ __('View Shopping Cart') }}</a>
-                <a class="btn btn-success" href="#" data-toggle="modal" title="{{ __('Continue Shopping') }}" data-target="#addedTocCart" class="ps-btn">{{ __('Continue Shopping') }}</a>
+                <a class="btn btn-warning ps-btn" href="{{ route('mobile.store.cart.index',['store'  => \Session::get('store') ]) }}">{{ __('View Shopping Cart') }}</a>
+                <a class="btn btn-success ps-btn" href="#" data-toggle="modal" title="{{ __('Continue Shopping') }}" data-target="#addedTocCart">{{ __('Continue Shopping') }}</a>
              </center>
           </div>
        </div>
     </div>
  </div>
+ 
+ <!--  WishlistAdded Modal -->
+ <div class="modal" id="modalwishlist" tabindex="-1" role="dialog" >
+   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-body">
+            <h5 class="modaltitle">{{ __('wishlist.added') }}</h5>
+            <center>
+               <a class="btn btn-warning ps-btn" href="{{ route('mobile.store.wishlist.list',['store'  => \Session::get('store') ]) }}">{{ __('My Wishlist') }}</a>
+               <a class="btn btn-success ps-btn" href="#" data-toggle="modal" title="{{ __('Continue Shopping') }}" data-target="#modalwishlist">{{ __('Continue Shopping') }}</a>
+            </center>
+         </div>
+      </div>
+   </div>
+</div>

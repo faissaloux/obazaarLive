@@ -16,8 +16,8 @@ class CartController extends Controller
     public function index() {
         $cart = (new Cart())->get();
         $total = (new Cart())->total();
-        // return view ('website/cart',compact('cart','total'));
-        dd($cart);
+        return view ('mobile/cart',compact('cart','total'));
+        // dd($cart);
     }
 
 
@@ -29,6 +29,12 @@ class CartController extends Controller
         if($request->ajax()){
             return response()->json(["success" => "Product added to cart successfully"]);
         }
-        return redirect()->route('mobile.store.cart',compact('store'))->with('message',trans('cart.added'));
+        return redirect()->route('mobile.store.cart.index',compact('store'))->with('message',trans('cart.added'));
+    }
+
+    // update
+    public function update($store , Request $request){
+        (new Cart())->update($request);
+        return redirect()->route('mobile.store.cart.index',compact('store'))->with('message',trans('cart.updated'));
     }
 }

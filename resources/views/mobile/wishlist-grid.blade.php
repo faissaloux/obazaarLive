@@ -5,11 +5,11 @@
   <body  class="@yield('bodyClass')  @if(Auth::check())  has-logged   @endif @if(!\System::shoppingCartIsNotEmpty()) cart-empty @endif" data-slug="{{ \Session::get('store') }}" >
     @include('mobile/inc/preloader')
 
-    <!-- Header Area -->
-   @include('mobile/components/headerAreaMain')
-   
-   <!-- Nav Bar -->
-   @include('mobile/components/navBar')
+      <!-- Header Area -->
+    @include('mobile/components/headerAreaMain')
+    
+    <!-- Nav Bar -->
+    @include('mobile/components/navBar')
    
     <div class="page-content-wrapper">
       <!-- Top Products-->
@@ -54,46 +54,36 @@
                   </div>
                 </div>
               @endforeach
-              @else
+            @else
               <div class="ps-table--invoices">
-                    <div class="row text-center">
-                        <div class="empty-order">
-                            <i class="icon-heart"></i>
-                            <p>{{ __('You have no favorites') }}</p>
-                            <a class="ps-btn" href="/{{ \Session::get('store') }}">{{ __('Continue Shopping') }}</a>
-                        </div>
-                    </div>
-                </div>
-              @endif
-              <!-- Select All Products-->
-              @if($wishlist->count() != 0)
-                <div class="col-12">
-                  <div class="select-all-products-btn"><a class="btn btn-danger w-100"  href="{{ route('mobile.store.wishlist.clear',['store' => \Session::get('store') ]) }}">
-                    <i class="fa fa-trash" aria-hidden="true"></i>{{ __('clear wishlist') }}</a></div>
-                </div>
-              @endif
+                  <div class="row text-center">
+                      <div class="empty-order">
+                          <i class="icon-heart"></i>
+                          <p>{{ __('You have no favorites') }}</p>
+                          <a class="ps-btn" href="/{{ \Session::get('store') }}">{{ __('Continue Shopping') }}</a>
+                      </div>
+                  </div>
+              </div>
+            @endif
+            <!-- Select All Products-->
+            @if($wishlist->count() != 0)
+              <div class="col-12">
+                <div class="select-all-products-btn"><a class="btn btn-danger w-100"  href="{{ route('mobile.store.wishlist.clear',['store' => \Session::get('store') ]) }}">
+                  <i class="fa fa-trash" aria-hidden="true"></i>{{ __('clear wishlist') }}</a></div>
+              </div>
+            @endif
               
-            </div>
           </div>
         </div>
       </div>
-      <!-- Internet Connection Status-->
-      <div class="internet-connection-status" id="internetStatus"></div>
-      <!-- Footer Nav-->
-      <div class="footer-nav-area" id="footerNav">
-        <div class="container h-100 px-0">
-          <div class="suha-footer-nav h-100">
-            <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
-              <li class="active"><a href="home.html"><i class="lni lni-home"></i>Home</a></li>
-              <li><a href="message.html"><i class="lni lni-life-ring"></i>Support</a></li>
-              <li><a href="cart.html"><i class="lni lni-shopping-basket"></i>Cart</a></li>
-              <li><a href="pages.html"><i class="lni lni-heart"></i>Pages</a></li>
-              <li><a href="settings.html"><i class="lni lni-cog"></i>Settings</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      @include('mobile/inc/scripts')
-    </body>
-  
-  </html>
+    </div>
+    <!-- Internet Connection Status-->
+    <div class="internet-connection-status" id="internetStatus"></div>
+    
+    {{-- Footer --}}
+    @include('mobile/inc/footer')
+    
+    @include('mobile/inc/scripts')
+  </body>
+
+</html>
