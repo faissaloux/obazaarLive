@@ -12,7 +12,7 @@ Route::post('/login',           'MobileControllers\AccountController@userAuth'  
 Route::get('/logout',           'Auth\LoginController@logout'                   )->name('logout');
 Route::view('/register',        'mobile/register'                               )->name('register-view'         );
 Route::view('/forget-password', 'mobile/forget-password'                        )->name('forget-password-view'  );
-Route::get('/stores',           'MobileControllers\BaseController@index'        );
+Route::get('/stores',           'MobileControllers\BaseController@index'        )->name('stores'                );
 
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
     Route::get('/',             'MobileControllers\WebsiteController@home'      );
