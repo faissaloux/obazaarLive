@@ -2,7 +2,7 @@
 <html lang="en">
   
   @include('mobile/inc/head')
-  <body  data-slug="{{ \Session::get('store') }}" >
+  <body  class="@yield('bodyClass')  @if(Auth::check())  has-logged   @endif @if(!\System::shoppingCartIsNotEmpty()) cart-empty @endif" data-slug="{{ \Session::get('store') }}" >
     @include('mobile/inc/preloader')
 
     <!-- Header Area -->
@@ -43,7 +43,7 @@
                         <a class="product-title d-block" href="{{ route('mobile.store.product',['id' => $wishlistItem->productID , 'store' => \Session::get('store')]) }}">{{$wishlistItem->product->name }}</a>
                         <p class="sale-price">{{ $wishlistItem->product->price }} €</p>
                         <a class="btn btn-success btn-sm" 
-                          id="addtocardMb"
+                          id="addtocard"
                           href="{{ route('mobile.store.cart.add', ['id' => $wishlistItem->product->id , 'store' => \Session::get('store')]) }}" 
                           data-product-id='{{$wishlistItem->product->id}}'>
                           <i class="lni lni-plus"></i> Buy Now

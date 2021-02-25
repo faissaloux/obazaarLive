@@ -38,7 +38,7 @@
   </ul>
   <!-- Go Back Button-->
   <div class="go-home-btn">
-    <a href="{{ route('mobile.store.goBack', ['store' => \Session::get('store') ]) }}"><i class="lni lni-arrow-left"></i></a>
+    <a href="{{ url()->previous() }}"><i class="lni lni-arrow-left"></i></a>
   </div>
 </div>
 

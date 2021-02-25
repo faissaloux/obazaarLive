@@ -15,9 +15,6 @@ Route::view('/forget-password', 'mobile/forget-password'                        
 Route::get('/stores',           'MobileControllers\BaseController@index'        );
 
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
-    Route::get('/goBack', function(){
-        return Redirect::back(); 
-    })->name('goBack');
     Route::get('/',             'MobileControllers\WebsiteController@home'      );
     Route::get('/products',     'MobileControllers\WebsiteController@products'  )->name('products'              );
     Route::get('/product/{id}', 'MobileControllers\ShopController@product'      )->name('product'               );
