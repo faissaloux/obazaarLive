@@ -16,8 +16,10 @@
     </div>
     <!-- Sidenav Nav-->
     <ul class="sidenav-nav ps-0">
-      <li><a href="{{ route('mobile.profile.index') }}"><i class="lni lni-user"></i>{{ __('My Profile') }}</a></li>
-      <li><a href="notifications.html"><i class="lni lni-alarm lni-tada-effect"></i>{{ __('Notifications') }}<span class="ms-3 badge badge-warning">3</span></a></li>
+      <li><a href="{{ route('mobile.account.profile.index') }}"><i class="lni lni-user"></i>{{ __('My Profile') }}</a></li>
+      <li><a href="{{ route('mobile.account.profile.password') }}"><i class="lni lni-lock"></i>{{ __('Password') }}</a></li>
+      <li><a href="{{ route('mobile.account.profile.index') }}"><i class="lni lni-map"></i>{{ __('Addresses') }}</a></li>
+      <li><a href="{{ route('mobile.account.profile.index') }}"><i class="lni lni-shopping-basket"></i>{{ __('Orders') }}</a></li>
       <li class="suha-dropdown-menu">
         <a href="#">
           <i class="lni lni-heart"></i>{{ __('My Wishlist') }}<span class="ms-3 badge badge-warning wishlist_count">{{ $wishlist_count ?? '' }}</span>
@@ -27,7 +29,6 @@
           <li><a href="{{ route('mobile.account.wishlist.list') }}">- {{ __('Wishlist List') }}</a></li>
         </ul>
       </li>
-      <li><a href="#"><i class="lni lni-cog"></i>{{ __('Settings') }}</a></li>
       <li><a href="{{ route('logout') }}"><i class="lni lni-power-switch"></i>{{ __('Sign Out') }}</a></li>
     </ul>
   @endguest

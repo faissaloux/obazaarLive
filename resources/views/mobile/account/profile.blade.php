@@ -1,15 +1,17 @@
-@extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/store_layout') 
+@extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/layout') 
 @section('title')
     home
 @endsection
 
 @section('header-content')
-<div class="top-search-form">
-  <form action="#" method="">
-    <input class="form-control" type="search" placeholder="Enter your keyword">
-    <button type="submit"><i class="fa fa-search"></i></button>
-  </form>
-</div>
+    <div class="logo-wrapper">
+        <a href="/">
+            <img src="{{ asset('assets/mobile/img/core-img/logo-small.png') }}" alt="">
+        </a>
+    </div>
+    <div class="page-heading">
+        <h6 class="mb-0">Profile</h6>
+    </div>
 @endsection
 
 @section('content')
@@ -41,18 +43,8 @@
             <div class="title d-flex align-items-center"><i class="lni lni-envelope"></i><span>{{ __('Email Address') }}</span></div>
             <div class="data-content">{{ $user->email }}</div>
           </div>
-            <div class="single-profile-data d-flex align-items-center justify-content-between">
-              <div class="title d-flex align-items-center"><i class="lni lni-map-marker"></i><span>{{ __('Shipping') }}</span></div>
-              @foreach($user->addresses as $address)
-                <div class="data-content">{{ $address->street }}, {{ $address->city }}, {{ $address->state }}</div>
-              @endforeach
-            </div>
-          <div class="single-profile-data d-flex align-items-center justify-content-between">
-            <div class="title d-flex align-items-center"><i class="lni lni-star"></i><span>{{ __('My Order') }}</span></div>
-            <div class="data-content"><a class="btn btn-danger btn-sm" href="{{ route('mobile.orders') }}">{{ __('View') }}</a></div>
-          </div>
           <!-- Edit Profile-->
-          <div class="edit-profile-btn mt-3"><a class="btn btn-info w-100" href="{{ route('mobile.profile.edit') }}"><i class="lni lni-pencil me-2"></i>{{ __('Edit Profile') }}</a></div>
+          <div class="edit-profile-btn mt-3"><a class="btn btn-info w-100" href="{{ route('mobile.account.profile.edit') }}"><i class="lni lni-pencil me-2"></i>{{ __('Edit Profile') }}</a></div>
         </div>
       </div>
     </div>

@@ -15,15 +15,6 @@ Route::view('/forget-password', 'mobile/forget-password'                        
 Route::get('/stores',           'MobileControllers\BaseController@index'        )->name('stores'                );
 Route::view('/orders',          'mobile.orders'                                 )->name('orders'                );
 
-<<<<<<< HEAD
-=======
-Route::group(['prefix' => 'profile', 'as' => 'profile.'], function(){
-    Route::get('/',             'MobileControllers\ProfileController@index'     )->name('index'                 );
-    Route::get('/edit',         'MobileControllers\ProfileController@edit'      )->name('edit'                  );
-    Route::post('/update',      'MobileControllers\ProfileController@update'    )->name('update'                );
-});
-
->>>>>>> d9779001bc6547e46f8851c4aeca0d3442b0d40c
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
     Route::get('/',             'MobileControllers\WebsiteController@home'      );
     Route::get('/products',     'MobileControllers\WebsiteController@products'  )->name('products');
@@ -32,8 +23,9 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
     Route::group(['prefix' => 'account', 'middleware' => 'MAccount'], function(){    
         // Profile
         Route::group(['prefix' => 'profile','as' => 'profile.'], function(){
-            Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.edit')->name('index');
-            Route::post('/update', 'AccountController@update_profile')->name('update');
+            Route::get('/',             'MobileControllers\ProfileController@index'     )->name('index'                 );
+            Route::get('/edit',         'MobileControllers\ProfileController@edit'      )->name('edit'                  );
+            Route::post('/update',      'MobileControllers\ProfileController@update'    )->name('update'                );
             Route::view('/password', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.password')->name('password');
             Route::post('/password/update', 'AccountController@password_update')->name('password.update');
         });
@@ -76,8 +68,9 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
 Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'MAccount'], function(){    
     // Profile
     Route::group(['prefix' => 'profile','as' => 'profile.'], function(){
-        Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.edit')->name('index');
-        Route::post('/update', 'AccountController@update_profile')->name('update');
+        Route::get('/',             'MobileControllers\AccountController@index'     )->name('index'                 );
+        Route::get('/edit',         'MobileControllers\AccountController@edit'      )->name('edit'                  );
+        Route::post('/update',      'MobileControllers\AccountController@update'    )->name('update'                );
         Route::view('/password', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.password')->name('password');
         Route::post('/password/update', 'AccountController@password_update')->name('password.update');
     });
