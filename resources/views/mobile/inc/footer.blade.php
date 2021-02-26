@@ -3,11 +3,10 @@
     <div class="container h-100 px-0">
       <div class="suha-footer-nav h-100">
         <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
-          <li class="active"><a href="/{{ \Session::get('store') }}"><i class="lni lni-home"></i>Home</a></li>
-          <li><a href="#"><i class="lni lni-life-ring"></i>Support</a></li>
-          <li><a href="{{ route('mobile.store.cart.index',['store' => \Session::get('store')]) }}"><i class="lni lni-shopping-basket"></i>Cart</a></li>
-          <li><a href="#"><i class="lni lni-heart"></i>Pages</a></li>
-          <li><a href="#"><i class="lni lni-cog"></i>Settings</a></li>
+          <li class="active"><a href="/{{ \Session::get('store') }}"><i class="lni lni-home"></i>{{ __('Home') }}</a></li>
+          <li><a href="{{ route('mobile.store.cart.index',['store' => \Session::get('store')]) }}"><i class="lni lni-shopping-basket"></i>{{ __('Cart') }}</a></li>
+          <li><a href="{{ route('mobile.store.wishlist.grid' ,[  'store' => \Session::get('store')] ) }}"><i class="lni lni-heart"></i>{{ __('Wishlist') }}</a></li>
+          <li><a href="#"><i class="lni lni-cog"></i>{{ __('Settings') }}</a></li>
         </ul>
       </div>
     </div>
