@@ -4,7 +4,7 @@
   @include('mobile/inc/head')
   <body>
     @include('mobile/inc/preloader')
-    @include(\System::$ACTIVE_MOBILE_THEME_PATH.'/elements/alerts')
+    @include(\System::$ACTIVE_MOBILE_THEME_PATH.'/inc/alert')
     <!-- Login Wrapper Area-->
     <div class="login-wrapper d-flex align-items-center justify-content-center text-center">
       <!-- Background Shape-->
