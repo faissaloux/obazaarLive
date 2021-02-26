@@ -39,4 +39,42 @@ class ProfileController extends Controller
         }
         return redirect()->back()->with('failed', trans('user.account.failed.updated')); 
     }
+
+    public function password_index()
+    {
+        $user = \Auth::user();
+        return view($this->mobile_theme.'store/password', compact('user'));
+    }
+
+    public function password_update(Request $request)
+    {
+        $user = $request->user();
+
+        $rules = [
+          'password'                => 'required|min:3',
+          'newpassword'             => 'required|min:3',
+          'password_confirmation'   => 'required|min:3',
+        ];
+
+        $customMessages = [
+            'required' => 'wrong password'
+        ];
+
+        $request->validate($rules, $customMessages);
+
+        if (!\Hash::check($request->password, $user->password)) {
+            return redirect()->back()->with('error', trans('wrong password'));
+        }
+
+
+        if($request->newpassword == $request->password_confirmation ) {
+          
+                $user->password = \Hash::make($request->newpassword);
+                $user->save();
+
+            return redirect()->back()->with('success', trans('user.pwd.updated'));
+        }
+
+        return redirect()->back()->with('error','wrong password');
+    }
 }

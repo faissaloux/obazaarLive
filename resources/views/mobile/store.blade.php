@@ -4,6 +4,11 @@
 @endsection
 
 @section('header-content')
+<div class="logo-wrapper">
+  <a href="/">
+      <img src="{{ asset('assets/mobile/img/core-img/logo-small.png') }}" alt="">
+  </a>
+</div>
 <div class="top-search-form">
   <form action="#" method="">
     <input class="form-control" type="search" placeholder="Enter your keyword">

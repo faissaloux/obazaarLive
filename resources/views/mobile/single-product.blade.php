@@ -4,10 +4,32 @@
 @endsection
 
 @section('header-content')
+<div class="back-button">
+  <a href="{{ url()->previous() }}">
+      <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
+      </svg>
+  </a>
+</div>
 <div class="page-heading">
   <h6 class="mb-0">Product Details</h6>
 </div>
 @endsection
+
+<style>
+  .owl-item {
+      background: #e7e9f5 !important;
+  }
+
+  .owl-item .single-product-slide {
+      width: 300px;
+      height: 300px;
+      border-radius: 300px;
+      margin: 0px auto;
+      margin-top: 30px;
+      margin-bottom: 50px;
+  }
+</style>
 
 @section('content')
 <div class="page-content-wrapper">
@@ -48,7 +70,7 @@
     </div> --}}
 
     <!-- Flash Sale Panel-->
-    {{-- <div class="flash-sale-panel bg-white mb-3 py-3">
+    <div class="flash-sale-panel bg-white mb-3 py-3">
       <div class="container">
         <!-- Sales Offer Content-->
         <div class="sales-offer-content d-flex align-items-end justify-content-between">
@@ -56,7 +78,7 @@
           <div class="sales-end">
             <p class="mb-1 font-weight-bold"><i class="lni lni-bolt"></i> Flash sale end in</p>
             <!-- Please use event time this format: YYYY/MM/DD hh:mm:ss-->
-            <ul class="sales-end-timer ps-0 d-flex align-items-center" data-countdown="2022/01/01 14:21:37">
+            <ul class="sales-end-timer ps-0 d-flex align-items-center" data-countdown="2021/03/01 14:21:37">
               <li><span class="days">0</span>d</li>
               <li><span class="hours">0</span>h</li>
               <li><span class="minutes">0</span>m</li>
@@ -72,7 +94,7 @@
           </div>
         </div>
       </div>
-    </div> --}}
+    </div>
 
     <!-- Add To Cart-->
     <div class="cart-form-wrapper bg-white mb-3 py-3">
@@ -125,6 +147,29 @@
         <p>{!! $product->description !!}</p>
       </div>
     </div>
+    <!-- Flash Sale Slide-->
+    <div class="flash-sale-wrapper">
+      <div class="container">
+          <!-- Flash Sale Slide-->
+          <h6>{{ __('Featured Products') }}</h6>
+          <div class="flash-sale-slide owl-carousel">
+            <!-- Single Flash Sale Card-->
+            @foreach($related->chunk(1) as $items)
+            <div class="card flash-sale-card">            
+              @foreach($items as $product)
+                  <div class="card-body">
+                      <a href="{{ route('mobile.store.product', ['store' => \Session::get('store'), 'id' => $product->id]) }}"><img src="{{ $product->thumbnail }}" alt=""><span class="product-title">{{ $product->name }}</span>
+                        <p class="sale-price">$7.99<span class="real-price">$15</span></p>
+                      </a>
+                  </div>
+              @endforeach                                         
+            </div>
+            @endforeach
+          </div>
+        </div>
+      </div>
+
+
   </div>
 </div>
 @endsection

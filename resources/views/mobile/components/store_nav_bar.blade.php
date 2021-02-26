@@ -17,7 +17,7 @@
     <!-- Sidenav Nav-->
     <ul class="sidenav-nav ps-0">
       <li><a href="{{ route('mobile.store.profile.index', [  'store' => \Session::get('store')]) }}"><i class="lni lni-user"></i>{{ __('My Profile') }}</a></li>
-      <li><a href="{{ route('mobile.store.profile.password', [  'store' => \Session::get('store')]) }}"><i class="lni lni-lock"></i>{{ __('Password') }}</a></li>
+      <li><a href="{{ route('mobile.store.profile.password.index', [  'store' => \Session::get('store')]) }}"><i class="lni lni-lock"></i>{{ __('Password') }}</a></li>
       <li><a href="{{ route('mobile.account.profile.index') }}"><i class="lni lni-map"></i>{{ __('Addresses') }}</a></li>
       <li><a href="{{ route('mobile.account.profile.index') }}"><i class="lni lni-shopping-basket"></i>{{ __('Orders') }}</a></li>
       <li class="suha-dropdown-menu">

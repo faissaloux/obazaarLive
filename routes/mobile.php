@@ -26,8 +26,8 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
             Route::get('/',             'MobileControllers\ProfileController@index'     )->name('index'                 );
             Route::get('/edit',         'MobileControllers\ProfileController@edit'      )->name('edit'                  );
             Route::post('/update',      'MobileControllers\ProfileController@update'    )->name('update'                );
-            Route::view('/password', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.password')->name('password');
-            Route::post('/password/update', 'AccountController@password_update')->name('password.update');
+            Route::get('/password',     'MobileControllers\ProfileController@password_index')->name('password.index');
+            Route::post('/password/update', 'MobileControllers\ProfileController@password_update')->name('password.update');
         });
     
         // add and remove addresses
@@ -72,8 +72,8 @@ Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'MAccou
         Route::get('/',             'MobileControllers\AccountController@index'     )->name('index'                 );
         Route::get('/edit',         'MobileControllers\AccountController@edit'      )->name('edit'                  );
         Route::post('/update',      'MobileControllers\AccountController@update'    )->name('update'                );
-        Route::view('/password', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.password')->name('password');
-        Route::post('/password/update', 'AccountController@password_update')->name('password.update');
+        Route::get('/password',     'MobileControllers\AccountController@password_index')->name('password.index');
+        Route::post('/password/update', 'MobileControllers\AccountController@password_update')->name('password.update');
     });
 
     // add and remove addresses
