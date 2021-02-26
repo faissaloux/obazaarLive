@@ -15,6 +15,15 @@ Route::view('/forget-password', 'mobile/forget-password'                        
 Route::get('/stores',           'MobileControllers\BaseController@index'        )->name('stores'                );
 Route::view('/orders',          'mobile.orders'                                 )->name('orders'                );
 
+<<<<<<< HEAD
+=======
+Route::group(['prefix' => 'profile', 'as' => 'profile.'], function(){
+    Route::get('/',             'MobileControllers\ProfileController@index'     )->name('index'                 );
+    Route::get('/edit',         'MobileControllers\ProfileController@edit'      )->name('edit'                  );
+    Route::post('/update',      'MobileControllers\ProfileController@update'    )->name('update'                );
+});
+
+>>>>>>> d9779001bc6547e46f8851c4aeca0d3442b0d40c
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
     Route::get('/',             'MobileControllers\WebsiteController@home'      );
     Route::get('/products',     'MobileControllers\WebsiteController@products'  )->name('products');
