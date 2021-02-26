@@ -37,4 +37,10 @@ class CartController extends Controller
         (new Cart())->update($request);
         return redirect()->route('mobile.store.cart.index',compact('store'))->with('message',trans('cart.updated'));
     }
+    // remove
+    public function remove($store,$id, Request $request){
+        (new Cart())->remove($id);
+        return redirect()->back()->with('message',trans('cart.removed'));
+        return redirect()->route('mobile.store.cart.index',compact('store'))->with('message',trans('cart.removed'));
+    }
 }

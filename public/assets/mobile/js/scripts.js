@@ -184,7 +184,6 @@ function updatequantitiy(input) {
   var quantity = input.val();
   var product = input.attr('data-product-id');
   var cart_id = input.attr('data-cart');
-  console.log("updatequantitiy  rawId : " + rawId);
   $('#cart-mobile .product-col-' + product + ' .product-qty i').html(quantity);
 
   var formData = new FormData();
@@ -194,7 +193,6 @@ function updatequantitiy(input) {
   formData.append('quantity', quantity);
   formData.append('product_id', product);
   formData.append('cart_id', cart_id);
-
 
   $.ajax({
       type: 'POST',
@@ -213,7 +211,6 @@ function getTotal() {
   var total = 0;
   $('#cart-mobile .preis').each(function () {
       var number = parseFloat($(this).text()).toFixed(2);
-      console.log("number text :" + parseFloat($(this).text()).toFixed(2));
       numbersFi.push(number);
   });
 
@@ -221,7 +218,6 @@ function getTotal() {
       total += Number(numbersFi[i]);
   }
 
-  console.log("getTotal  total : " + total);
   return total;
 }
 
@@ -232,7 +228,6 @@ function getTotalM() {
   var total = 0;
   $('#cart-mobile .preis').each(function () {
       var number = parseFloat($(this).val()).toFixed(2);
-      console.log("number text :" + parseFloat($(this).text()).toFixed(2));
       numbersFi.push(number);
   });
 
@@ -241,7 +236,6 @@ function getTotalM() {
       total += Number(numbersFi[i]);
   }
 
-  console.log("getTotalM  total : " + total);
   return total;
 }
 
@@ -250,8 +244,6 @@ function ikhaaaaan(input) {
 
   var token = $('meta[name="csrf-token"]').attr('content');
   var rawId = input.attr('data-product');
-  console.log("ikhaaaaan  rawId : " + rawId);
-
   var quantity = input.val();
   var product = input.attr('data-product-id');
   var price = input.attr('data-price');
@@ -271,11 +263,11 @@ function ikhaaaaan(input) {
 
   // change the qte under product name
   $('#cart-mobile .product-col-' + product + ' .product-qty i').html(quantity);
-  $('#cart-mobile .product-col-' + product + ' .product-qty .preis').html(quantity*price);
+  $('#cart-mobile .product-col-' + product + ' .product-qty .preis').html(parseFloat(quantity*price).toFixed(2));
 
   var total = getTotal();
   $('#order-cart-section .TotalPrice').html(total.toFixed(2));
-  $('#cart-mobile .TotalPrice').html(total.toFixed(2));
+  $('.TotalPrice').html(parseFloat(total).toFixed(2));
 
   var totalM = getTotalM();
   $('.TotalPriceM').html(totalM.toFixed(2));

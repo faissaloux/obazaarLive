@@ -29,10 +29,11 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
     });
 
     // add and remove product from wishlist
-    Route::group(['as' => 'cart.'], function(){
+    Route::group(['as' => 'cart.'], function($store){
         Route::get('/cart/index', 'MobileControllers\CartController@index')->name('index');
         Route::any('/cart/add/{id}', 'MobileControllers\CartController@add')->name('add');
         Route::post('/cart/update', 'MobileControllers\CartController@update')->name('update');
+        Route::get('/cart/remove/{id}', 'MobileControllers\CartController@remove')->name('remove');
     });
 });
 
