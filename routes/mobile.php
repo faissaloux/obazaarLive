@@ -13,6 +13,12 @@ Route::get('/logout',           'Auth\LoginController@logout'                   
 Route::view('/register',        'mobile/register'                               )->name('register-view'         );
 Route::view('/forget-password', 'mobile/forget-password'                        )->name('forget-password-view'  );
 Route::get('/stores',           'MobileControllers\BaseController@index'        )->name('stores'                );
+Route::view('/orders',          'mobile.orders'                                 )->name('orders'                );
+
+Route::group(['prefix' => 'profile', 'as' => 'profile.'], function(){
+    Route::get('/',             'MobileControllers\ProfileController@index'     )->name('index'                 );
+    Route::get('/edit',         'MobileControllers\ProfileController@edit'      )->name('edit'                  );
+});
 
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
     Route::get('/',             'MobileControllers\WebsiteController@home'      );

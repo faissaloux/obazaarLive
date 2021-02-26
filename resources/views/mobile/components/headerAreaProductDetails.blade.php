@@ -11,7 +11,7 @@
       </div>
       <!-- Page Title-->
       <div class="page-heading">
-        <h6 class="mb-0">Product Details</h6>
+        <h6 class="mb-0">{{ __('Product Details') }}</h6>
       </div>
       <!-- Navbar Toggler-->
       <div class="suha-navbar-toggler d-flex justify-content-between flex-wrap" id="suhaNavbarToggler"><span></span><span></span><span></span></div>
