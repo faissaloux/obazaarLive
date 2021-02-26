@@ -18,6 +18,7 @@ Route::view('/orders',          'mobile.orders'                                 
 Route::group(['prefix' => 'profile', 'as' => 'profile.'], function(){
     Route::get('/',             'MobileControllers\ProfileController@index'     )->name('index'                 );
     Route::get('/edit',         'MobileControllers\ProfileController@edit'      )->name('edit'                  );
+    Route::post('/update',      'MobileControllers\ProfileController@update'    )->name('update'                );
 });
 
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
