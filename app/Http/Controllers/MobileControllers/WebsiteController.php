@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Models\
 {
-    Product, Slider, BasePages, Stores, WishList
+    Product, Slider, BasePages, Stores, WishList,Orders
 };
 
 class WebsiteController extends Controller
@@ -74,4 +74,6 @@ class WebsiteController extends Controller
         $wishlist = WishList::currentuser()->paginate(5);
         return view($this->mobile_theme . 'wishlist-grid', compact('wishlist'));
     }
+
+    
 }
