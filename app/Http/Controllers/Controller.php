@@ -21,6 +21,7 @@ class Controller extends BaseController
     public function __construct(){
         $this->theme        = \System::$ACTIVE_THEME_PATH.'/';
         $this->mobile_theme = \System::$ACTIVE_MOBILE_THEME_PATH.'/';
+        //dd(\Session::get('store'));
     }
 
     

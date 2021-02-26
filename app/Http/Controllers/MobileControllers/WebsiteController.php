@@ -58,7 +58,7 @@ class WebsiteController extends Controller
         else
         {
             $id             = Stores::where('slug', $request->store)->first()->id;
-            $products       = Product::where('store_id', $id)->where('active', 1)->get();
+            $products       = Product::where('store_id', $id)->where('active', 1)->paginate(20);
             
             return view($this->mobile_theme . 'shop-grid', compact('products'));
         }
