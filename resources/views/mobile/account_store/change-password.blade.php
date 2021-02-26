@@ -20,7 +20,7 @@
           <div class="user-profile me-3"><img src="img/bg-img/9.jpg" alt=""></div>
           <div class="user-info">
             <p class="mb-0 text-white">@designing-world</p>
-            <h5 class="mb-0">Suha Jannat</h5>
+            <h5 class="mb-0">{{ Auth::user()->name }}</h5>
           </div>
         </div>
       </div>

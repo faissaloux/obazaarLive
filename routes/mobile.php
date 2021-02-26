@@ -26,7 +26,7 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
             Route::get('/',             'MobileControllers\ProfileController@index'     )->name('index'                 );
             Route::get('/edit',         'MobileControllers\ProfileController@edit'      )->name('edit'                  );
             Route::post('/update',      'MobileControllers\ProfileController@update'    )->name('update'                );
-            Route::view('/password', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.password')->name('password');
+            Route::view('/password', \System::$ACTIVE_MOBILE_THEME_PATH.'/account_store.change-password')->name('password');
             Route::post('/password/update', 'AccountController@password_update')->name('password.update');
         });
     
