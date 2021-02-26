@@ -7,9 +7,6 @@
     <!-- Header Area-->
     <div class="header-area" id="headerArea">
       <div class="container h-100 d-flex align-items-center justify-content-between">
-        <!-- Logo Wrapper-->
-        <div class="logo-wrapper"><a href="home.html"><img src="{{ asset('assets/mobile/img/core-img/logo-small.png') }}" alt=""></a></div>
-        <!-- Search Form-->
         @yield('header-content')
         <!-- Navbar Toggler-->
         <div class="suha-navbar-toggler d-flex flex-wrap" id="suhaNavbarToggler"><span></span><span></span><span></span></div>

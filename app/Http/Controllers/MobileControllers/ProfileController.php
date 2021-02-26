@@ -10,13 +10,13 @@ class ProfileController extends Controller
     public function index()
     {
         $user = \Auth::user();
-        return view($this->mobile_theme.'profile', compact('user'));
+        return view($this->mobile_theme.'store/profile', compact('user'));
     }
 
     public function edit()
     {
         $user = \Auth::user();
-        return view($this->mobile_theme.'profile-edit', compact('user'));
+        return view($this->mobile_theme.'store/profile-edit', compact('user'));
     }
 
     public function update(Request $request)

@@ -23,8 +23,9 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
     Route::group(['prefix' => 'account', 'middleware' => 'MAccount'], function(){    
         // Profile
         Route::group(['prefix' => 'profile','as' => 'profile.'], function(){
-            Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account_store.edit')->name('index');
-            Route::post('/update', 'AccountController@update_profile')->name('update');
+            Route::get('/',             'MobileControllers\ProfileController@index'     )->name('index'                 );
+            Route::get('/edit',         'MobileControllers\ProfileController@edit'      )->name('edit'                  );
+            Route::post('/update',      'MobileControllers\ProfileController@update'    )->name('update'                );
             Route::view('/password', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.password')->name('password');
             Route::post('/password/update', 'AccountController@password_update')->name('password.update');
         });
@@ -41,19 +42,20 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
         });
         
         // add and remove product from wishlist
-        Route::group(['prefix' => 'wishlist','as' => 'wishlist.'], function(){
-            Route::get('/',          'MobileControllers\AccountController@wishlistList')->name('list');
-            Route::get('/grid',          'MobileControllers\AccountController@wishlistGrid')->name('grid'   );
-            Route::get('/add/{id}',     'MobileControllers\AccountController@add_wishlist')->name('add'            );
-            Route::get('/remove/{id}',  'MobileControllers\AccountController@remove_wishlist')->name('remove'      );
-            Route::get('/clear',        'MobileControllers\AccountController@clear_wishlist')->name('clear'        );
+        Route::group(['prefix' => 'wishlist', 'as' => 'wishlist.', 'middleware' => 'MAccount'], function(){
+            Route::get('/',          'MobileControllers\WebsiteController@wishlistList')->name('list'   );
+            Route::get('/grid',          'MobileControllers\WebsiteController@wishlistGrid')->name('grid'   );
+            Route::get('/add/{id}',     'MobileControllers\WishlistController@add')->name('add'            );
+            Route::get('/remove/{id}',  'MobileControllers\WishlistController@remove')->name('remove'      );
+            Route::get('/clear',        'MobileControllers\WishlistController@clear')->name('clear'        );
         });
     
-        // list and remove product from cart
-        Route::group(['prefix' => 'cart','as' => 'cart.'], function(){
-            Route::get('/index', 'MobileControllers\AccountController@cart')->name('index');
-            Route::any('/add/{id}', 'MobileControllers\AccountController@add_cart')->name('add');
-            Route::post('/update', 'MobileControllers\AccountController@update_cart')->name('update');
+        // add and remove product from cart
+        Route::group(['prefix' => 'cart', 'as' => 'cart.'], function(){
+            Route::get('index', 'MobileControllers\CartController@index')->name('index');
+            Route::any('add/{id}', 'MobileControllers\CartController@add')->name('add');
+            Route::post('update', 'MobileControllers\CartController@update')->name('update');
+            Route::get('remove/{id}/{product_id}', 'MobileControllers\CartController@remove')->name('remove');
         });
     
         // all orders and order detail
@@ -67,8 +69,9 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
 Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'MAccount'], function(){    
     // Profile
     Route::group(['prefix' => 'profile','as' => 'profile.'], function(){
-        Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.edit')->name('index');
-        Route::post('/update', 'AccountController@update_profile')->name('update');
+        Route::get('/',             'MobileControllers\AccountController@index'     )->name('index'                 );
+        Route::get('/edit',         'MobileControllers\AccountController@edit'      )->name('edit'                  );
+        Route::post('/update',      'MobileControllers\AccountController@update'    )->name('update'                );
         Route::view('/password', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.password')->name('password');
         Route::post('/password/update', 'AccountController@password_update')->name('password.update');
     });
@@ -85,19 +88,20 @@ Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'MAccou
     });
     
     // add and remove product from wishlist
-    Route::group(['prefix' => 'wishlist','as' => 'wishlist.'], function(){
-        Route::get('/',          'MobileControllers\AccountController@wishlistList')->name('list'   );
-        Route::get('/grid',          'MobileControllers\AccountController@wishlistGrid')->name('grid'   );
-        Route::get('/add/{id}',     'MobileControllers\AccountController@add_wishlist')->name('add'            );
-        Route::get('/remove/{id}',  'MobileControllers\AccountController@remove_wishlist')->name('remove'      );
-        Route::get('/clear',        'MobileControllers\AccountController@clear_wishlist')->name('clear'        );
+    Route::group(['prefix' => 'wishlist', 'as' => 'wishlist.', 'middleware' => 'MAccount'], function(){
+        Route::get('/',          'MobileControllers\WebsiteController@wishlistList')->name('list'   );
+        Route::get('/grid',          'MobileControllers\WebsiteController@wishlistGrid')->name('grid'   );
+        Route::get('/add/{id}',     'MobileControllers\WishlistController@add')->name('add'            );
+        Route::get('/remove/{id}',  'MobileControllers\WishlistController@remove')->name('remove'      );
+        Route::get('/clear',        'MobileControllers\WishlistController@clear')->name('clear'        );
     });
 
-    // list and remove product from cart
-    Route::group(['prefix' => 'cart','as' => 'cart.'], function(){
-        Route::get('/index', 'MobileControllers\AccountController@cart')->name('index');
-        Route::any('/add/{id}', 'MobileControllers\AccountController@add_cart')->name('add');
-        Route::post('/update', 'MobileControllers\AccountController@update_cart')->name('update');
+    // add and remove product from cart
+    Route::group(['prefix' => 'cart', 'as' => 'cart.'], function(){
+        Route::get('index', 'MobileControllers\CartController@index')->name('index');
+        Route::any('add/{id}', 'MobileControllers\CartController@add')->name('add');
+        Route::post('update', 'MobileControllers\CartController@update')->name('update');
+        Route::get('remove/{id}/{product_id}', 'MobileControllers\CartController@remove')->name('remove');
     });
 
     // all orders and order detail
