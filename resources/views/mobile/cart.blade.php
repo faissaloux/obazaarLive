@@ -38,7 +38,7 @@
                     <td>
                       <div class="form-group--number d-flex justify-content-between zaydnaks">
                         <button type="button" class="btn btn-warning down fix-pos">-</button>
-                        <input class=" px-0 quantity-ajax form-control h-auto instantQuantity cart-quantity-input"
+                        <input class="text-center px-0 quantity-ajax form-control h-auto instantQuantity cart-quantity-input"
                           type="text" 
                           value="{{ $product['qty'] }}"
                           name="quantity"  
