@@ -16,7 +16,7 @@
     </div>
     <!-- Sidenav Nav-->
     <ul class="sidenav-nav ps-0">
-      <li><a href="{{ route('mobile.profile.index') }}"><i class="lni lni-user"></i>{{ __('My Profile') }}</a></li>
+      <li><a href="{{ route('mobile.store.profile.index' ,[  'store' => \Session::get('store')]) }}"><i class="lni lni-user"></i>{{ __('My Profile') }}</a></li>
       <li><a href="notifications.html"><i class="lni lni-alarm lni-tada-effect"></i>{{ __('Notifications') }}<span class="ms-3 badge badge-warning">3</span></a></li>
       <li class="suha-dropdown-menu">
         <a href="#">
