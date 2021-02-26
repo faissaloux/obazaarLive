@@ -42,7 +42,7 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
         });
         
         // add and remove product from wishlist
-        Route::group(['prefix' => 'wishlist', 'as' => 'wishlist.', 'middleware' => 'MAccount'], function(){
+        Route::group(['prefix' => 'wishlist', 'as' => 'wishlist.'], function(){
             Route::get('/',          'MobileControllers\WebsiteController@wishlistList')->name('list'   );
             Route::get('/grid',          'MobileControllers\WebsiteController@wishlistGrid')->name('grid'   );
             Route::get('/add/{id}',     'MobileControllers\WishlistController@add')->name('add'            );
@@ -88,7 +88,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'MAccou
     });
     
     // add and remove product from wishlist
-    Route::group(['prefix' => 'wishlist', 'as' => 'wishlist.', 'middleware' => 'MAccount'], function(){
+    Route::group(['prefix' => 'wishlist', 'as' => 'wishlist.'], function(){
         Route::get('/',          'MobileControllers\WebsiteController@wishlistList')->name('list'   );
         Route::get('/grid',          'MobileControllers\WebsiteController@wishlistGrid')->name('grid'   );
         Route::get('/add/{id}',     'MobileControllers\WishlistController@add')->name('add'            );

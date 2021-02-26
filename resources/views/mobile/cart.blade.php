@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  
-  <head>
-    @include('mobile/inc/head')
-  </head>
-  <body class="@yield('bodyClass')  @if(Auth::check())  has-logged   @endif @if(!\System::shoppingCartIsNotEmpty()) cart-empty @endif" data-auth-id="{{ \System::userId() }}" data-slug="{{ \Session::get('store') }}" data-store-id="{{ \System::currentStoreId() }}">
-    @include('mobile/inc/preloader')
-    <!-- Header Area-->
-    <div class="header-area" id="headerArea">
-      <div class="container h-100 d-flex align-items-center justify-content-between">
-        <!-- Back Button-->
-        <div class="back-button"><a href="{{ url()->previous() }}">
-            <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
-            </svg></a></div>
-        <!-- Page Title-->
-        <div class="page-heading">
-          <h6 class="mb-0">My Cart</h6>
-        </div>
-        <!-- Navbar Toggler-->
-        <div class="suha-navbar-toggler d-flex justify-content-between flex-wrap" id="suhaNavbarToggler"><span></span><span></span><span></span></div>
-      </div>
-    </div>
+@extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/layout') 
+@section('title')
+    Cart
+@endsection
 
-    <!-- Nav Bar -->
-    @include('mobile/components/navBar')
-
-    <div class="page-content-wrapper">
+@section('content')
+  <div class="page-content-wrapper">
       <div class="container">
         <!-- Cart Wrapper-->
         <div class="cart-wrapper-area py-3">
@@ -96,7 +74,8 @@
             @endif
             </div>
           </div>
-          <!-- Coupon Area-->
+
+          {{-- <!-- Coupon Area-->
           <div class="card coupon-card mb-3">
             <div class="card-body">
               <div class="apply-coupon">
@@ -110,7 +89,8 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
+
           <!-- Cart Amount Area-->
           @if(ShoppingCart::all()->count() != 0)
             <div class="card cart-amount-area">
@@ -125,13 +105,4 @@
         </div>
       </div>
     </div>
-    <!-- Internet Connection Status-->
-    <div class="internet-connection-status" id="internetStatus"></div>
-    
-    {{-- Footer --}}
-    @include('mobile/inc/footer')
-
-    @include('mobile/inc/scripts')
-  </body>
-
-</html>
+  @endsection
