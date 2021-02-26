@@ -11,6 +11,7 @@ Route::view('/login',                   'mobile/login'                          
 Route::post('/login',                   'MobileControllers\AccountController@userAuth'      )->name('login-auth'            );
 Route::get('/logout',                   'Auth\LoginController@logout'                       )->name('logout'                );
 Route::view('/register',                'mobile/register'                                   )->name('register-view'         );
+Route::post('/registration',            'MobileControllers\AccountController@registration'  )->name('registration'          );
 Route::view('/forget-password',         'mobile/forget-password'                            )->name('forget-password-view'  );
 Route::post('/reset-password',          'MobileControllers\WebsiteController@forgetPassword')->name('forget-password'       );
 Route::any('/reset_password/{token}',   'MobileControllers\WebsiteController@getPassword'   )->name('getPassword'           );
