@@ -13,18 +13,27 @@
           <div class="col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5"><img class="big-logo" src="img/core-img/logo-white.png" alt="">
             <!-- Register Form-->
             <div class="register-form mt-5 px-4">
-              <form action="https://designing-world.com/suha-v2.3.0/otp.html" method="">
-                <div class="form-group text-start mb-4"><span>Username</span>
+              <form action="{{ route('mobile.registration') }}" method="post">
+                @csrf
+                <div class="form-group text-start mb-4"><span>{{ __('Username') }}</span>
                   <label for="username"><i class="lni lni-user"></i></label>
-                  <input class="form-control" id="username" type="text" placeholder="Designing World">
+                  <input class="form-control" id="username" name="name" type="text" placeholder="{{ __('Username') }}">
                 </div>
-                <div class="form-group text-start mb-4"><span>Email</span>
+                <div class="form-group text-start mb-4"><span>{{ __('Email') }}</span>
                   <label for="email"><i class="lni lni-envelope"></i></label>
-                  <input class="form-control" id="email" type="email" placeholder="help@example.com">
+                  <input class="form-control" id="email" type="email" name="email" placeholder="email@example.com">
                 </div>
-                <div class="form-group text-start mb-4"><span>Password</span>
+                <div class="form-group text-start mb-4"><span>{{ __('Password') }}</span>
                   <label for="password"><i class="lni lni-lock"></i></label>
-                  <input class="input-psswd form-control" id="registerPassword" type="password" placeholder="********************">
+                  <input class="input-psswd form-control" id="registerPassword" name="password" type="password" placeholder="********************">
+                </div>
+                <div class="form-group text-start mb-4"><span>{{ __('Password confirmation') }}</span>
+                  <label for="password_confirmation"><i class="lni lni-lock"></i></label>
+                  <input class="input-psswd form-control" id="registerPasswordConfirmation" name="password_confirmation" type="password" placeholder="********************">
+                </div>
+                <div class="form-group text-start mb-4"><span>{{ __('Phone') }}</span>
+                  <label for="password_confirmation"><i class="lni lni-lock"></i></label>
+                  <input class="input-psswd form-control" id="registerPasswordConfirmation" name="phone" type="password" placeholder="{{ __('Phone') }}">
                 </div>
                 <button class="btn btn-success btn-lg w-100" type="submit">Sign Up</button>
               </form>

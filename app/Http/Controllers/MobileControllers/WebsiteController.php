@@ -4,13 +4,44 @@ namespace App\Http\Controllers\MobileControllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use \Carbon\Carbon;
+use \App\Helpers\EmailHelper;
 use \App\Models\
 {
+<<<<<<< HEAD
     Product, Slider, BasePages, Stores, WishList,Orders
+=======
+    Product, Slider, BasePages, Stores, WishList, User
+>>>>>>> 9264d2d4fa05ef7760f4444df0cdefb2a5adcfbf
 };
 
 class WebsiteController extends Controller
 {
+    private function sendResetEmail($email, $token)
+    {
+        //Retrieve the user from the database
+        $user = \DB::table('users')->where('email', $email)->select('name', 'email')->first();
+        //Generate, the password reset link. The token generated is embedded in the link
+        $link = env('APP_MOBILE_URL') . 'reset_password/' . $token;
+        // email data
+        $email_data = array(
+            'name' => $user->name,
+            'link' => $link,
+            'email' => $email
+        );
+
+        $emailSent = EmailHelper::to($email_data['email'])
+                                ->with($email_data)
+                                ->email('emails.recover')
+                                ->subject(__('Reset password'))
+                                ->send();
+
+        $emailSent ? session()->flash('success', trans('Email sent successfully'))
+                   : session()->flash('error', trans('Something went wrong'));
+
+        return true;
+    }
+
     public function home(Request $request)
     {
         if (!\Session::has('store_id'))
@@ -69,11 +100,75 @@ class WebsiteController extends Controller
         $wishlist = WishList::currentuser()->paginate(5);
         return view($this->mobile_theme . 'wishlist-list', compact('wishlist'));
     }
+
     public function wishlistGrid()
     {
         $wishlist = WishList::currentuser()->paginate(5);
         return view($this->mobile_theme . 'wishlist-grid', compact('wishlist'));
     }
 
+<<<<<<< HEAD
     
 }
+=======
+    public function forgetPassword(Request $request)
+    {
+        $user = User::where('email', '=', $request->email)->first();
+        //Check if the user exists
+        if (!$user)
+        {
+            return redirect()->back()->withErrors(['email' => trans('User does not exist') ]);
+        }
+
+        //Create Password Reset Token
+        \DB::table('password_resets')
+            ->insert(['email' => $request->email, 'token' => str_random(60) , 'created_at' => Carbon::now() ]);
+        //Get the token just created above
+        $tokenData = \DB::table('password_resets')->where('email', $request->email)->first();
+        if ($this->sendResetEmail($request->email, $tokenData->token))
+        {
+            return redirect()
+                ->back()
+                ->with('status', trans('A reset link has been sent to your email address.'));
+        }
+        else
+        {
+            return redirect()
+                ->back()
+                ->withErrors(['error' => trans('A Network Error occurred. Please try again.') ]);
+        }
+    }
+
+    public function getPassword($token)
+    {
+        return view('mobile.auth.passwords.reset', ['token' => $token]);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        //Validate input
+        \Validator::make($request->all() , [
+                'email'                 => 'required|email|exists:users',
+                'password'              => 'required|string|min:6|confirmed',
+                'password_confirmation' => 'required',
+                'token'                 => 'required'
+            ]);
+
+        $updatePassword = \DB::table('password_resets')->where(['email' => $request->email, 'token' => $request
+            ->token])
+            ->first();
+
+        if (!$updatePassword) return back()->withInput()->with('error', 'Invalid token!');
+
+        if($request->password == $request->password_confirmation ) {
+            User::where('email', $request->email)->update(['password' => \Hash::make($request->password) ]);
+
+            \DB::table('password_resets')->where(['email' => $request->email])->delete();
+
+            return redirect('/')->with('message', 'Your password has been changed!');
+        }
+
+        return redirect()->back()->with('error', trans('user.pwd.wrong.match'));
+    }
+}
+>>>>>>> 9264d2d4fa05ef7760f4444df0cdefb2a5adcfbf

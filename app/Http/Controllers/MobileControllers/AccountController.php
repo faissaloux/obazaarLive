@@ -8,6 +8,9 @@ use App\Models\{WishList,User,Orders};
 use App;
 use Session;
 use Auth;
+use Hash;
+use Request as req;
+use hisorange\BrowserDetect\Parser as Browser;
 use \Carbon\Carbon;
 use \App\Helpers\EmailHelper;
 
@@ -107,6 +110,7 @@ class AccountController extends Controller
         }         
     }
 
+<<<<<<< HEAD
     public function order_detail($id){
         $content = Orders::where('user_id',\Auth::user()->id)->where('id',$id)->first();
         if(!$content){
@@ -115,3 +119,56 @@ class AccountController extends Controller
         return view($this->mobile_theme .'/store/order_detail',compact('content'));
     }
 }
+=======
+    public function registration(Request $request)
+    {
+        $geo = geoip(req::ip());
+
+        $rules = [
+          'email' => 'required|email|unique:users', 
+        ];
+
+        $messages = [
+            'email.required' => trans("email.required"),
+        ];
+
+        $request->validate($rules,$messages);
+
+        if($request->password !== $request->password_confirmation ) {
+            return redirect()->back()->with('error', trans('user.pwd.wrong.match'));
+        }
+
+        $user               =  new User();
+        $user->password     =  \Hash::make($request->password);
+        $user->email        =  $request->email;
+        $user->name         =  $request->name;
+        $user->ip           =  \Request::ip();
+        $user->device       =  Browser::platformName();
+        $user->browser      =  Browser::browserFamily();
+        $user->country      =  $geo['country'];
+        $user->statue       = 'active';
+        $user->last_login   = Carbon::now();
+
+        if ($request->filled('phone')) {
+            $user->phone = $request->phone;
+        }
+        $user->save();
+
+        // email data
+        $email_data = array(
+            'name'  => $request->name,
+            'email' => $request->email,
+        );
+
+        EmailHelper::to($email_data['email'])
+                    ->with($email_data)
+                    ->email('emails.welcome_email')
+                    ->subject(__('welcome to')." ".env('APP_NAME'))
+                    ->send();
+
+        Auth::loginUsingId($user->id);
+
+        return redirect()->route('mobile.stores')->with('success', trans('User registred successfully'));
+    }
+}
+>>>>>>> 9264d2d4fa05ef7760f4444df0cdefb2a5adcfbf
