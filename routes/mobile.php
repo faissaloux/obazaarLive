@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
  * mobile.
  */
 
+Route::get('/loadcartAgain/{store}', 'MobileControllers\WebsiteController@loadcartHTML');
+
 Route::view('/',                'mobile/intro'                                  );
 Route::view('/login',           'mobile/login'                                  )->name('login-view'            );
 Route::post('/login',           'MobileControllers\AccountController@userAuth'  )->name('login-auth'            );
@@ -20,7 +22,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function(){
     Route::get('/edit',         'MobileControllers\ProfileController@edit'      )->name('edit'                  );
 });
 
-Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
+Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function($store){
     Route::get('/',             'MobileControllers\WebsiteController@home'      );
     Route::get('/products',     'MobileControllers\WebsiteController@products'  )->name('products'              );
     Route::get('/product/{id}', 'MobileControllers\ShopController@product'      )->name('product'               );
@@ -35,11 +37,11 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
     });
 
     // add and remove product from wishlist
-    Route::group(['as' => 'cart.'], function($store){
+    Route::group(['as' => 'cart.'], function(){
         Route::get('/cart/index', 'MobileControllers\CartController@index')->name('index');
         Route::any('/cart/add/{id}', 'MobileControllers\CartController@add')->name('add');
         Route::post('/cart/update', 'MobileControllers\CartController@update')->name('update');
-        Route::get('/cart/remove/{id}', 'MobileControllers\CartController@remove')->name('remove');
+        Route::get('/cart/remove/{id}/{product_id}', 'MobileControllers\CartController@remove')->name('remove');
     });
 });
 

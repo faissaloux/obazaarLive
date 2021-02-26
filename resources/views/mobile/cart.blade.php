@@ -39,7 +39,7 @@
                   <tr >
                     <th scope="row">
                       <a class="remove-product" 
-                        href="#">
+                        href="{{ route('mobile.store.cart.remove', ['id' => $product->rawId() , 'store' => \Session::get('store') , 'product_id' => $product['id']] )  }}">
                           <i class="lni lni-close"></i>
                       </a>
                     </th>
@@ -50,8 +50,9 @@
                         <div class="product-col-{{ $product['id'] }}">
                           <span class="ps-block__shipping product-qty ">
                             {{ $product->price }}{{ System::currency() }} × 
-                            <i > {{ $product['qty'] }}</i> =
-                            <i class="preis" >{{ number_format($product['qty'] * $product->price, 2) }} {{ System::currency() }}</i>
+                            <i class="updatedQty"> {{ $product['qty'] }}</i> =
+                            <i class="preis" >{{ number_format($product['qty'] * $product->price, 2) }}</i>
+                            <i>{{ System::currency() }}</i>
                           </span>
                         </div>
                       </a>
@@ -115,7 +116,7 @@
             <div class="card cart-amount-area">
               <div class="card-body d-flex align-items-center justify-content-between">
                 <h5 class="total-price mb-0">
-                  <i class="TotalPrice"> {{ number_format(ShoppingCart::totalPrice(), 2, '.', '') }} {{ System::currency() }}</i>
+                  <i class="TotalPrice"> {{ number_format(ShoppingCart::totalPrice(), 2, '.', '') }}</i> <i>{{ System::currency() }}</i>
                 </h5>
                   <a class="btn btn-warning" href="#">{{ __('Go to Checkout') }}</a>
               </div>

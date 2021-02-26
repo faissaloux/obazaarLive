@@ -74,4 +74,14 @@ class WebsiteController extends Controller
         $wishlist = WishList::currentuser()->paginate(5);
         return view($this->mobile_theme . 'wishlist-grid', compact('wishlist'));
     }
+
+    public function loadcartHTML($store, Request $request)
+    {
+        $store = $request->store;
+
+        return response()
+            ->view($this->mobile_theme.'elements.ajax_cart', compact('store'))
+            ->setStatusCode(200);
+
+    }
 }

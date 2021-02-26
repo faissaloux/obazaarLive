@@ -184,7 +184,7 @@ function updatequantitiy(input) {
   var quantity = input.val();
   var product = input.attr('data-product-id');
   var cart_id = input.attr('data-cart');
-  $('#cart-mobile .product-col-' + product + ' .product-qty i').html(quantity);
+  $('#cart-mobile .product-col-' + product + ' .product-qty updatedQty').html(quantity);
 
   var formData = new FormData();
 
@@ -262,7 +262,7 @@ function ikhaaaaan(input) {
   $('.product-col-tele-' + product + '  span.prdqty').html(quantity);
 
   // change the qte under product name
-  $('#cart-mobile .product-col-' + product + ' .product-qty i').html(quantity);
+  $('#cart-mobile .product-col-' + product + ' .product-qty .updatedQty').html(quantity);
   $('#cart-mobile .product-col-' + product + ' .product-qty .preis').html(parseFloat(quantity*price).toFixed(2));
 
   var total = getTotal();
