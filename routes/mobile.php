@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
  * mobile.
  */
 
-Route::view('/',                        'mobile/intro'                                      );
+//Route::view('/',                        'mobile/intro'                                      );
 Route::view('/login',                   'mobile/login'                                      )->name('login-view'            );
 Route::post('/login',                   'MobileControllers\AccountController@userAuth'      )->name('login-auth'            );
 Route::get('/logout',                   'Auth\LoginController@logout'                       )->name('logout'                );
@@ -16,7 +16,7 @@ Route::view('/forget-password',         'mobile/forget-password'                
 Route::post('/reset-password',          'MobileControllers\WebsiteController@forgetPassword')->name('forget-password'       );
 Route::any('/reset_password/{token}',   'MobileControllers\WebsiteController@getPassword'   )->name('getPassword'           );
 Route::post('/password/reset',          'MobileControllers\WebsiteController@resetPassword' )->name('password.request'      );
-Route::get('/stores',                   'MobileControllers\BaseController@index'            )->name('stores'                );
+Route::get('/',                   'MobileControllers\BaseController@index'            )->name('stores'                );
 Route::view('/orders',                  'mobile.orders'                                     )->name('orders'                );
 Route::view('/thank-you',               'mobile/payment-success'                            )->name('thank-you'             );
 Route::post('/couponcheck',             'MobileControllers\PayementController@applyCoupon'  )->name('applyCoupon'           );
@@ -26,7 +26,8 @@ Route::view('/datenschutzerklarung',    'mobile/datenschutzerklarung'           
 Route::view('/languages',               'mobile/languages'                                  )->name('languages'             );
 
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
-    Route::GET('/search', 'MobileControllers\WebsiteController@searchProccessSubmit')->name('searchSubmit');
+    Route::get('/search', 'MobileControllers\WebsiteController@searchProccessSubmit')->name('searchSubmit');
+    Route::get('/category/{slug}', 'MobileControllers\WebsiteController@category')->name('category');
     
     Route::get('/',             'MobileControllers\WebsiteController@home'      );
     Route::get('/products',     'MobileControllers\WebsiteController@products'  )->name('products');
@@ -58,8 +59,8 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
         // add and remove product from wishlist
         Route::group(['prefix' => 'wishlist', 'as' => 'wishlist.'], function(){
             Route::get('/',          'MobileControllers\WebsiteController@wishlistList')->name('list'   );
-            Route::get('/grid',          'MobileControllers\WebsiteController@wishlistGrid')->name('grid'   );
-            Route::get('/add/{id}',     'MobileControllers\WishlistController@add')->name('add'            );
+            Route::get('/grid',          'MobileControllers\WebsiteController@wishlistGrid')->name('grid' );
+            Route::get('/add/{id}',     'MobileControllers\WishlistController@add')->name('add'       );
             Route::get('/remove/{id}',  'MobileControllers\WishlistController@remove')->name('remove'      );
             Route::get('/clear',        'MobileControllers\WishlistController@clear')->name('clear'        );
         });
@@ -106,7 +107,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'MAccou
     // add and remove product from wishlist
     Route::group(['prefix' => 'wishlist', 'as' => 'wishlist.'], function(){
         Route::get('/',          'MobileControllers\WebsiteController@wishlistList')->name('list'   );
-        Route::get('/grid',          'MobileControllers\WebsiteController@wishlistGrid')->name('grid'   );
+        Route::get('/grid',          'MobileControllers\WebsiteController@wishlistGridGlob')->name('grid'   );
         Route::get('/add/{id}',     'MobileControllers\WishlistController@add')->name('add'            );
         Route::get('/remove/{id}',  'MobileControllers\WishlistController@remove')->name('remove'      );
         Route::get('/clear',        'MobileControllers\WishlistController@clear')->name('clear'        );

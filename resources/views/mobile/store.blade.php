@@ -1,17 +1,24 @@
 @extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/store_layout') 
 @section('title')
-    home
+    o-bazaar | {{\Session::get('store')}}
 @endsection
 
 @section('header-content')
 <div class="logo-wrapper">
   <a href="/">
-      <img src="{{ asset('assets/mobile/img/core-img/logo-small.png') }}" alt="">
+    @php
+    $logo = app('option')->get('logo');
+    @endphp
+    @if(!empty($logo))
+    <a class="ps-logo" href="/">
+    <img src="/uploads/{{ $logo }}" alt="">
+    </a>
+    @endif
   </a>
 </div>
 <div class="top-search-form">
   <form action="{{ route('mobile.store.searchSubmit' , ['store' => \Session::get('store')]) }}" method="GET">
-    <input class="form-control" type="search" name="q" placeholder="Enter your keyword">
+    <input class="form-control" type="search" name="q" placeholder="{{ __('Search...') }}">
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
 </div>
@@ -35,7 +42,7 @@
   <div class="flash-sale-wrapper mt-3">
     <div class="container">
       <div class="flash-sale-slide owl-carousel">
-        {!! app('SiteSetting')->MerchantStoreCategories() !!}
+        {!! app('SiteSetting')->storecategoriesMobile() !!}
       </div>
     </div>
   </div>
@@ -61,13 +68,13 @@
                 </a>
                 <a class="product-title d-block" href="single-product.html">{{ $product->name }}</a>
                 <p class="sale-price">{{ $product->price }} €</p>
-                <div class="product-rating">
+                <!--div class="product-rating">
                   <i class="lni lni-star-filled"></i>
                   <i class="lni lni-star-filled"></i>
                   <i class="lni lni-star-filled"></i>
                   <i class="lni lni-star-filled"></i>
                   <i class="lni lni-star-filled"></i>
-                </div>
+                </div-->
                 <a class="btn btn-success btn-sm" 
                   id="addtocard"
                   href="{{ route('mobile.store.cart.add', ['id' => $product->id , 'store' => \Session::get('store')]) }}" 

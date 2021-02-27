@@ -698,5 +698,8 @@
     "Your card number is incorrect.": "Kart numaranız yanlış",
     "Invalid Coupon!": "Geçersiz Kupon!",
     "The card number is not a valid credit card number.": "Kart numarası, geçerli bir kredi kartı numarası değil.",
+    "Didnt have an account?": "Hesabınız yok mu?",
+    "View as Guest": "Misafir olarak görüntüle",
+    "Already have an account?": "Zaten hesabınız var mı?",
     "wrong password": "yanlış şifre"
 }

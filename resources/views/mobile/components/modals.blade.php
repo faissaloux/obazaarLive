@@ -34,7 +34,7 @@
          <div class="modal-body">
             <h5 class="modaltitle">{{ __('wishlist.added') }}</h5>
             <center>
-               <a class="btn btn-warning ps-btn" href="{{ route('mobile.store.wishlist.list',['store'  => \Session::get('store') ]) }}">{{ __('My Wishlist') }}</a>
+               <a class="btn btn-warning ps-btn" href="{{ route('mobile.store.wishlist.grid',['store'  => \Session::get('store') ]) }}">{{ __('My Wishlist') }}</a>
                <a class="btn btn-success ps-btn" href="#" data-toggle="modal" title="{{ __('Continue Shopping') }}" data-target="#modalwishlist">{{ __('Continue Shopping') }}</a>
             </center>
          </div>

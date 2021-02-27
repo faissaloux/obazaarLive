@@ -101,7 +101,7 @@ class AccountController extends Controller
             $lastlogin->last_login = Carbon::now();
             $lastlogin->save(); 
 
-            return redirect('/stores');   
+            return redirect('/');   
         }
 
         else {    

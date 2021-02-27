@@ -14,11 +14,7 @@
                 <h3>{{ __('Wishlist') }} ( {{$wishlist->count()}} )</h3>
               </div>
           @endif
-          <!-- Layout Options-->
-          <div class="layout-options">
-            <a href="{{ route('mobile.store.wishlist.grid' ,[  'store' => \Session::get('store')] ) }}"><i class="lni lni-grid-alt"></i></a>
-            <a class="active" href="{{ route('mobile.store.wishlist.list' ,[  'store' => \Session::get('store')] ) }}"><i class="lni lni-radio-button"></i></a>
-          </div>
+
         </div>
         <div class="row g-3">
           <!-- Wishlist Product -->

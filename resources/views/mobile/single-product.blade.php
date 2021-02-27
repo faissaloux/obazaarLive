@@ -12,7 +12,7 @@
   </a>
 </div>
 <div class="page-heading">
-  <h6 class="mb-0">Product Details</h6>
+  <h6 class="mb-0">{{ $product->name }}</h6>
 </div>
 @endsection
 
@@ -59,6 +59,7 @@
           </a>
         </div>
       </div>
+    </div>
 
       <!-- Ratings-->
       {{-- <div class="product-ratings">
@@ -69,32 +70,6 @@
       </div>
     </div> --}}
 
-    <!-- Flash Sale Panel-->
-    <div class="flash-sale-panel bg-white mb-3 py-3">
-      <div class="container">
-        <!-- Sales Offer Content-->
-        <div class="sales-offer-content d-flex align-items-end justify-content-between">
-          <!-- Sales End-->
-          <div class="sales-end">
-            <p class="mb-1 font-weight-bold"><i class="lni lni-bolt"></i> Flash sale end in</p>
-            <!-- Please use event time this format: YYYY/MM/DD hh:mm:ss-->
-            <ul class="sales-end-timer ps-0 d-flex align-items-center" data-countdown="2021/03/01 14:21:37">
-              <li><span class="days">0</span>d</li>
-              <li><span class="hours">0</span>h</li>
-              <li><span class="minutes">0</span>m</li>
-              <li><span class="seconds">0</span>s</li>
-            </ul>
-          </div>
-          <!-- Sales Volume-->
-          <div class="sales-volume text-end">
-            <p class="mb-1 font-weight-bold">82% Sold Out</p>
-            <div class="progress" style="height: 6px;">
-              <div class="progress-bar bg-warning" role="progressbar" style="width: 82%;" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Add To Cart-->
     <div class="cart-form-wrapper bg-white mb-3 py-3">
@@ -104,7 +79,7 @@
         method="post">
         {{ csrf_field() }}
         <div class="form-group--number zaydnaks order-plus-minus d-flex align-items-center">
-            <button type="button" class="down quantity-button-handler">-</button>
+            <button type="button" class="down btn-warning btn">-</button>
             <input class="quantity-ajax form-control instantQuantity cart-quantity-input" 
               id="add-to-cart-quantity" 
               name="quantity"  
@@ -112,7 +87,7 @@
               type="text" 
               placeholder="1" 
               value="1">
-            <button type="button" class="up quantity-button-handler">+</button>
+            <button type="button" class="up btn-warning btn">+</button>
         </div>
         <button class="btn btn-danger ms-auto">{{ __('cart.add') }}</button>
         <a class="ps-btn" style="display: none;" href="#">{{ __('Buy now') }}</a>
@@ -169,7 +144,6 @@
         </div>
       </div>
 
-
   </div>
-</div>
+  
 @endsection
