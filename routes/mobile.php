@@ -22,6 +22,8 @@ Route::view('/thank-you',               'mobile/payment-success'                
 Route::post('couponcheck',              'MobileControllers\PayementController@applyCoupon'  )->name('applyCoupon'           );
 
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
+    Route::GET('/search', 'MobileControllers\WebsiteController@searchProccessSubmit')->name('searchSubmit');
+    
     Route::get('/',             'MobileControllers\WebsiteController@home'      );
     Route::get('/products',     'MobileControllers\WebsiteController@products'  )->name('products');
     Route::get('/product/{id}', 'MobileControllers\ShopController@product'      )->name('product');
@@ -40,13 +42,13 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
     
         // add and remove addresses
         Route::group(['prefix' => 'adresses','as' => 'adresses.'], function(){
-            Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.adresses')->name('adresses');
-            Route::view('/add', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.shipping_add')->name('add');
-            Route::post('/add', 'MobileControllers\AccountController@shipping_store')->name('add');    
-            Route::get('/edit/{id}', 'MobileControllers\AccountController@edit_shipping')->name('edit');      
-            Route::post('/update/{id}', 'MobileControllers\AccountController@update_shipping')->name('update');      
-            Route::get('/delete/{id}', 'MobileControllers\AccountController@shipping_delete')->name('delete');      
-            Route::get('/default/{id}', 'MobileControllers\AccountController@shipping_default')->name('default');
+            Route::get('/', 'MobileControllers\AdresseController@index')->name('index');    
+            Route::get('/add', 'MobileControllers\AdresseController@create')->name('create');    
+            Route::post('/store', 'MobileControllers\AdresseController@store')->name('add');    
+            Route::get('/edit/{id}', 'MobileControllers\AdresseController@edit')->name('edit');      
+            Route::post('/update/{id}', 'MobileControllers\AdresseController@update')->name('update');      
+            Route::get('/delete/{id}', 'MobileControllers\AdresseController@delete')->name('delete');      
+            Route::get('/default/{id}', 'MobileControllers\AdresseController@default')->name('default');
         });
         
         // add and remove product from wishlist
@@ -68,8 +70,8 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
     
         // all orders and order detail
         Route::group(['prefix' => 'orders','as' => 'orders.'], function(){
-            Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.orders')->name('orders');
-            Route::get('/details/{id}', 'AccountController@order_detail')->name('orders_detail');
+            Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/store/orders')->name('index');
+            Route::get('/details/{id}', 'MobileControllers\AccountController@order_detail')->name('orders_detail');
         });
 
         Route::get('/checkout', 'MobileControllers\WebsiteController@checkout')->name('checkout');
@@ -88,11 +90,11 @@ Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'MAccou
 
     // add and remove addresses
     Route::group(['prefix' => 'adresses','as' => 'adresses.'], function(){
-        Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.adresses')->name('adresses');
-        Route::view('/add', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.shipping_add')->name('add');
-        Route::post('/add', 'MobileControllers\AccountController@shipping_store')->name('add');    
-        Route::get('/edit/{id}', 'MobileControllers\AccountController@edit_shipping')->name('edit');      
-        Route::post('/update/{id}', 'MobileControllers\AccountController@update_shipping')->name('update');      
+        Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.adresse')->name('adresses');
+        Route::view('/add', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.add_adresse')->name('add');
+        Route::post('/add', 'MobileControllers\AccountController@shipping_create')->name('create');    
+        Route::get('/edit/{id}', 'MobileControllers\AccountController@shipping_edit')->name('edit');      
+        Route::post('/update/{id}', 'MobileControllers\AccountController@shipping_update')->name('update');      
         Route::get('/delete/{id}', 'MobileControllers\AccountController@shipping_delete')->name('delete');      
         Route::get('/default/{id}', 'MobileControllers\AccountController@shipping_default')->name('default');
     });
@@ -116,7 +118,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'MAccou
 
     // all orders and order detail
     Route::group(['prefix' => 'orders','as' => 'orders.'], function(){
-        Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.orders')->name('orders');
-        Route::get('/details/{id}', 'AccountController@order_detail')->name('orders_detail');
+        Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.orders')->name('index');
+        Route::get('/details/{id}', 'MobileControllers\AccountController@order_detail_account')->name('orders_detail');
     });
 });

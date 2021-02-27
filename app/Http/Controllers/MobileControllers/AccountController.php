@@ -4,7 +4,7 @@ namespace App\Http\Controllers\MobileControllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{WishList,User};
+use App\Models\{WishList,User,Orders};
 use App;
 use Session;
 use Auth;
@@ -107,8 +107,23 @@ class AccountController extends Controller
         else {    
              
              return redirect()->route('mobile.login-view')->with('error',trans('user.wrong.auth'));
-        } 
-        
+        }         
+    }
+
+    public function order_detail($store,$id){
+        $content = Orders::where('user_id',\Auth::user()->id)->where('id',$id)->first();
+        if(!$content){
+            abort(404);
+        }
+        return view($this->mobile_theme .'/store/order_detail',compact('content'));
+    }
+
+    public function order_detail_account($id){
+        $content = Orders::where('user_id',\Auth::user()->id)->where('id',$id)->first();
+        if(!$content){
+            abort(404);
+        }
+        return view($this->mobile_theme .'/account/order_detail',compact('content'));
     }
 
     public function registration(Request $request)

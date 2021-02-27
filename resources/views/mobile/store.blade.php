@@ -10,22 +10,15 @@
   </a>
 </div>
 <div class="top-search-form">
-  <form action="#" method="">
-    <input class="form-control" type="search" placeholder="Enter your keyword">
+  <form action="{{ route('mobile.store.searchSubmit' , ['store' => \Session::get('store')]) }}" method="GET">
+    <input class="form-control" type="search" name="q" placeholder="Enter your keyword">
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
 </div>
 @endsection
 
 @section('content')
-<div class="toast pwa-install-alert shadow bg-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000" data-bs-autohide="true">
-  <div class="toast-body">
-    <div class="content d-flex align-items-center mb-2"><img src="img/icons/icon-72x72.png" alt="">
-      <h6 class="mb-0">Add to Home Screen</h6>
-      <button class="btn-close ms-auto" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div><span class="mb-0 d-block">Add Suha on your mobile home screen. Click the<strong class="mx-1">"Add to Home Screen"</strong>button &amp; enjoy it like a regular app.</span>
-  </div>
-</div>
+
 <div class="page-content-wrapper">
   <div class="container">
     <div class="pt-3">

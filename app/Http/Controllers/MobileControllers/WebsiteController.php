@@ -216,4 +216,14 @@ class WebsiteController extends Controller
 
         print_r($result);
     }
+
+    public function searchProccessSubmit(Request $request)
+    {
+        $q = $request->q;
+        $lang = \App::getLocale();
+        $products = Product::Active()
+        ->where('name->' . $lang, 'LIKE', '%' . $q . '%')->paginate(12);
+        $products->appends(['q' => $q]);
+        return view($this->mobile_theme . 'shop-grid', compact('products', 'q'));
+    }
 }

@@ -4,9 +4,14 @@
 @endsection
 
 @section('header-content')
+<div class="logo-wrapper">
+  <a href="/">
+      <img src="{{ asset('assets/mobile/img/core-img/logo-small.png') }}" alt="">
+  </a>
+</div>
 <div class="top-search-form">
-  <form action="#" method="">
-    <input class="form-control" type="search" placeholder="Enter your keyword">
+  <form action="{{ route('mobile.store.searchSubmit' , ['store' => \Session::get('store')]) }}" method="GET">
+    <input class="form-control" type="search" name="q" placeholder="Enter your keyword">
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
 </div>
@@ -224,6 +229,19 @@
         @endforeach
       </div>
     </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="pagination-center">
+            {{ $products->links() }}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
   </div>
 </div>
 @endsection
