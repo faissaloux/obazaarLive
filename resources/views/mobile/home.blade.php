@@ -23,7 +23,7 @@
 
 @section('content')
 <div class="page-content-wrapper">
-  <div class="container">
+  <div class="container" dir="ltr">
     <div class="pt-3">
       <!-- Hero Slides-->
       <div class="hero-slides owl-carousel">

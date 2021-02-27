@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}" dir="{{ System::isRtl()?'rtl':'ltr' }}">
   
   @include('mobile/inc/head')
   <body>
@@ -23,23 +23,23 @@
             <div class="register-form mt-5 px-4">
               <form action="{{ route('mobile.registration') }}" method="post">
                 @csrf
-                <div class="form-group text-start mb-4"><span>{{ __('Username') }}</span>
+                <div class="form-group {{ System::isRtl() ? 'text-end':'text-start'}} mb-4"><span>{{ __('Username') }}</span>
                   <label for="username"><i class="lni lni-user"></i></label>
                   <input class="form-control" id="username" name="name" type="text" placeholder="{{ __('Username') }}">
                 </div>
-                <div class="form-group text-start mb-4"><span>{{ __('Email') }}</span>
+                <div class="form-group {{ System::isRtl() ? 'text-end':'text-start'}} mb-4"><span>{{ __('Email') }}</span>
                   <label for="email"><i class="lni lni-envelope"></i></label>
                   <input class="form-control" id="email" type="email" name="email" placeholder="email@example.com">
                 </div>
-                <div class="form-group text-start mb-4"><span>{{ __('Phone') }}</span>
+                <div class="form-group {{ System::isRtl() ? 'text-end':'text-start'}} mb-4"><span>{{ __('Phone') }}</span>
                   <label for="password_confirmation"><i class="lni lni-phone"></i></label>
                   <input class="input-psswd form-control" id="registerPasswordConfirmation" name="phone" type="password" placeholder="{{ __('Phone') }}">
                 </div>
-                <div class="form-group text-start mb-4"><span>{{ __('Password') }}</span>
+                <div class="form-group {{ System::isRtl() ? 'text-end':'text-start'}} mb-4"><span>{{ __('Password') }}</span>
                   <label for="password"><i class="lni lni-lock"></i></label>
                   <input class="input-psswd form-control" id="registerPassword" name="password" type="password" placeholder="********************">
                 </div>
-                <div class="form-group text-start mb-4"><span>{{ __('Confirm Password') }}</span>
+                <div class="form-group {{ System::isRtl() ? 'text-end':'text-start'}} mb-4"><span>{{ __('Confirm Password') }}</span>
                   <label for="password_confirmation"><i class="lni lni-lock"></i></label>
                   <input class="input-psswd form-control" id="registerPasswordConfirmation" name="password_confirmation" type="password" placeholder="********************">
                 </div>                

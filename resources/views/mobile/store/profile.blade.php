@@ -51,7 +51,7 @@
             <div class="data-content">{{ $user->email }}</div>
           </div>
           <!-- Edit Profile-->
-          <div class="edit-profile-btn mt-3"><a class="btn btn-info w-100" href="{{ route('mobile.store.profile.edit', \Session::get('store')) }}"><i class="lni lni-pencil me-2"></i>{{ __('Edit Profile') }}</a></div>
+          <div class="edit-profile-btn mt-3"><a class="btn btn-info w-100" href="{{ route('mobile.store.profile.edit', \Session::get('store')) }}"><i class="lni lni-pencil {{ System::isRtl() ? 'ms-2':'me-2'}}"></i>{{ __('Edit Profile') }}</a></div>
         </div>
       </div>
     </div>

@@ -6,9 +6,7 @@
 @section('header-content')
   <div class="back-button">
     <a href="{{ url()->previous() }}">
-        <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
-        </svg>
+      <i class="lni {{ System::isRtl() ? 'lni-arrow-right':'lni-arrow-left'}}"></i>
     </a>
   </div>
   <div class="page-heading">
@@ -126,9 +124,7 @@
       <div class="checkout-wrapper-area py-3 checkout-step-2" style="display: none;">
         <div class="choose-payment-method">
           <a href="#" class="to-step-1">
-            <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
-            </svg>
+            <i class="lni {{ System::isRtl() ? 'lni-arrow-right':'lni-arrow-left'}}"></i>
           </a>
           <h6 class="mb-3 text-center">{{ __('Choose Payment Method') }}</h6>
           <div class="row justify-content-center g-3">
@@ -161,9 +157,7 @@
       <div class="checkout-wrapper-area py-3 credit-card-form" style="display: none;">
         <div class="credit-card-info-wrapper">
           <a href="#" class="to-step-2">
-            <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
-            </svg>
+            <i class="lni {{ System::isRtl() ? 'lni-arrow-right':'lni-arrow-left'}}"></i>
           </a>
           <img class="d-block mb-4" src="{{ asset('assets/mobile/img/bg-img/credit-card.png') }}" alt="">
           <div class="pay-credit-card-form payment-form">
@@ -202,9 +196,7 @@
       <div class="checkout-wrapper-area py-3 paypal-form" style="display: none;">
         <div class="credit-card-info-wrapper">
           <a href="#" class="to-step-2">
-            <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
-            </svg>
+            <i class="lni {{ System::isRtl() ? 'lni-arrow-right':'lni-arrow-left'}}"></i>
           </a>
           <img class="d-block mb-4" src="{{ asset('assets/mobile/img/bg-img/credit-card.png') }}" alt="">
           <div class="pay-credit-card-form payment-form">
@@ -223,9 +215,7 @@
       <div class="checkout-wrapper-area py-3 cash-form" style="display: none;">
         <div class="credit-card-info-wrapper">
           <a href="#" class="to-step-2">
-            <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
-            </svg>
+            <i class="lni {{ System::isRtl() ? 'lni-arrow-right':'lni-arrow-left'}}"></i>
           </a>
           <img class="d-block mb-4" src="{{ asset('assets/mobile/img/bg-img/credit-card.png') }}" alt="">
           <div class="cod-info text-center mb-3 payment-form">

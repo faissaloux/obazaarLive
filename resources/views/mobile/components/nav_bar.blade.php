@@ -20,13 +20,13 @@
       <li><a href="{{ route('mobile.account.profile.password.index') }}"><i class="lni lni-lock"></i>{{ __('Password') }}</a></li>
       <li><a href="{{ route('mobile.account.adresses.adresses') }}"><i class="lni lni-map"></i>{{ __('Addresses') }}</a></li>
       <li><a href="{{ route('mobile.account.orders.index') }}"><i class="lni lni-ship"></i>{{ __('Orders') }}</a></li>
-      <li><a href="{{ route('mobile.account.wishlist.grid') }}"><i class="lni lni-shopping-basket"></i>{{ __('My Wishlist') }}<span class="ms-3 badge badge-warning wishlist_count">{{ $wishlist_count ?? '' }}</a></li>
+      <li><a href="{{ route('mobile.account.wishlist.grid') }}"><i class="lni lni-shopping-basket"></i>{{ __('My Wishlist') }}<span class="{{ System::isRtl() ? 'me-3':'ms-3'}} badge badge-warning wishlist_count">{{ $wishlist_count ?? '' }}</a></li>
 
       <li><a href="{{ route('logout') }}"><i class="lni lni-power-switch"></i>{{ __('Sign Out') }}</a></li>
     </ul>
   @endguest
   <!-- Go Back Button-->
   <div class="go-home-btn">
-    <a href="{{ url()->previous() }}"><i class="lni lni-arrow-left"></i></a>
+    <a href="{{ url()->previous() }}"><i class="lni {{ System::isRtl() ? 'lni-arrow-right':'lni-arrow-left'}}"></i></a>
   </div>
 </div>

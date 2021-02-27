@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}" dir="{{ System::isRtl()?'rtl':'ltr' }}">
   
   @include('mobile/inc/head')
   <body>
@@ -13,7 +13,7 @@
             <div class="register-form mt-5 px-4">
               <form action="{{ route('mobile.forget-password') }}" method="post">
                 @csrf
-                <div class="form-group text-start mb-4"><span>{{ __('Email') }}</span>
+                <div class="form-group {{ System::isRtl() ? 'text-end':'text-start'}} mb-4"><span>{{ __('Email') }}</span>
                   <label for="email"><i class="lni lni-user"></i></label>
                   <input class="form-control" id="email" name="email" type="text" placeholder="{{ __('Email') }}">
                 </div>

@@ -762,5 +762,7 @@
     "Old password": "كلمة السر القديمة",
     "New password": "كلمة السر الجديدة",
     "Password confirmation": "تأكيد كلمة السر",
-    "Save changes": "احفظ التغييرات"
+    "Save changes": "احفظ التغييرات",
+    "Password recovery email is sent successfully. Please check your inbox!": "تم إرسال البريد الإلكتروني لاستعادة كلمة المرور بنجاح. يرجى التحقق من البريد الوارد الخاص بك!",
+    "Go Home": "الرئيسية"
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}" dir="{{ System::isRtl()?'rtl':'ltr' }}">
   
   @include('mobile/inc/head')
   <body>
@@ -12,8 +12,8 @@
               <!-- Success Check-->
               <div class="success-check"><i class="lni lni-emoji-smile"></i></div>
               <!-- Reset Password Message-->
-              <p class="text-white mt-4 mb-4">Password recovery email is sent successfully. Please check your inbox!</p>
-              <!-- Go Back Button--><a class="btn btn-warning" href="login.html">Go Home</a>
+              <p class="text-white mt-4 mb-4">{{ __('Password recovery email is sent successfully. Please check your inbox!') }}</p>
+              <!-- Go Back Button--><a class="btn btn-warning" href="{{ route('mobile.login-auth') }}">{{ __('Go Home') }}</a>
             </div>
           </div>
         </div>

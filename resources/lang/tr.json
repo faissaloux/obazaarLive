@@ -743,5 +743,7 @@
     "Old password": "Eski Şifre",
     "New password": "Yeni Şifre",
     "Password confirmation": "Şifre onayı",
-    "Save changes": "Değişiklikleri Kaydet"
+    "Save changes": "Değişiklikleri Kaydet",
+    "Password recovery email is sent successfully. Please check your inbox!": "Şifre kurtarma e-postası başarıyla gönderildi. Lütfen gelen kutunuzu kontrol edin!",
+    "Go Home": "Eve git"
 }

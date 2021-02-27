@@ -27,7 +27,7 @@
 @section('content')
 
 <div class="page-content-wrapper">
-  <div class="container">
+  <div class="container" dir="ltr">
     <div class="pt-3">
       <div class="hero-slides owl-carousel">
         @foreach($sliders as $slider)
@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="flash-sale-wrapper mt-3">
-    <div class="container">
+    <div class="container" dir="ltr">
       <div class="flash-sale-slide owl-carousel">
         {!! app('SiteSetting')->storecategoriesMobile() !!}
       </div>

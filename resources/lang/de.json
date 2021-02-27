@@ -747,6 +747,8 @@
     "Old password": "رمز عبور قدیمی",
     "New password": "رمز عبور جدید",
     "Password confirmation": "تایید رمز عبور",
-    "Save changes": "ذخیره تغییرات"
+    "Save changes": "ذخیره تغییرات",
+    "Password recovery email is sent successfully. Please check your inbox!": "Wachtwoordherstel-e-mail is succesvol verzonden. Controleer je inbox!",
+    "Go Home": "Ga naar huis"
 
 }
