@@ -395,3 +395,8 @@ function calcultotalcoupon() {
   }
 
 }
+
+$("li.lang").click(function(){
+  const link = $(this).data('link');
+  window.location.href = link;
+})

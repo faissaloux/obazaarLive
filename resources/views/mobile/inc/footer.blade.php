@@ -6,7 +6,7 @@
         <li class="active"><a href="{{ route('mobile.stores') }}"><i class="lni lni-home"></i>{{ __('Home') }}</a></li>
         <li><a href="{{ route('mobile.store.cart.index',['store' => \Session::get('store')]) }}"><i class="lni lni-shopping-basket"></i>{{ __('Cart') }}</a></li>
         <li><a href="{{ route('mobile.store.wishlist.grid',['store' => \Session::get('store')]) }}"><i class="lni lni-heart"></i>{{ __('Wishlist') }}</a></li>
-        <li><a href="#"><i class="lni lni-cog"></i>{{ __('Settings') }}</a></li>
+        <li><a href="{{ route('mobile.settings') }}"><i class="lni lni-cog"></i>{{ __('Settings') }}</a></li>
       </ul>
     </div>
   </div>

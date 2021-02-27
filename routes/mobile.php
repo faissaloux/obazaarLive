@@ -19,7 +19,11 @@ Route::post('/password/reset',          'MobileControllers\WebsiteController@res
 Route::get('/stores',                   'MobileControllers\BaseController@index'            )->name('stores'                );
 Route::view('/orders',                  'mobile.orders'                                     )->name('orders'                );
 Route::view('/thank-you',               'mobile/payment-success'                            )->name('thank-you'             );
-Route::post('couponcheck',              'MobileControllers\PayementController@applyCoupon'  )->name('applyCoupon'           );
+Route::post('/couponcheck',             'MobileControllers\PayementController@applyCoupon'  )->name('applyCoupon'           );
+Route::view('/settings',                'mobile/settings'                                   )->name('settings'              );
+Route::view('/agb',                     'mobile/agb'                                        )->name('agb'                   );
+Route::view('/datenschutzerklarung',    'mobile/datenschutzerklarung'                       )->name('datenschutzerklarung'  );
+Route::view('/languages',               'mobile/languages'                                  )->name('languages'             );
 
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
     Route::GET('/search', 'MobileControllers\WebsiteController@searchProccessSubmit')->name('searchSubmit');

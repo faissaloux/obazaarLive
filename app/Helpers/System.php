@@ -14,6 +14,7 @@ class System {
 
     public static $LANGS                    = ['ar','de','tr','ir'];
     public static $LANGS_NAME               = ['ar' => 'العربية','de'=> 'Deutsch','tr' => 'Turkish','ir' => 'فارسى'];
+    public static $LANGS_IDS                = ['ar' => 'Arabic','de'=> 'Deutsch','tr' => 'Turkish','ir' => 'Persian'];
     public static $LTR_LANG                 = ['tr','de'];
     public static $RTL_LANG                 = ['ar','ir'];
     public static $CURRENT_LANG ;
