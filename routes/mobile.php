@@ -64,7 +64,7 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
     
         // all orders and order detail
         Route::group(['prefix' => 'orders','as' => 'orders.'], function(){
-            Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/store/orders')->name('orders');
+            Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/store/orders')->name('index');
             Route::get('/details/{id}', 'MobileControllers\AccountController@order_detail')->name('orders_detail');
         });
     });
@@ -110,7 +110,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'MAccou
 
     // all orders and order detail
     Route::group(['prefix' => 'orders','as' => 'orders.'], function(){
-        Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.orders')->name('orders');
-        Route::get('/details/{id}', 'AccountController@order_detail')->name('orders_detail');
+        Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.orders')->name('index');
+        Route::get('/details/{id}', 'MobileControllers\AccountController@order_detail_account')->name('orders_detail');
     });
 });

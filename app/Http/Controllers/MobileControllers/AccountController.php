@@ -110,16 +110,22 @@ class AccountController extends Controller
         }         
     }
 
-<<<<<<< HEAD
-    public function order_detail($id){
+    public function order_detail($store,$id){
         $content = Orders::where('user_id',\Auth::user()->id)->where('id',$id)->first();
         if(!$content){
             abort(404);
         }
         return view($this->mobile_theme .'/store/order_detail',compact('content'));
     }
-}
-=======
+
+    public function order_detail_account($id){
+        $content = Orders::where('user_id',\Auth::user()->id)->where('id',$id)->first();
+        if(!$content){
+            abort(404);
+        }
+        return view($this->mobile_theme .'/account/order_detail',compact('content'));
+    }
+
     public function registration(Request $request)
     {
         $geo = geoip(req::ip());
@@ -171,4 +177,3 @@ class AccountController extends Controller
         return redirect()->route('mobile.stores')->with('success', trans('User registred successfully'));
     }
 }
->>>>>>> 9264d2d4fa05ef7760f4444df0cdefb2a5adcfbf

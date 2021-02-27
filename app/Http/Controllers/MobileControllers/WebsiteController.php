@@ -8,11 +8,7 @@ use \Carbon\Carbon;
 use \App\Helpers\EmailHelper;
 use \App\Models\
 {
-<<<<<<< HEAD
-    Product, Slider, BasePages, Stores, WishList,Orders
-=======
-    Product, Slider, BasePages, Stores, WishList, User
->>>>>>> 9264d2d4fa05ef7760f4444df0cdefb2a5adcfbf
+    Product, Slider, BasePages, Stores, WishList, User,Orders
 };
 
 class WebsiteController extends Controller
@@ -107,10 +103,6 @@ class WebsiteController extends Controller
         return view($this->mobile_theme . 'wishlist-grid', compact('wishlist'));
     }
 
-<<<<<<< HEAD
-    
-}
-=======
     public function forgetPassword(Request $request)
     {
         $user = User::where('email', '=', $request->email)->first();
@@ -171,4 +163,3 @@ class WebsiteController extends Controller
         return redirect()->back()->with('error', trans('user.pwd.wrong.match'));
     }
 }
->>>>>>> 9264d2d4fa05ef7760f4444df0cdefb2a5adcfbf
