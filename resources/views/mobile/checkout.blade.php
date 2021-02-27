@@ -33,22 +33,26 @@
           <div class="card shipping-method-choose-card">
             <div class="card-body">
               <div class="shipping-method-choose">
-                <ul class="ps-0">
+                <div class="notification-area pt-3 pb-2">
                   @foreach(Auth::user()->addresses as $address)
-                    <li class="shipping-address-box @if($address->is_shipping) active @endif" style="width: 100%">
-                        {{ $address->given_name }}
-                        <br> {{ $address->street }}
-                        <br> {{ $address->state }}, {{ $address->city }} , {{ $address->postal_code }}
-                        <br> {{ $address->country_code }}
-                        <br> {{ $address->phone }}
-                        <br>
-                        <a href="{{ route('mobile.store.shipping.set',['id' =>  $address->id , 'store' => $store]) }}" class="ps-btn"> {{ __('ship here') }}</a>
-                    </li>
+                    <!-- Notification Details-->
+                    <div class="list-group-item d-flex py-3">
+                      <span class="noti-icon @if($address->is_shipping) active @endif"><i class="lni lni-map"></i></span>
+                      <div class="noti-info">
+                        <h6>{{ $address->given_name }}</h6>
+                        <p>
+                          {{ $address->street }}
+                          <br> {{ $address->state }}, {{ $address->city }} , {{ $address->postal_code }}
+                          <br> {{ $address->country_code }}
+                          <br> {{ $address->phone }}
+                          <br>
+                        </p>
+                        <a class="btn-link" href="{{ route('mobile.store.shipping.set', ['id' =>  $address->id , 'store' => $store]) }}">{{ __('ship here') }}</a>
+                      </div>
+                    </div>
                   @endforeach
-                </ul>
-                <a href="{{ route('shipping.add',['store' => $store]) }}" class="ps-btn ps-btn--sm">
-                    {{ __('+ New Address') }}
-                </a>
+                </div>
+                <a class="btn btn-danger" href="{{ route('mobile.store.adresses.index', ['store' => \Session::get('store')]) }}">{{ __('+ New Address') }}</a>
               </div>
             </div>
           </div>
@@ -87,7 +91,7 @@
         </div>
         <!-- Coupon Choose-->
         <div class="coupon-choose mb-3">
-          <div class="card coupon-choose-title-card bg-success">
+          <div class="card shipping-method-choose-title-card bg-danger">
             <div class="card-body">
               <h6 class="text-center mb-0 text-white">Coupon</h6>
             </div>
@@ -100,10 +104,10 @@
                 <input type="hidden" id="couponV" value="0">
                 <input type="hidden" id="typeDiscount" value="0">
                 <div class="mb-3 d-flex align-items-center justify-content-between">
-                    <div>
-                      <input class="form-control" type="text" name="coupon" id="coupon" placeholder="coupon">
-                    </div>
-                  <a class="btn btn-warning" href="javascript:;" id="applyCoupon">Apply coupon</a>
+                  <div>
+                    <input class="form-control" type="text" name="coupon" id="coupon" placeholder="coupon">
+                  </div>
+                  <a class="btn btn-danger" href="javascript:;" id="applyCoupon">Apply coupon</a>
                 </div>
               </div>
             </div>

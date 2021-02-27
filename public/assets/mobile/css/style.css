@@ -3495,7 +3495,7 @@ li.suha-dropdown-menu {
       border-radius: 50%; }
       .notification-area .list-group-item .noti-icon i {
         line-height: 30px; }
-      .notification-area .list-group-item .noti-icon::before {
+      .notification-area .list-group-item .noti-icon.active::before {
         position: absolute;
         width: 10px;
         height: 10px;
