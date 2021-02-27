@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
  * mobile.
  */
 
-Route::view('/',                        'mobile/intro'                                      );
+//Route::view('/',                        'mobile/intro'                                      );
 Route::view('/login',                   'mobile/login'                                      )->name('login-view'            );
 Route::post('/login',                   'MobileControllers\AccountController@userAuth'      )->name('login-auth'            );
 Route::get('/logout',                   'Auth\LoginController@logout'                       )->name('logout'                );
@@ -16,7 +16,7 @@ Route::view('/forget-password',         'mobile/forget-password'                
 Route::post('/reset-password',          'MobileControllers\WebsiteController@forgetPassword')->name('forget-password'       );
 Route::any('/reset_password/{token}',   'MobileControllers\WebsiteController@getPassword'   )->name('getPassword'           );
 Route::post('/password/reset',          'MobileControllers\WebsiteController@resetPassword' )->name('password.request'      );
-Route::get('/stores',                   'MobileControllers\BaseController@index'            )->name('stores'                );
+Route::get('/',                   'MobileControllers\BaseController@index'            )->name('stores'                );
 Route::view('/orders',                  'mobile.orders'                                     )->name('orders'                );
 Route::view('/thank-you',               'mobile/payment-success'                            )->name('thank-you'             );
 Route::post('couponcheck',              'MobileControllers\PayementController@applyCoupon'  )->name('applyCoupon'           );
