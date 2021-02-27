@@ -5,11 +5,9 @@
 
 @section('header-content')
 <div class="back-button">
-<a href="{{ url()->previous() }}">
-    <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
-    </svg>
-</a>
+    <a href="{{ url()->previous() }}">
+        <i class="lni {{ System::isRtl() ? 'lni-arrow-right':'lni-arrow-left'}}"></i>
+    </a>
 </div>
 <div class="page-heading">
   <h6 class="mb-0">{{ __('Conditions') }}</h6>
@@ -86,7 +84,7 @@ a.tasndo9tTxt:hover {
 
 
             <div class="ps-about-intro">
-                <div class="container">
+                <div class="container" dir="ltr">
                     <div class="ps-section__header">
                         <h4 id="div1">Allgemeine Geschäftsbedingungen (AGB) für Lieferanten/Dritta</h4>
 
