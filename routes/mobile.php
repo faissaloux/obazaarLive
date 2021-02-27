@@ -20,6 +20,8 @@ Route::get('/stores',                   'MobileControllers\BaseController@index'
 Route::view('/orders',                  'mobile.orders'                                     )->name('orders'                );
 
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
+    Route::GET('/search', 'MobileControllers\WebsiteController@searchProccessSubmit')->name('searchSubmit');
+    
     Route::get('/',             'MobileControllers\WebsiteController@home'      );
     Route::get('/products',     'MobileControllers\WebsiteController@products'  )->name('products');
     Route::get('/product/{id}', 'MobileControllers\ShopController@product'      )->name('product');
