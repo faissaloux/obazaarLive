@@ -311,3 +311,87 @@ $(document).on('click', 'body .zaydnaks .down', function (e) {
       ikhaaaaan(input);
   }
 });
+
+
+$(()=>{
+  $("#show-step-2").click(()=>{
+    $(".checkout-step-1").hide();
+    $(".checkout-step-2").show();
+    $("#credit-card").click(()=>{
+      $("[name='paymentmethod']").val('stripe');
+      $(".checkout-step-2").hide();
+      $(".credit-card-form").show();
+    });
+    $("#paypal").click(()=>{
+      $("[name='paymentmethod']").val('paypal');
+      $(".checkout-step-2").hide();
+      $(".paypal-form").show();
+    });
+    $("#cash").click(()=>{
+      $("[name='paymentmethod']").val('facture');
+      $(".checkout-step-2").hide();
+      $(".cash-form").show();
+    });
+    $(".to-step-1").click(()=>{
+      $(".checkout-step-2").hide();
+      $(".checkout-step-1").show();
+    })
+    $(".to-step-2").click(function(){
+      $("[name='paymentmethod']").val('');
+      $(this).siblings('.payment-form').find('input').val('');
+      $(".credit-card-form").hide();
+      $(".paypal-form").hide();
+      $('.cash-form').hide();
+      $(".checkout-step-2").show();
+    })
+  })
+})
+
+// apply coupon
+$(document).on('click', 'body #applyCoupon', function () {
+  var formData  = new FormData();
+  var token     = $('meta[name="csrf-token"]').attr('content');
+  var coupon    = $('#coupon').val();
+  var total     = parseFloat($('.TotalPrice').html()).toFixed(2);
+  
+  formData.append('_token', token);
+  formData.append('coupon', coupon);
+  formData.append('total', total);
+  $.ajax({
+      url: '/couponcheck',
+      type: 'post',
+      processData: false, // important
+      contentType: false, // important
+      data: formData,
+      cache: false,
+      dataType: "JSON",
+      success: function (data) {
+          $('#couponV').val(data.discount);
+          $('#typeDiscount').val(data.type);
+          if (data.success == true) {
+              $('.dyalcouponS').html(data.notification).show();
+              $('.dyalcouponA').html(data.notification).hide();
+          } else {
+              $('.dyalcouponA').html(data.notification).show();
+              $('.dyalcouponS').html(data.notification).hide();
+          }
+
+          calcultotalcoupon();
+      }
+  });
+});
+
+function calcultotalcoupon() {
+  var couponV = $('#couponV').val();
+  var typeDiscount = $('#typeDiscount').val();
+  var shippingPriceV = $('#shippingPriceV').val();
+  var totalPriceV = $('#totalPriceV').val();
+  var shipandprice = (parseFloat(totalPriceV, 10) + parseFloat(shippingPriceV, 10));
+
+  if (typeDiscount == "percent") {
+      var total = (parseFloat(shipandprice, 10) - ((parseFloat(shipandprice, 10) * parseFloat(couponV, 10)) / 100)).toFixed(2);
+      console.log(total);
+      $('body .TotalPrice').html(total + '€');
+  }
+
+}

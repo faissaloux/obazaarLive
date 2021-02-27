@@ -8,7 +8,7 @@
     <div class="order-success-wrapper">
       <div class="content"><i class="lni lni-checkmark-circle"></i>
         <h5>Payment Done</h5>
-        <p>We will notify you of all the details via email. Thank you!</p><a class="btn btn-warning mt-3" href="home.html">Buy Again</a>
+        <p>We will notify you of all the details via email. Thank you!</p><a class="btn btn-warning mt-3" href="{{ route('mobile.stores') }}">Buy Again</a>
       </div>
     </div>
     @include('mobile/inc/scripts')

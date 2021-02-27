@@ -18,11 +18,15 @@ Route::any('/reset_password/{token}',   'MobileControllers\WebsiteController@get
 Route::post('/password/reset',          'MobileControllers\WebsiteController@resetPassword' )->name('password.request'      );
 Route::get('/stores',                   'MobileControllers\BaseController@index'            )->name('stores'                );
 Route::view('/orders',                  'mobile.orders'                                     )->name('orders'                );
+Route::view('/thank-you',               'mobile/payment-success'                            )->name('thank-you'             );
+Route::post('couponcheck',              'MobileControllers\PayementController@applyCoupon'  )->name('applyCoupon'           );
 
 Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'], function(){
     Route::get('/',             'MobileControllers\WebsiteController@home'      );
     Route::get('/products',     'MobileControllers\WebsiteController@products'  )->name('products');
     Route::get('/product/{id}', 'MobileControllers\ShopController@product'      )->name('product');
+    Route::get('/shipping/set/{id}', 'MobileControllers\WebsiteController@shipping_set')->name('shipping.set');
+    Route::post('/shop/pay',        'MobileControllers\PayementController@checkout_pay')->name('checkout.pay');
     
     Route::group(['prefix' => 'account', 'middleware' => 'MAccount'], function(){    
         // Profile
@@ -67,6 +71,8 @@ Route::group(['prefix' => '{store}', 'as' => 'store.', 'middleware' => 'store'],
             Route::view('/', \System::$ACTIVE_MOBILE_THEME_PATH.'/account.orders')->name('orders');
             Route::get('/details/{id}', 'AccountController@order_detail')->name('orders_detail');
         });
+
+        Route::get('/checkout', 'MobileControllers\WebsiteController@checkout')->name('checkout');
     });
 });
 
