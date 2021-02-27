@@ -1,6 +1,6 @@
 @extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/store_layout') 
 @section('title')
-    home
+  {{ __('Profile') }}
 @endsection
 
 @section('header-content')
@@ -12,7 +12,7 @@
     </a>
   </div>
   <div class="page-heading">
-    <h6 class="mb-0">Profile</h6>
+    <h6 class="mb-0">{{ __('Profile') }}</h6>
   </div>
 @endsection
 
@@ -54,7 +54,7 @@
               <div class="title mb-2"><i class="lni lni-envelope"></i><span>{{ __('Email Address') }}</span></div>
               <input class="form-control" type="email" name="email" value="{{ $user->email }}">
             </div>
-            <button class="btn btn-success w-100" type="submit">Save All Changes</button>
+            <button class="btn btn-success w-100" type="submit">{{ __('Save All Changes') }}</button>
           </form>
         </div>
       </div>

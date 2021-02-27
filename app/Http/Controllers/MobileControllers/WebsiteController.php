@@ -8,7 +8,7 @@ use \Carbon\Carbon;
 use \App\Helpers\EmailHelper;
 use \App\Models\
 {
-    Product, Slider, BasePages, Stores, WishList, User,Orders,ProductCategories
+    Product, Slider, BasePages, Stores, WishList, User, Shipping, Addresses, ProductCategories
 };
 
 class WebsiteController extends Controller
@@ -50,7 +50,7 @@ class WebsiteController extends Controller
             }
             else
             {
-                return view($this->theme . 'home', compact('page'));
+                return view($this->mobile_theme . 'home', compact('page'));
             }
 
         }

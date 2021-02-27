@@ -1,6 +1,6 @@
 @extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/layout') 
 @section('title')
-    home
+    {{ env('APP_NAME') }}
 @endsection
 
 @section('header-content')

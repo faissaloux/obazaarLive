@@ -12,7 +12,7 @@
     </a>
   </div>
   <div class="page-heading">
-    <h6 class="mb-0">Billing Information</h6>
+    <h6 class="mb-0">{{ __('Billing Information') }}</h6>
   </div>
 @endsection
 
@@ -27,7 +27,7 @@
         <div class="shipping-method-choose mb-3">
           <div class="card shipping-method-choose-title-card bg-danger">
             <div class="card-body">
-              <h6 class="text-center mb-0 text-white">Shipping Method Choose</h6>
+              <h6 class="text-center mb-0 text-white">{{ __('Addresses') }}</h6>
             </div>
           </div>
           <div class="card shipping-method-choose-card">
@@ -61,7 +61,7 @@
         <div class="shipping-method-choose mb-3">
           <div class="card shipping-method-choose-title-card bg-success">
             <div class="card-body">
-              <h6 class="text-center mb-0 text-white">Shipping Method Choose</h6>
+              <h6 class="text-center mb-0 text-white">{{ __('Shipping Method') }}</h6>
             </div>
           </div>
           <div class="card shipping-method-choose-card">
@@ -93,7 +93,7 @@
         <div class="coupon-choose mb-3">
           <div class="card shipping-method-choose-title-card bg-danger">
             <div class="card-body">
-              <h6 class="text-center mb-0 text-white">Coupon</h6>
+              <h6 class="text-center mb-0 text-white">{{ __('Coupon') }}</h6>
             </div>
           </div>
           <div class="card coupon-choose-card">
@@ -105,9 +105,9 @@
                 <input type="hidden" id="typeDiscount" value="0">
                 <div class="mb-3 d-flex align-items-center justify-content-between">
                   <div>
-                    <input class="form-control" type="text" name="coupon" id="coupon" placeholder="coupon">
+                    <input class="form-control" type="text" name="coupon" id="coupon" placeholder="{{ __('coupon') }}">
                   </div>
-                  <a class="btn btn-danger" href="javascript:;" id="applyCoupon">Apply coupon</a>
+                  <a class="btn btn-danger" href="javascript:;" id="applyCoupon">{{ __('Apply coupon') }}</a>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@
             <h5 class="total-price mb-0">
               {{ System::currency() }}<span class="counter TotalPrice">{{ ShoppingCart::totalPrice() }}</span>
             </h5>
-            <a class="btn btn-warning" id="show-step-2" href="#">Confirm &amp; Pay</a>
+            <a class="btn btn-warning" id="show-step-2" href="#">{{ __('Confirm & Pay') }}</a>
           </div>
         </div>
       </div>
@@ -130,7 +130,7 @@
               <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
             </svg>
           </a>
-          <h6 class="mb-3 text-center">Choose Payment Method</h6>
+          <h6 class="mb-3 text-center">{{ __('Choose Payment Method') }}</h6>
           <div class="row justify-content-center g-3">
             <!-- Single Payment Method-->
             <div class="col-6">
@@ -168,34 +168,34 @@
           <img class="d-block mb-4" src="{{ asset('assets/mobile/img/bg-img/credit-card.png') }}" alt="">
           <div class="pay-credit-card-form payment-form">
               <div class="mb-3">
-                <label for="cardNumber">Credit Card Number</label>
-                <input class="form-control" type="text" id="cardNumber" name="card_no" placeholder="1234 ×××× ×××× ××××" value=""><small class="ms-1"><i class="fa fa-lock me-1"></i>Your payment info is stored securely.<a class="ms-1" href="#">Learn More</a></small>
+                <label for="cardNumber">{{ __('Credit Card Number') }}</label>
+                <input class="form-control" type="text" id="cardNumber" name="card_no" placeholder="1234 ×××× ×××× ××××" value="">
               </div>
               <div class="mb-3">
-                <label for="cardholder">Cardholder Name</label>
+                <label for="cardholder">{{ __('Cardholder Name') }}</label>
                 <input class="form-control" type="text" id="cardholder" name="username" placeholder="SUHA JANNAT" value="">
               </div>
               <div class="row">
                 <div class="col-3">
                   <div class="mb-3">
-                    <label for="expiration_month">Exp. Month</label>
+                    <label for="expiration_month">{{ __('Exp. Month') }}</label>
                     <input class="form-control" type="text" id="expiration_month" name="exp_month" placeholder="12" value="">
                   </div>
                 </div>
                 <div class="col-3">
                   <div class="mb-3">
-                    <label for="expiration_year">Exp. Year</label>
+                    <label for="expiration_year">{{ __('Exp. Year') }}</label>
                     <input class="form-control" type="text" id="expiration_year" name="exp_year" placeholder="2020" value="">
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="mb-3">
-                    <label for="cvvcode">CVV Code</label>
+                    <label for="cvvcode">{{ __('CVV Code') }}</label>
                     <input class="form-control" type="text" id="cvvcode" name="cvv" placeholder="××××" value="">
                   </div>
                 </div>
               </div>
-              <button class="btn btn-warning btn-lg w-100" type="submit">Pay Now</button>
+              <button class="btn btn-warning btn-lg w-100" type="submit">{{ __('Pay Now') }}</button>
           </div>
         </div>
       </div>
@@ -209,14 +209,14 @@
           <img class="d-block mb-4" src="{{ asset('assets/mobile/img/bg-img/credit-card.png') }}" alt="">
           <div class="pay-credit-card-form payment-form">
               <div class="mb-3">
-                <label for="paypalEmail">Email Address</label>
-                <input class="form-control" type="email" name="paypal-email" id="paypalEmail" placeholder="paypal@example.com" value=""><small class="ms-1"><i class="fa fa-lock me-1"></i>Secure online payments at the speed of want.<a class="ms-1" href="#">Learn More</a></small>
+                <label for="paypalEmail">{{ __('Email Address') }}</label>
+                <input class="form-control" type="email" name="paypal-email" id="paypalEmail" placeholder="paypal@example.com" value="">
               </div>
               <div class="mb-3">
-                <label for="paypalPassword">Password</label>
-                <input class="form-control" type="password" name="paypal-password" placeholder="password" id="paypalPassword" value="">
+                <label for="paypalPassword">{{ __('Password') }}</label>
+                <input class="form-control" type="password" name="paypal-password" placeholder="{{ __('password') }}" id="paypalPassword" value="">
               </div>
-              <button class="btn btn-warning btn-lg w-100" type="submit">Pay Now</button>
+              <button class="btn btn-warning btn-lg w-100" type="submit">{{ __('Pay Now') }}</button>
           </div>
         </div>
       </div>
@@ -229,9 +229,9 @@
           </a>
           <img class="d-block mb-4" src="{{ asset('assets/mobile/img/bg-img/credit-card.png') }}" alt="">
           <div class="cod-info text-center mb-3 payment-form">
-            <p>Pay when you receive your products.</p>
+            <p>{{ __('Pay when you receive your products.') }}</p>
           </div>
-          <button class="btn btn-warning btn-lg w-100" type="submit">Pay Now</button>
+          <button class="btn btn-warning btn-lg w-100" type="submit">{{ __('Pay Now') }}</button>
         </div>
       </div>
     </form>

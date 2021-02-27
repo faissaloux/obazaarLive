@@ -49,7 +49,7 @@
   <div class="top-products-area clearfix py-3">
     <div class="container">
       <div class="section-heading d-flex align-items-center justify-content-between">
-        <h6>Top Products</h6><a class="btn btn-danger btn-sm" href="{{ route('mobile.store.products', ['store' => \Session::get('store')]) }}">View All</a>
+        <h6>{{ __('Top Products') }}</h6><a class="btn btn-danger btn-sm" href="{{ route('mobile.store.products', ['store' => \Session::get('store')]) }}">{{ __('View All') }}</a>
       </div>
       <div class="row g-3">
         @foreach($products as $product)

@@ -88,14 +88,14 @@ class AccountController extends Controller
     //Login
     public function  userAuth(Request $request) {
 
-        if(!$request->filled('username') and !$request->filled('password') ){
+        if(!$request->filled('email') and !$request->filled('password') ){
             return redirect()->route('mobile.login-view')->with('error',trans('user.wrong.auth'));
         }
 
-        $username = $request->username;
+        $email = $request->email;
         $password = $request->password;
 
-        if (Auth::attempt(['email' => $username, 'password' => $password])){
+        if (Auth::attempt(['email' => $email, 'password' => $password])){
             $id_user = Auth::user()->id;
             $lastlogin = User::find($id_user);
             $lastlogin->last_login = Carbon::now();

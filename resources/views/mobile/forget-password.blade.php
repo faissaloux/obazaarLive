@@ -13,11 +13,11 @@
             <div class="register-form mt-5 px-4">
               <form action="{{ route('mobile.forget-password') }}" method="post">
                 @csrf
-                <div class="form-group text-start mb-4"><span>Email</span>
+                <div class="form-group text-start mb-4"><span>{{ __('Email') }}</span>
                   <label for="email"><i class="lni lni-user"></i></label>
-                  <input class="form-control" id="email" name="email" type="text" placeholder="Email">
+                  <input class="form-control" id="email" name="email" type="text" placeholder="{{ __('Email') }}">
                 </div>
-                <button class="btn btn-warning btn-lg w-100" type="submit">Reset Password</button>
+                <button class="btn btn-warning btn-lg w-100" type="submit">{{ __('Reset Password') }}</button>
               </form>
             </div>
           </div>

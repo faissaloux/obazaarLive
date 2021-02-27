@@ -1,6 +1,6 @@
 @extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/layout') 
 @section('title')
-    home
+  {{ __('Profile') }}
 @endsection
 
 @section('header-content')
@@ -17,7 +17,7 @@
         </a>
     </div>
     <div class="page-heading">
-        <h6 class="mb-0">Profile</h6>
+        <h6 class="mb-0">{{ __('Profile') }}</h6>
     </div>
 @endsection
 

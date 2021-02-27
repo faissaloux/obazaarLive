@@ -1,6 +1,6 @@
 @extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/store_layout') 
 @section('title')
-    home
+  {{ __('Password') }}
 @endsection
 
 @section('header-content')
@@ -12,7 +12,7 @@
     </a>
   </div>
   <div class="page-heading">
-    <h6 class="mb-0">Profile</h6>
+    <h6 class="mb-0">{{ __('Password') }}</h6>
   </div>
 @endsection
 

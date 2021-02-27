@@ -25,9 +25,9 @@
               <form action="{{ route('mobile.login-auth') }}" method="post">
                 @csrf
                  
-                <div class="form-group text-start mb-4"><span>{{ __('Username') }}</span>
-                  <label for="username"><i class="lni lni-user"></i></label>
-                  <input class="form-control" name="username" id="username" type="text" placeholder="info@example.com">
+                <div class="form-group text-start mb-4"><span>{{ __('Email') }}</span>
+                  <label for="email"><i class="lni lni-user"></i></label>
+                  <input class="form-control" name="email" id="username" type="text" placeholder="info@example.com">
                 </div>
                 <div class="form-group text-start mb-4"><span>{{ __('Password') }}</span>
                   <label for="password"><i class="lni lni-lock"></i></label>

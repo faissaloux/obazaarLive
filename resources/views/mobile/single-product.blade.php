@@ -1,6 +1,6 @@
 @extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/store_layout') 
 @section('title')
-    home
+  {{ $product->name }}
 @endsection
 
 @section('header-content')

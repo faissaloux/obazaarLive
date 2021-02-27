@@ -30,7 +30,7 @@
   <div class="toast-body">
     <div class="content d-flex align-items-center mb-2">
       <i class="lni lni-checkmark-circle"></i>
-      <h6 class="mb-0">success</h6>
+      <h6 class="mb-0">{{ __('Success') }}</h6>
       <button class="btn-close ms-auto" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
     </div><span class="mb-0 d-block">{{ session('success') }}</span>
   </div>
@@ -42,7 +42,7 @@
   <div class="toast-body">
     <div class="content d-flex align-items-center mb-2">
       <i class="lni lni-cross-circle"></i>
-      <h6 class="mb-0">error</h6>
+      <h6 class="mb-0">{{ __('Error') }}</h6>
       <button class="btn-close ms-auto" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
     </div><span class="mb-0 d-block">{{ session('error') }}</span>
   </div>

@@ -39,16 +39,16 @@
                   <label for="password"><i class="lni lni-lock"></i></label>
                   <input class="input-psswd form-control" id="registerPassword" name="password" type="password" placeholder="********************">
                 </div>
-                <div class="form-group text-start mb-4"><span>{{ __('Password confirmation') }}</span>
+                <div class="form-group text-start mb-4"><span>{{ __('Confirm Password') }}</span>
                   <label for="password_confirmation"><i class="lni lni-lock"></i></label>
                   <input class="input-psswd form-control" id="registerPasswordConfirmation" name="password_confirmation" type="password" placeholder="********************">
                 </div>                
-                <button class="btn btn-success btn-lg w-100" type="submit">Sign Up</button>
+                <button class="btn btn-success btn-lg w-100" type="submit">{{ __('Sign Up') }}</button>
               </form>
             </div>
             <!-- Login Meta-->
             <div class="login-meta-data">
-              <p class="mt-3 mb-0">{{__('Already have an account?')}}<a class="ms-1" href="{{ route('mobile.login-view') }}">Sign In</a></p>
+              <p class="mt-3 mb-0">{{__('Already have an account?')}}<a class="ms-1" href="{{ route('mobile.login-view') }}">{{ __('Sign In') }}</a></p>
             </div>
           </div>
         </div>
