@@ -29,7 +29,7 @@
       <!-- User Information-->
       <div class="card user-info-card">
         <div class="card-body p-4 d-flex align-items-center">
-          <div class="user-profile me-3"><img src="{{ asset('assets/mobile/img/bg-img/9.jpg') }}" alt=""></div>
+          <div class="user-profile me-3"><img src="{{ asset('assets/mobile/img/bg-img/9.png') }}" alt=""></div>
           <div class="user-info">
             <h5 class="mb-0">{{ $user->name }}</h5>
           </div>

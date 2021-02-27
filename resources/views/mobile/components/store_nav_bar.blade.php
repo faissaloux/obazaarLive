@@ -9,7 +9,7 @@
   @else
     <!-- Sidenav Profile-->
     <div class="sidenav-profile">
-      <div class="user-profile"><img src="{{ asset('assets/mobile/img/bg-img/user.png') }}" alt=""></div>
+      <div class="user-profile"><img src="{{ asset('assets/mobile/img/bg-img/9.png') }}" alt=""></div>
       <div class="user-info">
         <h6 class="user-name mb-0">{{ Auth::user()->name }}</h6>
       </div>
@@ -19,7 +19,7 @@
       <li><a href="{{ route('mobile.store.profile.index', [  'store' => \Session::get('store')]) }}"><i class="lni lni-user"></i>{{ __('My Profile') }}</a></li>
       <li><a href="{{ route('mobile.store.profile.password.index', [  'store' => \Session::get('store')]) }}"><i class="lni lni-lock"></i>{{ __('Password') }}</a></li>
       <li><a href="{{ route('mobile.store.adresses.index', ['store' => \Session::get('store')]) }}"><i class="lni lni-map"></i>{{ __('Addresses') }}</a></li>
-      <li><a href="{{ route('mobile.store.orders.index',[ 'store' => \Session::get('store') ]) }}"><i class="lni lni-shopping-basket"></i>{{ __('Orders') }}</a></li>
+      <li><a href="{{ route('mobile.store.orders.index',[ 'store' => \Session::get('store') ]) }}"><i class="lni lni-ship"></i>{{ __('Orders') }}</a></li>
       <li><a href="{{ route('mobile.store.wishlist.grid' ,[  'store' => \Session::get('store')] ) }}"><i class="lni lni-shopping-basket"></i>{{ __('My Wishlist') }}<span class="ms-3 badge badge-warning wishlist_count">{{ $wishlist_count ?? '' }}</a></li>
       <li><a href="{{ route('logout') }}"><i class="lni lni-power-switch"></i>{{ __('Sign Out') }}</a></li>
     </ul>

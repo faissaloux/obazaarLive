@@ -12,7 +12,7 @@
   </a>
 </div>
 <div class="page-heading">
-  <h6 class="mb-0">Product Details</h6>
+  <h6 class="mb-0">{{ $product->name }}</h6>
 </div>
 @endsection
 

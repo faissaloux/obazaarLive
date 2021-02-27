@@ -1,6 +1,6 @@
 @extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/layout') 
 @section('title')
-    home
+{{ __('Password') }}
 @endsection
 
 @section('header-content')
@@ -12,7 +12,7 @@
         </a>
     </div>
     <div class="page-heading">
-        <h6 class="mb-0">Profile</h6>
+        <h6 class="mb-0">{{ __('Password') }}</h6>
     </div>
 @endsection
 
@@ -24,7 +24,7 @@
         <!-- User Information-->
         <div class="card user-info-card">
           <div class="card-body p-4 d-flex align-items-center">
-            <div class="user-profile me-3"><img src="{{ asset('assets/mobile/img/bg-img/9.jpg') }}" alt="">
+            <div class="user-profile me-3"><img src="{{ asset('assets/mobile/img/bg-img/9.png') }}" alt="">
               <div class="change-user-thumb">
                 <form>
                   <input class="form-control-file" type="file">

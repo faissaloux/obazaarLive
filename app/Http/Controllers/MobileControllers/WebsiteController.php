@@ -8,11 +8,7 @@ use \Carbon\Carbon;
 use \App\Helpers\EmailHelper;
 use \App\Models\
 {
-<<<<<<< HEAD
     Product, Slider, BasePages, Stores, WishList, User,Orders,ProductCategories
-=======
-    Product, Slider, BasePages, Stores, WishList, User, Shipping, Addresses
->>>>>>> b12db92a2eaf22c6e494a413c9e3edf4522127dd
 };
 
 class WebsiteController extends Controller
@@ -104,7 +100,13 @@ class WebsiteController extends Controller
     public function wishlistGrid()
     {
         $wishlist = WishList::currentuser()->paginate(5);
-        return view($this->mobile_theme . 'wishlist-grid', compact('wishlist'));
+        return view($this->mobile_theme . 'store/wishlist-grid', compact('wishlist'));
+    }
+
+    public function wishlistGridGlob()
+    {
+        $wishlist = WishList::currentuser()->paginate(5);
+        return view($this->mobile_theme . 'account/wishlist-grid', compact('wishlist'));
     }
 
     public function forgetPassword(Request $request)
@@ -230,7 +232,6 @@ class WebsiteController extends Controller
         $products->appends(['q' => $q]);
         return view($this->mobile_theme . 'shop-grid', compact('products', 'q'));
     }
-<<<<<<< HEAD
 
     public function category($store,$slug, Request $request)
     {
@@ -250,6 +251,3 @@ class WebsiteController extends Controller
         return view($this->mobile_theme . 'catagory', compact('products','categories'));
     }
 }
-=======
-}
->>>>>>> b12db92a2eaf22c6e494a413c9e3edf4522127dd

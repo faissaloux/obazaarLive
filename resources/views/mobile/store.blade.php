@@ -1,6 +1,6 @@
 @extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/store_layout') 
 @section('title')
-    home
+    o-bazaar | {{\Session::get('store')}}
 @endsection
 
 @section('header-content')
@@ -18,7 +18,7 @@
 </div>
 <div class="top-search-form">
   <form action="{{ route('mobile.store.searchSubmit' , ['store' => \Session::get('store')]) }}" method="GET">
-    <input class="form-control" type="search" name="q" placeholder="Enter your keyword">
+    <input class="form-control" type="search" name="q" placeholder="{{ __('Search...') }}">
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
 </div>

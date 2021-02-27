@@ -1,4 +1,4 @@
-@extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/layout') 
+@extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/store_layout') 
 @section('title')
 {{ __('Wishlist') }}
 @endsection
@@ -51,6 +51,7 @@
                       data-product-id='{{$wishlistItem->product->id}}'>
                       <i class="lni lni-plus"></i>
                     </a>
+
                   </div>
                 </div>
               </div>
