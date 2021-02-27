@@ -111,7 +111,7 @@
                 <h5 class="total-price mb-0">
                   <i class="TotalPrice"> {{ number_format(ShoppingCart::totalPrice(), 2, '.', '') }}</i> <i>{{ System::currency() }}</i>
                 </h5>
-                  <a class="btn btn-warning" href="#">{{ __('Go to Checkout') }}</a>
+                  <a class="btn btn-warning" href="{{ route('mobile.store.checkout', \Session::get('store')) }}">{{ __('Go to Checkout') }}</a>
               </div>
             </div>
           @endif

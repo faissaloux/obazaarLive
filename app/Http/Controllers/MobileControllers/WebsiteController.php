@@ -8,7 +8,11 @@ use \Carbon\Carbon;
 use \App\Helpers\EmailHelper;
 use \App\Models\
 {
+<<<<<<< HEAD
     Product, Slider, BasePages, Stores, WishList, User,Orders,ProductCategories
+=======
+    Product, Slider, BasePages, Stores, WishList, User, Shipping, Addresses
+>>>>>>> b12db92a2eaf22c6e494a413c9e3edf4522127dd
 };
 
 class WebsiteController extends Controller
@@ -163,6 +167,60 @@ class WebsiteController extends Controller
         return redirect()->back()->with('error', trans('user.pwd.wrong.match'));
     }
 
+    public function shipping_set($store, $id)
+    {
+        $user_id    = \Auth::user()->id;
+        $shippping  = Addresses::where('user_id', $user_id)->where('is_shipping', true)->first();
+        if ($shippping)
+        {
+            $shippping->is_shipping = false;
+            $shippping->save();
+        }
+        $hop = Addresses::find($id);
+        $hop->is_shipping = true;
+        $hop->save();
+
+        return redirect()->back()->with('success', trans('user.shipping.shipping'));
+    }
+
+    public function checkout()
+    {
+        $shipping = Shipping::where('store_id', \Session::get('store_id'))->get();
+        return view($this->mobile_theme . 'checkout', compact('shipping'));
+    }
+
+    public static function send_alert($order_id)
+    {
+        define('API_ACCESS_KEY', 'AAAA9g3hmXo:APA91bHIRa6ZBf1HKU8KTsQ1UDjWWNq-OwsCKD9L1apL1yxohBsu_x5LLzgi7lPss-CbCD1lnaKOCIxO6pzzvgcpxmYKOfCZnSSwWcrQoW7_mbUBGjZ1iBCPyySUnZLkcinAYI557cvS');
+        $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
+
+        $notification = ['title' => 'O-BAZAAR ORDER', 'body' => 'O-BAZAAR ORDER', 'sound' => 1, "sound" => "default", "click_action" => "Open_URI"];
+
+        $extraNotificationData = ["message" => $notification, "moredata" => 'dd'];
+
+        $token = \Auth::user()->device_token;
+
+        $token = 'eV6EbavCTIm5kguCPJlsv4:APA91bEBzb0Sh1XFy4kMWzvbRm9-Lb6HKPLCaq0EDU6KhnebcWhTQaDx_jjGT0ev5BdwH-V8XGONIB9Wqe9gB5I4ftQliJ8Yd38PtyfYgZHmCJKgN-ikHtwBNNY3N5rUtnxkkREpHF4n';
+
+        //$token = \App\Models\User::where('store_id',\Session::get('store_id'))->get('device_token');
+
+        $fcmNotification = ['to' => $token, 'notification' => $notification, 'data' => ["uri" => "https://o-bazaar.com/merchant/orders/edit/".$order_id, "msg_type" => "Hello ", "request_id" => 7, "image_url" => 'https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png', "user_name" => "abdulwahab", "msg" => "msg"]];
+
+        $headers = ['Authorization: key=' . API_ACCESS_KEY, 'Content-Type: application/json'];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $fcmUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fcmNotification));
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        print_r($result);
+    }
+
     public function searchProccessSubmit(Request $request)
     {
         $q = $request->q;
@@ -172,6 +230,7 @@ class WebsiteController extends Controller
         $products->appends(['q' => $q]);
         return view($this->mobile_theme . 'shop-grid', compact('products', 'q'));
     }
+<<<<<<< HEAD
 
     public function category($store,$slug, Request $request)
     {
@@ -191,3 +250,6 @@ class WebsiteController extends Controller
         return view($this->mobile_theme . 'catagory', compact('products','categories'));
     }
 }
+=======
+}
+>>>>>>> b12db92a2eaf22c6e494a413c9e3edf4522127dd

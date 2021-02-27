@@ -4760,6 +4760,7 @@ li.suha-dropdown-menu .dropdown-trigger-btn.active i {
 .notification-area .list-group-item {
     border-color: #ebebeb;
     margin-bottom: 0.5rem;
+<<<<<<< HEAD
     border-radius: 0.5rem;
 }
 
@@ -4856,6 +4857,71 @@ li.suha-dropdown-menu .dropdown-trigger-btn.active i {
     z-index: 1;
 }
 
+=======
+    border-radius: 0.5rem; }
+    .notification-area .list-group-item .noti-icon {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 30px;
+              flex: 0 0 30px;
+      max-width: 30px;
+      background: #100DD1;
+      background: -webkit-gradient(linear, right top, left top, from(#100DD1), to(#0d3bd1));
+      background: linear-gradient(to left, #100DD1, #0d3bd1);
+      color: #ffffff;
+      text-align: center;
+      font-size: 1rem;
+      margin-right: .75rem;
+      border-radius: 50%; }
+      .notification-area .list-group-item .noti-icon i {
+        line-height: 30px; }
+      .notification-area .list-group-item .noti-icon.active::before {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #ffaf00;
+        content: "";
+        top: -2px;
+        right: -2px;
+        border-radius: 50%;
+        z-index: 1; }
+    .notification-area .list-group-item h6 {
+      font-size: 14px;
+      -webkit-transition-duration: 500ms;
+              transition-duration: 500ms;
+      color: #020310; }
+    .notification-area .list-group-item p {
+      margin-bottom: 0.5rem; }
+    .notification-area .list-group-item a {
+      font-size: 14px; }
+    .notification-area .list-group-item span {
+      font-size: 12px;
+      display: block;
+      color: #747794; }
+    .notification-area .list-group-item:first-child {
+      border-top-left-radius: .5rem;
+      border-top-right-radius: .5rem; }
+    .notification-area .list-group-item:last-child {
+      border-bottom-right-radius: .5rem;
+      border-bottom-left-radius: .5rem; }
+    .notification-area .list-group-item.readed {
+      background-color: #fef8ff; }
+      .notification-area .list-group-item.readed .noti-icon {
+        background: #00b894; }
+        .notification-area .list-group-item.readed .noti-icon::before {
+          display: none; }
+      .notification-area .list-group-item.readed h6 {
+        color: #747794; }
+    .notification-area .list-group-item:hover h6, .notification-area .list-group-item:focus h6 {
+      color: #100DD1; }
+  .notification-area .unread-notifications {
+    position: relative;
+    z-index: 1; }
+>>>>>>> b12db92a2eaf22c6e494a413c9e3edf4522127dd
 
 /* Night Mode */
 
