@@ -6,7 +6,14 @@
 @section('header-content')
     <div class="logo-wrapper">
         <a href="/">
-            <img src="{{ asset('assets/mobile/img/core-img/logo-small.png') }}" alt="">
+          @php
+          $logo = app('option')->get('logo');
+          @endphp
+          @if(!empty($logo))
+          <a class="ps-logo" href="/">
+          <img src="/uploads/{{ $logo }}" alt="">
+          </a>
+          @endif
         </a>
     </div>
     <div class="page-heading">

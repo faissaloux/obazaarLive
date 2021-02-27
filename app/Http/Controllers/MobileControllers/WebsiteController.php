@@ -8,7 +8,7 @@ use \Carbon\Carbon;
 use \App\Helpers\EmailHelper;
 use \App\Models\
 {
-    Product, Slider, BasePages, Stores, WishList, User,Orders
+    Product, Slider, BasePages, Stores, WishList, User,Orders,ProductCategories
 };
 
 class WebsiteController extends Controller
@@ -171,5 +171,23 @@ class WebsiteController extends Controller
         ->where('name->' . $lang, 'LIKE', '%' . $q . '%')->paginate(12);
         $products->appends(['q' => $q]);
         return view($this->mobile_theme . 'shop-grid', compact('products', 'q'));
+    }
+
+    public function category($store,$slug, Request $request)
+    {
+        $categories = ProductCategories::where('lang', \App::getLocale())
+                                        ->withCount(['products' => function($query){
+                                            $query->where('active', 1);
+                                        }])->get();
+
+        $category = ProductCategories::where('slug', $slug)->first();
+        if(!$category){
+            abort(404);
+        }
+        $products = Product::where('categoryID', $category->id)
+            ->where('active', 1)
+            ->paginate(12);
+
+        return view($this->mobile_theme . 'catagory', compact('products','categories'));
     }
 }

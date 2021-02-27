@@ -718,5 +718,8 @@
     "Your card number is incorrect.": "رقم بطاقتك غير صحيح",
     "Invalid Coupon!": "رمز التخفيض غير صالح!",
     "The card number is not a valid credit card number.": "رقم البطاقة ليس رقم بطاقة ائتمان صالح.",
+    "Didnt have an account?": "لم يكن لديك حساب؟",
+    "Already have an account?": "هل لديك حساب؟",
+    "View as Guest": "عرض كضيف",
     "wrong password": "كلمة مرور خاطئة"
 }

@@ -6,7 +6,14 @@
 @section('header-content')
 <div class="logo-wrapper">
   <a href="/">
-      <img src="{{ asset('assets/mobile/img/core-img/logo-small.png') }}" alt="">
+    @php
+    $logo = app('option')->get('logo');
+    @endphp
+    @if(!empty($logo))
+    <a class="ps-logo" href="/">
+    <img src="/uploads/{{ $logo }}" alt="">
+    </a>
+    @endif
   </a>
 </div>
 <div class="top-search-form">
@@ -35,7 +42,7 @@
   <div class="flash-sale-wrapper mt-3">
     <div class="container">
       <div class="flash-sale-slide owl-carousel">
-        {!! app('SiteSetting')->MerchantStoreCategories() !!}
+        {!! app('SiteSetting')->storecategoriesMobile() !!}
       </div>
     </div>
   </div>
@@ -61,13 +68,13 @@
                 </a>
                 <a class="product-title d-block" href="single-product.html">{{ $product->name }}</a>
                 <p class="sale-price">{{ $product->price }} €</p>
-                <div class="product-rating">
+                <!--div class="product-rating">
                   <i class="lni lni-star-filled"></i>
                   <i class="lni lni-star-filled"></i>
                   <i class="lni lni-star-filled"></i>
                   <i class="lni lni-star-filled"></i>
                   <i class="lni lni-star-filled"></i>
-                </div>
+                </div-->
                 <a class="btn btn-success btn-sm" 
                   id="addtocard"
                   href="{{ route('mobile.store.cart.add', ['id' => $product->id , 'store' => \Session::get('store')]) }}" 

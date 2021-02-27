@@ -1,6 +1,19 @@
 @extends(\System::$ACTIVE_MOBILE_THEME_PATH.'/layouts/layout') 
 @section('title')
-    Wishlist
+{{ __('Wishlist') }}
+@endsection
+
+@section('header-content')
+<div class="back-button">
+<a href="{{ url()->previous() }}">
+    <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
+    </svg>
+</a>
+</div>
+<div class="page-heading">
+  <h6 class="mb-0">{{ __('Wishlist') }}</h6>
+</div>
 @endsection
 
 @section('content')
@@ -11,14 +24,9 @@
         <div class="section-heading d-flex align-items-center justify-content-between">
           @if($wishlist->count() != 0)
               <div class="ps-section__header">
-                <h3>{{ __('Wishlist') }} ( {{$wishlist->count()}} )</h3>
+                {{ __('Wishlist') }} ( {{$wishlist->count()}} )
               </div>
-          @endif
-          <!-- Layout Options-->
-          <div class="layout-options">
-            <a class="active" href="{{ route('mobile.store.wishlist.grid' ,[  'store' => \Session::get('store')] ) }}"><i class="lni lni-grid-alt"></i></a>
-            <a href="{{ route('mobile.store.wishlist.list' ,[  'store' => \Session::get('store')] ) }}"><i class="lni lni-radio-button"></i></a>
-          </div>
+          @endif          
         </div>
         <div class="row g-3">
           <!-- Wishlist Product -->
@@ -48,7 +56,9 @@
               </div>
             @endforeach
           @else
-            <div class="ps-table--invoices">
+          <div class="col-12 col-md-12">
+            <div class="card top-product-card">
+              <div class="card-body">
                 <div class="row text-center">
                     <div class="empty-order">
                         <i class="icon-heart"></i>
@@ -57,12 +67,14 @@
                     </div>
                 </div>
             </div>
+            </div>
+          </div>
           @endif
           <!-- Select All Products-->
           @if($wishlist->count() != 0)
             <div class="col-12">
               <div class="select-all-products-btn"><a class="btn btn-danger w-100"  href="{{ route('mobile.store.wishlist.clear',['store' => \Session::get('store') ]) }}">
-                <i class="fa fa-trash" aria-hidden="true"></i>{{ __('clear wishlist') }}</a></div>
+                <i class="fa fa-trash" aria-hidden="true"></i>  {{ __('clear wishlist') }}</a></div>
             </div>
           @endif
             

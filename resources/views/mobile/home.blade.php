@@ -3,6 +3,24 @@
     home
 @endsection
 
+@section('header-content')
+  <div class="logo-wrapper">
+    <a href="/">
+      @php
+      $logo = app('option')->get('logo');
+      @endphp
+      @if(!empty($logo))
+      <a class="ps-logo" href="/">
+      <img src="/uploads/{{ $logo }}" alt="">
+      </a>
+      @endif
+    </a>
+  </div>
+  <div class="page-heading">
+    <h6 class="mb-0">O-Bazaar</h6>
+  </div>
+@endsection
+
 @section('content')
 <div class="page-content-wrapper">
   <div class="container">
@@ -21,32 +39,26 @@
     <div class="container">
       <div class="row g-3">
         @foreach($stores as $store)
-          <div class="col-12 col-md-6">
-            <div class="card weekly-product-card">
-              <div class="card-body d-flex align-items-center">
-                <div class="product-thumbnail-side">
-                  <a class="product-thumbnail d-block" href="{{ $store->slug }}">
-                    <img class="h-auto" src="{{ asset('uploads/'.$store->thumbnail) }}" alt="">
-                  </a>
-                </div>
-                <div class="product-description">
-                  <a class="product-title d-block" href="{{ $store->slug }}">{{ $store->name }}</a>
-                  <p class="product-description-location">
-                    <i class="lni lni-map-marker"></i>
-                    <span>{{ $store->street }}</span>
-                  </p>
-                  <p class="product-description-email">
-                    <i class="lni lni-envelope"></i>
-                    <span>{{ $store->owner->email }}</span>
-                  </p>
-                  <p class="product-description-phone">
-                    <i class="lni lni-phone"></i>
-                    <span>{{ $store->owner->phone }}</span>
-                  </p>
-                </div>
+        <div class="col-12 col-md-6">
+          <div class="card blog-card list-card store">
+            <!-- Post Image-->
+            <div class="post-img"><img src="{{ asset('uploads/'.$store->thumbnail) }}" alt=""></div>
+            <!-- Read More Button--><a class="btn btn-danger btn-sm read-more-btn" href="{{ $store->slug }}">{{ $store->name }}</a>
+            <!-- Post Content-->
+            <div class="post-content">
+              <div class="bg-shapes">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
               </div>
+              <!-- Post Catagory--><a class="post-catagory d-block" href="{{ $store->slug }}">{{ $store->name }}</a>
+              <!-- Post Title--><a class="post-title d-block" href="{{ $store->slug }}">{{ $store->street }}</a>
+              <!-- Post Meta-->
+              <div class="post-meta d-flex align-items-center justify-content-between flex-wrap"><a href="mailto:{{ $store->owner->email }}"><i >@</i>{{ $store->owner->email }}</a><span><i class="lni lni-phone"></i>{{ $store->owner->phone }}</span></div>
             </div>
           </div>
+        </div>
         @endforeach
       </div>
     </div>

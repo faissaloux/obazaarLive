@@ -703,5 +703,8 @@
     "allowed types : png, jpg": "erlaubte Typen: png, jpg",
     "the card number is not a valid card number": "Die Kartennummer ist keine gültige Kartennummer",
     "Your card number is incorrect.": "Ihre Kartennummer ist falsch",
+    "Didnt have an account?": "Hattest du keinen Account?",
+    "Already have an account?": "Sie haben bereits ein Konto?",
+    "View as Guest": "Als Gast anzeigen",
     "The card number is not a valid credit card number.": "Die Kartennummer ist keine gültige Kreditkartennummer."
 }

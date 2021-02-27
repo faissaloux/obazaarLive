@@ -41,6 +41,6 @@ class WishlistController extends Controller
     public function clear(Request $request) {
         $user = Auth::user();
         $user->wishlist->each->delete();
-        return redirect()->route('mobile.store.wishlist.list',['store' => $request->store ])->with('success',trans('wishlist.cleared'));   
+        return redirect()->route('mobile.store.wishlist.grid',['store' => $request->store ])->with('success',trans('wishlist.cleared'));   
     }
 }
