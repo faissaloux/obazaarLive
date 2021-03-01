@@ -131,10 +131,13 @@
                <h3 class="stores-heading-h3 d-none">{{ __('explore') }}</h3>
                <div class="product-intro divide-line up-effect">
                   <div class="row">
-                  @foreach($stores_categories->chunk(3) as $items)
+                  @foreach($stores->chunk(3) as $items)
+                  
                      @foreach($items as $product)
                         @if(System::ismobile())
                            @if($product->id != 68)
+
+                        
                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 d-sm-none d-lg-none d-md-none">
                               <article class="ps-block--store-2">
                                  <div class="ps-block__content bg--cover" data-background="https://i.imgur.com/YSn2gIJ.png">
@@ -145,7 +148,7 @@
                                        <p>
                                           <i class="icon-telephone pull-left mt-1"></i>
                                           <span dir="ltr">
-                                             <a class="phone-link" href="tel:{{ $product->store->owner->phone }}">{{ $product->store->owner->phone }}</a>
+                                             <a class="phone-link" href="tel:{{ $product->owner->phone }}">{{ $product->owner->phone }}</a>
                                           </span>
                                        </p>
                                     </figure>
@@ -154,27 +157,47 @@
                                     <a class="ps-block__user" href="{{ $product->slug }}">
                                     <img class="stroephimg" src="{!!  $product->presentThumbnailback() !!}" alt="">
                                     </a>
+                                    <a class="ps-btn" href="{{ route('home', ['store_category' => $store_category, 'store' => $product->slug]) }}">{{ __('Visit Store') }}</a>
+                                 </div>
+                              </article>
+                           </div>
+
+                           @endif
+                        @else
+                           @if($product->id != 68)
+                           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 hidden-xs inpconly ">
+                              <article class="ps-block--store">
+                                 <div class="ps-block__thumbnail bg--cover" data-background="{!!  $product->presentThumbnailback() !!}"></div>
+                                 <div class="ps-block__content">
+                                    <div class="ps-block__author"></a><a class="ps-btn" href="{{ route('home', ['store_category' => $store_category, 'store' => $product->slug]) }}">{{ __('Visit Store') }}</a></div>
+                                    <h4>{{ $product->name }}</h4>
+                                    <ul class="ps-block__contact">
+                                        <li><i class="icon-map-marker"></i> {{ $product->street }}</li>
+                                        <li>
+                                            <i class="icon-envelope"></i>
+                                            <a href="mailto:{{ $product->owner->email }}">{{ $product->owner->email }}</a>
+                                        </li>
+                                        <li>
+                                            <i class="icon-telephone"></i>
+                                            <span dir="ltr">
+                                                <a href="tel:{{ $product->owner->phone }}">{{ $product->owner->phone }}</a>
+                                            </span>
+                                        </li>
+                                    </ul>
                                  </div>
                               </article>
                            </div>
                            @endif
-                        @else
-                           @if($product->id != 68)
-                              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 hidden-xs inpconly ">
-                                 <article class="ps-block--store">
-                                    <div class="ps-block__thumbnail bg--cover" data-background="{!!  $product->presentThumbnailback() !!}">
-                                       <a class="category-title" href="{{ $product->slug }}">{{ $product->name }}</a>
-                                    </div>
-                                 </article>
-                              </div>
-                           @endif
                         @endif
+                     
+                     
                      @endforeach
+                  
                   @endforeach
                </div>
                </div>
                <div class="home-pagination">
-                  {{ $stores_categories->links() }}
+                  {{ $stores->links() }}
                </div>
             </div>
          </div>

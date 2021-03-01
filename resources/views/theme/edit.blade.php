@@ -10,7 +10,7 @@
             <div class="ps-breadcrumb">
                 <div class="container">
                     <ul class="breadcrumb">
-                        <li><a href="{{ route('home',['store' => $store ]) }}"><i class="icon-home"></i></a></li>
+                        <li><a href="{{ route('home',['store' => $store, 'store_category' => $store_category ]) }}"><i class="icon-home"></i></a></li>
                         <li>{{ __('Dashboard') }}</li>
                     </ul>
                 </div>
@@ -21,7 +21,7 @@
                     @include(\System::$ACTIVE_THEME_PATH.'/elements.sidebar')
                     <div class="col-lg-8">
                         <div class="ps-section__right">
-                            <form class="ps-form--account-setting" action="{{ route('update',['store' => $store ]) }}" method="post">
+                            <form class="ps-form--account-setting" action="{{ route('update',['store' => $store, 'store_category' => $store_category ]) }}" method="post">
                                 @csrf
                                 <div class="ps-form__header">
                                     <h3> {{ __('Edit Account Information') }}</h3>

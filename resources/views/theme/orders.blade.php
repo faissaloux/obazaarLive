@@ -10,7 +10,7 @@
             <div class="ps-breadcrumb">
                 <div class="container">
                     <ul class="breadcrumb">
-                        <li><a href="{{ route('home',['store' => $store ]) }}"><i class="icon-home"></i></a></li>
+                        <li><a href="{{ route('home',['store' => $store, 'store_category' => $store_category ]) }}"><i class="icon-home"></i></a></li>
                         <li>{{ __('Orders') }}</li>
                     </ul>
                 </div>
@@ -44,11 +44,11 @@
                                                <tbody>
                                                 @foreach(Auth::user()->orders as $order )
                                                    <tr>
-                                                       <td><a href="{{ route('orders_detail',['id' => $order->id , 'store' => $store ]) }}">{{ $order->id }}</a></td>
+                                                       <td><a href="{{ route('orders_detail',['id' => $order->id , 'store' => $store, 'store_category' => $store_category ]) }}">{{ $order->id }}</a></td>
                                                        <td>{{ $order->created_at->diffForHumans() }}</td>
                                                        <td>{{ $order->statue() }}</td>
                                                        <td>{{ $order->total }} {{ System::currency() }}</td>
-                                                       <td><a href="{{ route('orders_detail',['id' => $order->id , 'store' => $store ]) }}">{{ __('order details') }}</a></td>
+                                                       <td><a href="{{ route('orders_detail',['id' => $order->id , 'store' => $store, 'store_category' => $store_category ]) }}">{{ __('order details') }}</a></td>
                                                    </tr>
                                                 @endforeach
                                                </tbody> 

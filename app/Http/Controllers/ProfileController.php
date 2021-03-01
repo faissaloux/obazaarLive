@@ -19,7 +19,7 @@ class ProfileController extends Controller {
 
 
 
-    public function passwordUpdate($store,Request $request) {
+    public function passwordUpdate($store_category, $store, Request $request) {
 
 
         $user = $request->user();
@@ -39,7 +39,7 @@ class ProfileController extends Controller {
 
         if (!Hash::check($request->password, $user->password)) {
 
-            return redirect()->route('password',['store' => $store ])->with('error',trans('wrong password'));
+            return redirect()->route('password',['store' => $store, 'store_category' => $store_category ])->with('error',trans('wrong password'));
         }
 
 
@@ -48,10 +48,10 @@ class ProfileController extends Controller {
                 $user->password = Hash::make($request->newpassword);
                 $user->save();
 
-            return redirect()->route('password',['store' => $store ])->with('success',trans('user.pwd.updated'));
+            return redirect()->route('password',['store' => $store, 'store_category' => $store_category ])->with('success',trans('user.pwd.updated'));
         }
 
-        return redirect()->route('password',['store' => $store ])->with('error','wrong password');
+        return redirect()->route('password',['store' => $store, 'store_category' => $store_category ])->with('error','wrong password');
     }
     
 
@@ -62,7 +62,7 @@ class ProfileController extends Controller {
     }
 
 
-    public function update_shipping($store,$id,Request $request) {
+    public function update_shipping($store_category, $store, $id, Request $request) {
 
             $address = Addresses::find($id);
             $address->given_name   = $request->given_name;
@@ -74,18 +74,18 @@ class ProfileController extends Controller {
             $address->phone        = $request->phone;
             $address->save();
             
-            return redirect()->route('adresses',['store' => $store ])->with('success',trans('user.shipping.updated'));
+            return redirect()->route('adresses',['store' => $store, 'store_category' => $store_category ])->with('success',trans('user.shipping.updated'));
     }
 
 
-    public function shipping_delete($store,$id) {
-            Addresses::find($id)->delete();
-            return redirect()->route('adresses',['store' => $store ])->with('success',trans('user.shipping.removed'));
+    public function shipping_delete($store_category, $store, $id) {
+        Addresses::find($id)->delete();
+        return redirect()->route('adresses',['store' => $store, 'store_category' => $store_category ])->with('success',trans('user.shipping.removed'));
     }       
 
 
 
-    public function shipping_default($store,$id){
+    public function shipping_default($store_category, $store, $id){
         $user_id   = Auth::user()->id;
         $shippping = Addresses::where('user_id',$user_id)->where('is_primary',true)->first();
         if($shippping) {
@@ -95,7 +95,7 @@ class ProfileController extends Controller {
         $hop = Addresses::find($id);
         $hop->is_primary= true;
         $hop->save();                               
-        return redirect()->route('adresses',['store' => $store ])->with('success',trans('user.shipping.default'));
+        return redirect()->route('adresses',['store' => $store, 'store_category' => $store_category ])->with('success',trans('user.shipping.default'));
     }
 
 
@@ -108,7 +108,7 @@ class ProfileController extends Controller {
 
 
 
-    public function  update($store , Request $request) {
+    public function  update($store_category, $store , Request $request) {
         $user = Auth::user();
         $validator = Validator::make($request->all(), [
           'email' => 'required|email|unique:users,email,'.$user->id, 
@@ -122,9 +122,9 @@ class ProfileController extends Controller {
                 $user->phone = $request->phone;
             }
             $user->save();
-            return redirect()->route('edit',['store' => $store ])->with('success',trans('user.account.updated'));
+            return redirect()->route('edit',['store' => $store, 'store_category' => $store_category ])->with('success',trans('user.account.updated'));
         }
-        return redirect()->route('user',['store' => $store ]);  
+        return redirect()->route('user',['store' => $store, 'store_category' => $store_category ]);  
 
     }
 

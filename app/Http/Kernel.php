@@ -72,6 +72,7 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\IsAdmin::class,
         'manager' => \App\Http\Middleware\IsManager::class,
         'store' => \App\Http\Middleware\Store::class,
+        'store_category' => \App\Http\Middleware\StoreCategory::class,
         'user' => \App\Http\Middleware\IsUser::class,
         'Account' => \App\Http\Middleware\Account::class,
         'MAccount' => \App\Http\Middleware\mobile\Account::class,

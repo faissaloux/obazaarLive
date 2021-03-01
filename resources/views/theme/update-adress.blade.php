@@ -21,7 +21,7 @@
             <div class="col-lg-8 order-lg-last dashboard-content">
                 <h2>{{ __('Add new adress') }}  </h2>
 
-                <form action="{{ route('shipping.update',['id' => $address->id , 'store' => $store]) }}" method='post'>
+                <form action="{{ route('shipping.update',['id' => $address->id , 'store' => $store, 'store_category' => $store_category]) }}" method='post'>
                     @csrf
                     <div class="form-group required-field">
                         <label>{{ __('Full Name ') }}</label>

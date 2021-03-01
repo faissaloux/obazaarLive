@@ -11,7 +11,7 @@
 			<div class="ps-breadcrumb">
                 <div class="container">
                     <ul class="breadcrumb">
-                        <li><a href="{{ route('home',['store' => $store ]) }}"><i class="icon-home"></i></a></li>
+                        <li><a href="{{ route('home',['store' => $store, 'store_category' => $store_category ]) }}"><i class="icon-home"></i></a></li>
                         <li>{{ __('account') }}</li>
                         <li>{{ __('Password') }}</li>
                     </ul>
@@ -23,7 +23,7 @@
 						@include(\System::$ACTIVE_THEME_PATH.'/elements.sidebar')
 						<div class="col-lg-8">
 							<div class="ps-section__right">
-								<form class="ps-form--account-setting" action="{{ route('password-update',['store' => $store ]) }}" method="post">
+								<form class="ps-form--account-setting" action="{{ route('password-update',['store' => $store, 'store_category' => $store_category ]) }}" method="post">
 									@csrf
 									<div class="ps-form__header">
 										<h3> {{ __('Password') }}</h3>

@@ -9,7 +9,7 @@ $factory->define(StoresCategory::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
 		'slug' => $faker->slug,
-		'image' => 'products/'.$faker->uuid.'.jpg',
+		'image' => 'storesCategories/defaultCatImg'.$faker->numberBetween($min = 1, $max = 4).'.jpg',
 		'lang' => $faker->randomElement(['en', 'fr', 'ar'])
     ];
 });

@@ -23,7 +23,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.0/css/lightgallery.min.css" />
    </head>
-<body class="@yield('bodyClass')  @if(Auth::check())  has-logged   @endif @if(!\System::shoppingCartIsNotEmpty()) cart-empty @endif" data-auth-id="{{ \System::userId() }}" data-slug="{{$store}}" data-store-id="{{ \System::currentStoreId() }}" >
+<body class="@yield('bodyClass')  @if(Auth::check())  has-logged   @endif @if(!\System::shoppingCartIsNotEmpty()) cart-empty @endif" data-auth-id="{{ \System::userId() }}" data-store-category="{{ \Session::get('store_category') }}" data-slug="{{$store}}" data-store-id="{{ \System::currentStoreId() }}" >
       @include(\System::$ACTIVE_THEME_PATH.'/elements/alerts')
       <header class="header header--standard header--market-place-1" data-sticky="true">
          <div class="header__top">
@@ -36,7 +36,7 @@
                      @auth
                      <li><a href="/logout">{{ __('Logout') }}</a></li>
                      @endauth
-                     <li><a href="{{ route('edit', ['store' => $store ]) }}">{{ __('My Account') }}</a></li>
+                     <li><a href="{{ route('edit', ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('My Account') }}</a></li>
                      <li>
                         <div class="ps-dropdown language">
                            <a href="javascript:;">{{  app('SiteSetting')->PresentLang() }}</a>
@@ -65,7 +65,7 @@
                   $logo = option('logo');
                   @endphp
                   @if(!empty($logo))
-                  <a class="ps-logo" href="/{{ $store }}">
+                  <a class="ps-logo" href="/">
                   <img src="/uploads/{{ $logo }}" alt="">
                   </a>
                   @endif
@@ -75,8 +75,8 @@
                   <form class="ps-form--quick-search"
                         id="search-form"
                         autocomplete="off"
-                        data-link="{{ route('search' ,[  'store' => $store] ) }}"
-                        action="{{ route('search' ,[  'store' => $store] ) }}"
+                        data-link="{{ route('search' ,[  'store' => $store, 'store_category' => $store_category] ) }}"
+                        action="{{ route('search' ,[  'store' => $store, 'store_category' => $store_category] ) }}"
                         method="get"
                   >
                      
@@ -94,17 +94,17 @@
               </div>
                <div class="header__content-right">
                   <div class="header__actions">
-                     <a class="header__extra" href="{{ route('wishlist' ,[  'store' => $store] ) }}"><i class="icon-heart"></i><span><i class="wishlist_count">{{ $wishlist_count ?? '' }}</i></span>
+                     <a class="header__extra" href="{{ route('wishlist' ,[  'store' => $store, 'store_category' => $store_category] ) }}"><i class="icon-heart"></i><span><i class="wishlist_count">{{ $wishlist_count ?? '' }}</i></span>
                      </a>
                      <div class="ps-cart--mini">
-                        <a class="header__extra" href="{{ route('cart' ,[  'store' => $store] ) }}"><i class="icon-cart"></i><span><i>{{ ShoppingCart::count(false) }}</i></span></a>
+                        <a class="header__extra" href="{{ route('cart' ,[  'store' => $store, 'store_category' => $store_category] ) }}"><i class="icon-cart"></i><span><i>{{ ShoppingCart::count(false) }}</i></span></a>
                         <div class="ps-cart__content">
                            <div class="ps-cart__items">
                               @if(!empty(ShoppingCart::all())) @foreach(ShoppingCart::all() as $product)
                               <div class="ps-product--cart-mobile">
                                  <div class="ps-product__thumbnail"><a href="#"><img src="{{ $product['thumbnail'] }}" alt="product"></a></div>
                                  <div class="ps-product__content">
-                                    <a class="ps-product__remove" href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store ])  }}"><i class="icon-cross"></i></a><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store ]) }}">{{ $product['name'] }} </a>
+                                    <a class="ps-product__remove" href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store, 'store_category' => $store_category ])  }}"><i class="icon-cross"></i></a><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store, 'store_category' => $store_category ]) }}">{{ $product['name'] }} </a>
                                     <p><strong> {{ __('Sold by') }} </strong> {{ $store }}</p>
                                     <small dir="ltr">{{ $product['qty'] }} x {{ System::currency() }} {{ $product['price'] }}</small>
                                  </div>
@@ -125,15 +125,15 @@
                            @if(\System::shoppingCartIsNotEmpty())
                               <div class="ps-cart__footer">
                                  <h3 class="jahnama">{{ __('Total') }}<strong>{{ System::currency() }}{{  number_format((float)ShoppingCart::total(), 2, '.', '') }}</strong></h3>
-                                 <figure><a class="ps-btn" href="{{ route('cart', ['store' => $store ]) }}">{{ __('View Cart') }}</a><a class="ps-btn" href="{{ route('checkout', ['store' => $store ]) }}">{{ __('Checkout') }}</a></figure>
+                                 <figure><a class="ps-btn" href="{{ route('cart', ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('View Cart') }}</a><a class="ps-btn" href="{{ route('checkout', ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('Checkout') }}</a></figure>
                               </div>
                            @endif
                         </div>
                      </div>
                      @if(! auth::check())
                      <div class="ps-block--user-header">
-                        <div class="ps-block__left"> <a href="{{ route('edit', ['store' => $store ]) }}"><i class="icon-user"></i></a></div>
-                        <div class="ps-block__right"><a href="{{ route('user', ['store' => $store ]) }}">{{ __('Login') }}</a><a href="{{ route('user', ['store' => $store ]) }}"">{{ __('Register') }}</a></div>
+                        <div class="ps-block__left"> <a href="{{ route('edit', ['store' => $store, 'store_category' => $store_category ]) }}"><i class="icon-user"></i></a></div>
+                        <div class="ps-block__right"><a href="{{ route('user', ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('Login') }}</a><a href="{{ route('user', ['store' => $store, 'store_category' => $store_category ]) }}"">{{ __('Register') }}</a></div>
                      </div>
                      @endif
                   </div>
@@ -177,7 +177,7 @@
       <div class="ps-search" id="site-search">
          <a class="ps-btn--close" href="#"></a>
          <div class="ps-search__content">
-            <form class="ps-form--primary-search" action="{{ route('search' ,[  'store' => $store] ) }}" method="get">
+            <form class="ps-form--primary-search" action="{{ route('search' ,[  'store' => $store, 'store_category' => $store_category] ) }}" method="get">
                <input class="form-control"type="{{ __('Search') }}" name="q" value="{{ app('request')->input('q') }}" placeholder="{{ __('Search') }}">
                <button><i class="aroma-magnifying-glass"></i></button>
             </form>
@@ -191,7 +191,7 @@
                <div class="modal-body">
                   <h5 class="modaltitle">{{ __('item.added.cart.modal') }}</h5>
                   <center>
-                     <a href="{{ route('cart',['store'  => $store ]) }}"  class="ps-btn">{{ __('View Shopping Cart') }}</a>
+                     <a href="{{ route('cart',['store'  => $store, 'store_category' => $store_category ]) }}"  class="ps-btn">{{ __('View Shopping Cart') }}</a>
                      <a href="#" data-toggle="modal" title="{{ __('Continue Shopping') }}" data-target="#addedTocCart" class="ps-btn">{{ __('Continue Shopping') }}</a>
                   </center>
                </div>
@@ -204,7 +204,7 @@
                <div class="modal-body">
                   <h5 class="modaltitle">{{ __('wishlist.added') }}</h5>
                   <center>
-                     <a href="{{ route('wishlist',['store' => $store ]) }}"  class="ps-btn">{{ __('My Wishlist') }}</a>
+                     <a href="{{ route('wishlist',['store' => $store, 'store_category' => $store_category ]) }}"  class="ps-btn">{{ __('My Wishlist') }}</a>
                      <a href="#" data-toggle="modal" title="{{ __('Continue Shopping') }}" data-target="#modalwishlist" class="ps-btn">{{ __('Continue Shopping') }}</a>
                   </center>
                </div>

@@ -38,9 +38,10 @@ class Controller extends BaseController
     	
 
 	public function checkUserAuth() {
-		$store = Session::get('store');
+		$store          = Session::get('store');
+        $store_category = Session::get('store_category');
 	    if(!Auth::check()){
-    		return redirect()->route('user', ['store' =>$store ]);
+    		return redirect()->route('user', ['store' =>$store, 'store_category' => $store_category ]);
      	}
     }
 

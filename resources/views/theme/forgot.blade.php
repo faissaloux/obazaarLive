@@ -11,7 +11,7 @@
             <div class="ps-breadcrumb">
               <div class="container">
                  <ul class="breadcrumb">
-                    <li><a href="{{ route('home',['store' => $store ]) }}">Home</a></li>
+                    <li><a href="{{ route('home',['store' => $store, 'store_category' => $store_category ]) }}">Home</a></li>
                     <li>{{ __('account') }}</li>
                     <li>{{ __('Forgot Password') }}</li>
                  </ul>

@@ -20,7 +20,7 @@ class CartController extends Controller
         return view ($this->theme.'cart',compact('cart','total'));
     }
 
-    public function add($store,$id,Request $request) {
+    public function add(Request $request, $store_category, $store, $id) {
         $quantity = $request->has('quantity') ? $request->quantity : 1;
         (new Cart())->add($id,$quantity);
         if($request->ajax()){
@@ -30,7 +30,7 @@ class CartController extends Controller
         return redirect()->route('cart',compact('store'))->with('message',trans('cart.added'));
     }
    
-    public function remove(Request $request ,$store,$id){
+    public function remove(Request $request, $store, $id){
         (new Cart())->remove($request->product_id,$id);
         return redirect()->back()->with('message',trans('cart.removed'));
         return redirect()->route('cart',compact('store'))->with('message',trans('cart.removed'));

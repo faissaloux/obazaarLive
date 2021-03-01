@@ -31,8 +31,8 @@
                               <tr >
                                  <td>
                                     <div class="ps-product--cart">
-                                       <div class="ps-product__thumbnail"><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store ]) }}"><img src="{{ $product['thumbnail'] }}" alt=""></a></div>
-                                       <div class="ps-product__content"><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store ]) }}">{{ $product['name'] }}</a>
+                                       <div class="ps-product__thumbnail"><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store, 'store_category' => $store_category ]) }}"><img src="{{ $product['thumbnail'] }}" alt=""></a></div>
+                                       <div class="ps-product__content"><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store, 'store_category' => $store_category ]) }}">{{ $product['name'] }}</a>
                                        </div>
                                     </div>
                                  </td>
@@ -45,13 +45,13 @@
                                     </div>
                                  </td>
                                  <td>{{ System::currency() }} <span class="price">{{ number_format((float)$product['total'], 2, '.', '') }}</span></td>
-                                 <td><a href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store , 'product_id' => $product['id']] )  }}"><i class="icon-cross"></i></a></td>
+                                 <td><a href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store, 'store_category' => $store_category , 'product_id' => $product['id']] )  }}"><i class="icon-cross"></i></a></td>
                               </tr>
                               @endforeach
                            </tbody>
                         </table>
                         <div class="ps-section__cart-actions">
-                           <a class="ps-btn" href="{{ route('shop', ['store' => $store]) }}"><i class=""></i> {{ __('Continue Shopping') }}</a><a class="ps-btn ps-btn--outline" href="{{ route('cart_clear', ['store' => $store]) }}"><i class="icon-cross"></i> {{ __('Clear Shopping Cart') }}</a>
+                           <a class="ps-btn" href="{{ route('shop', ['store' => $store, 'store_category' => $store_category]) }}"><i class=""></i> {{ __('Continue Shopping') }}</a><a class="ps-btn ps-btn--outline" href="{{ route('cart_clear', ['store' => $store, 'store_category' => $store_category]) }}"><i class="icon-cross"></i> {{ __('Clear Shopping Cart') }}</a>
                         </div>
                      
                      @else
@@ -84,7 +84,7 @@
                                  <span class="preis">{{ number_format((float)$product['total'], 2, '.', '') }}</span>  
                                  </span>
                                  <span class="ps-block__shipping product-qty ">
-                                 <a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store]) }}"> 
+                                 <a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store, 'store_category' => $store_category]) }}"> 
                                  {{ $product['name'] }} × <i>{{ $product['qty'] }} </i>
                                  </a>
                                  </span>
@@ -94,7 +94,7 @@
                            <h3>{{ __('Order Total') }} <span>{{ System::currency() }} <i class="TotalPrice"> {{ number_format((float)ShoppingCart::totalPrice(), 2, '.', '') }}</i></span></h3>
                         </div>
                      </div>
-                     <a class="ps-btn ps-btn--fullwidth" href="{{ route('checkout', ['store' => $store]) }}">{{ __('Go to Checkout') }}</a>
+                     <a class="ps-btn ps-btn--fullwidth" href="{{ route('checkout', ['store' => $store, 'store_category' => $store_category]) }}">{{ __('Go to Checkout') }}</a>
                   </div>
                @endif
             </div>

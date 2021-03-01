@@ -560,3 +560,13 @@ i.icon-chevron-left {
 .ps-btn, button.ps-btn {
     color: white;
 }
+
+.category-title {
+    position: absolute;
+    bottom: 25px;
+    background-color: #FFF;
+    color: #000;
+    right: 20px;
+    padding: 10px 21px;
+    border-radius: 20px;
+}

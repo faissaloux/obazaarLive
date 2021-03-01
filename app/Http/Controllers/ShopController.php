@@ -22,7 +22,7 @@ class ShopController extends Controller {
         return view($this->theme.'shop',compact('products', 'categories'));
     }
 
-    public function product($store,$id) {
+    public function product($store_category, $store, $id) {
         if(is_numeric($id)){
             $product = Product::find($id);
         }

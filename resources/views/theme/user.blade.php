@@ -20,7 +20,7 @@
             </ul>
             <div class="ps-tabs">
                <div class="ps-tab active" id="sign-in">
-                  <form class="" action="{{ route('auth-user',['store' => $store]) }}" method="post">
+                  <form class="" action="{{ route('auth-user',['store' => $store, 'store_category' => $store_category]) }}" method="post">
                      @csrf
                      
                      <div class="ps-form__content">
@@ -29,7 +29,7 @@
                            <input type="email" placeholder="{{ __('Email address') }}"  value="{{ old('username') }}" name="username" class="form-control" id="login-email" required="">
                         </div>
                         <div class="form-group form-forgot">
-                           <input type="password" placeholder="{{ __('Password') }}" name="password" class="form-control thepass" id="login-password" required=""><a class="tit" href="javascript:;"><i class="icon-eye text-muted"></i></a><a class="reset_password" href="{{ route('forgot',['store' => $store]) }}">{{ __('Forgot Password') }}</a>
+                           <input type="password" placeholder="{{ __('Password') }}" name="password" class="form-control thepass" id="login-password" required=""><a class="tit" href="javascript:;"><i class="icon-eye text-muted"></i></a><a class="reset_password" href="{{ route('forgot',['store' => $store, 'store_category' => $store_category]) }}">{{ __('Forgot Password') }}</a>
                         </div>
                         <div class="form-group">
                            <div class="ps-checkbox">
@@ -53,7 +53,7 @@
                   </form>
                </div>
                <div class="ps-tab" id="register">
-                  <form class="" action="{{ route('registration',['store' => $store]) }}" method="post">
+                  <form class="" action="{{ route('registration',['store' => $store, 'store_category' => $store_category]) }}" method="post">
                      @csrf
                      <div class="ps-form__content">
                         <h5>{{ __('Register account') }}</h5>

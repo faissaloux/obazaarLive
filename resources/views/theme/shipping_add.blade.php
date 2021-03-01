@@ -9,7 +9,7 @@
     <div class="ps-breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="{{ route('home',['store' => $store ]) }}"><i class="icon-home"></i></a></li>
+                <li><a href="{{ route('home',['store' => $store, 'store_category' => $store_category ]) }}"><i class="icon-home"></i></a></li>
                 <li>{{ __('shipping') }}</li>
             </ul>
         </div>
@@ -21,7 +21,7 @@
             <div class="col-lg-8">
                 <h2>{{ __('Add new adress') }}  </h2>
 
-                <form action="{{ route('shipping.add',['store' => $store ]) }}" method='post'>
+                <form action="{{ route('shipping.add',['store' => $store, 'store_category' => $store_category ]) }}" method='post'>
                     @csrf
                     <div class="form-group required-field">
                         <label>{{ __('Full Name ') }}</label>
