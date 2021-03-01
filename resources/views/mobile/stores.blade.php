@@ -38,11 +38,12 @@
   <div class="weekly-best-seller-area py-3">
     <div class="container">
       <div class="row g-3">
-        @foreach($stores_categories as $category)
+        @foreach($stores as $store)
         <div class="col-12 col-md-6">
           <div class="card blog-card list-card store">
             <!-- Post Image-->
-            <div class="post-img"><img src="{{ asset('uploads/'.$category->image) }}" alt=""></div>
+            <div class="post-img"><img src="{{ asset('uploads/'.$store->thumbnail) }}" alt=""></div>
+            <!-- Read More Button--><a class="btn btn-danger btn-sm read-more-btn" href="{{ route('home', ['store_category' => $store_category, 'store' => $store->slug]) }}">{{ $store->name }}</a>
             <!-- Post Content-->
             <div class="post-content">
               <div class="bg-shapes">
@@ -51,8 +52,10 @@
                 <div class="circle3"></div>
                 <div class="circle4"></div>
               </div>
-              <!-- Post Catagory--><a class="post-catagory d-block" href="{{ $category->slug }}">{{ $category->name }}</a>
+              <!-- Post Catagory--><a class="post-catagory d-block" href="{{ route('home', ['store_category' => $store_category, 'store' => $store->slug]) }}">{{ $store->name }}</a>
+              <!-- Post Title--><a class="post-title d-block" href="{{ route('home', ['store_category' => $store_category, 'store' => $store->slug]) }}">{{ $store->street }}</a>
               <!-- Post Meta-->
+              <div class="post-meta d-flex align-items-center justify-content-between flex-wrap"><a href="mailto:{{ $store->owner->email }}"><i >@</i>{{ $store->owner->email }}</a><span><i class="lni lni-phone"></i><a href="tel:{{$store->owner->phone}}">{{ $store->owner->phone }}</a></span></div>
             </div>
           </div>
         </div>

@@ -19,7 +19,7 @@
           <div class="modal-body">
              <h5 class="modaltitle">{{ __('item.added.cart.modal') }}</h5>
              <center>
-                <a class="btn btn-warning ps-btn" href="{{ route('mobile.store.cart.index',['store'  => \Session::get('store') ]) }}">{{ __('View Shopping Cart') }}</a>
+                <a class="btn btn-warning ps-btn" href="{{ route('mobile.store.cart.index',['store' => \Session::get('store'), 'store_category' => \Session::get('store_category') ]) }}">{{ __('View Shopping Cart') }}</a>
                 <a class="btn btn-success ps-btn" href="#" data-toggle="modal" title="{{ __('Continue Shopping') }}" data-target="#addedTocCart">{{ __('Continue Shopping') }}</a>
              </center>
           </div>
@@ -34,7 +34,7 @@
          <div class="modal-body">
             <h5 class="modaltitle">{{ __('wishlist.added') }}</h5>
             <center>
-               <a class="btn btn-warning ps-btn" href="{{ route('mobile.store.wishlist.grid',['store'  => \Session::get('store') ]) }}">{{ __('My Wishlist') }}</a>
+               <a class="btn btn-warning ps-btn" href="{{ route('mobile.store.wishlist.grid',['store' => \Session::get('store'), 'store_category' => \Session::get('store_category') ]) }}">{{ __('My Wishlist') }}</a>
                <a class="btn btn-success ps-btn" href="#" data-toggle="modal" title="{{ __('Continue Shopping') }}" data-target="#modalwishlist">{{ __('Continue Shopping') }}</a>
             </center>
          </div>

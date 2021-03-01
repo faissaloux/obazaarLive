@@ -16,11 +16,11 @@
     </div>
     <!-- Sidenav Nav-->
     <ul class="sidenav-nav ps-0">
-      <li><a href="{{ route('mobile.store.profile.index', [  'store' => \Session::get('store')]) }}"><i class="lni lni-user"></i>{{ __('My Profile') }}</a></li>
-      <li><a href="{{ route('mobile.store.profile.password.index', [  'store' => \Session::get('store')]) }}"><i class="lni lni-lock"></i>{{ __('Password') }}</a></li>
-      <li><a href="{{ route('mobile.store.adresses.index', ['store' => \Session::get('store')]) }}"><i class="lni lni-map"></i>{{ __('Addresses') }}</a></li>
-      <li><a href="{{ route('mobile.store.orders.index',[ 'store' => \Session::get('store') ]) }}"><i class="lni lni-ship"></i>{{ __('Orders') }}</a></li>
-      <li><a href="{{ route('mobile.store.wishlist.grid' ,[  'store' => \Session::get('store')] ) }}"><i class="lni lni-shopping-basket"></i>{{ __('My Wishlist') }}<span class="{{ System::isRtl() ? 'me-3':'ms-3'}} badge badge-warning wishlist_count">{{ $wishlist_count ?? '' }}</a></li>
+      <li><a href="{{ route('mobile.store.profile.index', [  'store' => \Session::get('store'), 'store_category' => \Session::get('store_category')]) }}"><i class="lni lni-user"></i>{{ __('My Profile') }}</a></li>
+      <li><a href="{{ route('mobile.store.profile.password.index', [  'store' => \Session::get('store'), 'store_category' => \Session::get('store_category')]) }}"><i class="lni lni-lock"></i>{{ __('Password') }}</a></li>
+      <li><a href="{{ route('mobile.store.adresses.index', ['store' => \Session::get('store'), 'store_category' => \Session::get('store_category')]) }}"><i class="lni lni-map"></i>{{ __('Addresses') }}</a></li>
+      <li><a href="{{ route('mobile.store.orders.index',[ 'store' => \Session::get('store'), 'store_category' => \Session::get('store_category') ]) }}"><i class="lni lni-ship"></i>{{ __('Orders') }}</a></li>
+      <li><a href="{{ route('mobile.store.wishlist.grid' ,[  'store' => \Session::get('store'), 'store_category' => \Session::get('store_category')] ) }}"><i class="lni lni-shopping-basket"></i>{{ __('My Wishlist') }}<span class="{{ System::isRtl() ? 'me-3':'ms-3'}} badge badge-warning wishlist_count">{{ $wishlist_count ?? '' }}</a></li>
       <li><a href="{{ route('logout') }}"><i class="lni lni-power-switch"></i>{{ __('Sign Out') }}</a></li>
     </ul>
   @endguest

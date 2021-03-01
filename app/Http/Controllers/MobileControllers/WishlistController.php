@@ -10,7 +10,7 @@ use Auth;
 class WishlistController extends Controller
 {
     //add
-    public function add($store,$id,Request $request) {
+    public function add(Request $request, $store_category, $store,$id) {
         if (Auth::check()) {
             $user_id = Auth::user()->id;
             $data = [ 'user_id' => $user_id, 'productID' => $id ];
@@ -27,7 +27,7 @@ class WishlistController extends Controller
     }
 
     //remove
-    public function remove($store,$id,Request $request){
+    public function remove(Request $request, $store_category, $store,$id){
         $wish = WishList::find($id);
         if($wish){
             $wish->delete();
@@ -38,9 +38,9 @@ class WishlistController extends Controller
     }
 
     //clear
-    public function clear(Request $request) {
+    public function clear(Request $request, $store_category, $store) {
         $user = Auth::user();
         $user->wishlist->each->delete();
-        return redirect()->route('mobile.store.wishlist.grid',['store' => $request->store ])->with('success',trans('wishlist.cleared'));   
+        return redirect()->route('mobile.store.wishlist.grid',['store' => $store, 'store_category', $store_category ])->with('success',trans('wishlist.cleared'));   
     }
 }

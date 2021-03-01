@@ -174,6 +174,6 @@ class AccountController extends Controller
 
         Auth::loginUsingId($user->id);
 
-        return redirect()->route('mobile.stores')->with('success', trans('User registred successfully'));
+        return redirect()->route('mobile.categories')->with('success', trans('User registred successfully'));
     }
 }

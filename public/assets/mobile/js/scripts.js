@@ -1,9 +1,10 @@
 
-var slug = $("body").attr("data-slug");
-var wishlist = "";
-var cartupdate = "/" + slug + "/cart/update";
-var addtocard = "/" + slug + "/cart/add/";
-var loadcartAgain = "/loadcartAgain/" + slug + "";
+var slug                    = $("body").attr("data-slug");
+const store_category_slug   = $("body").attr("data-store-category");
+var wishlist                = "";
+const cartupdate            = "/" + store_category_slug + "/" + slug + "/cart/update";
+const addtocard             = "/" + store_category_slug + "/" + slug + "/cart/add/";
+const loadcartAgain         = "/loadcartAgain/" + slug + "";
 
 $(document).on('click', 'body #wishlistMb', function (e) {
   if (!$('body').hasClass('has-logged')) {

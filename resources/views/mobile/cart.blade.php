@@ -28,13 +28,13 @@
                   <tr >
                     <th scope="row">
                       <a class="remove-product" 
-                        href="{{ route('mobile.store.cart.remove', ['id' => $product->rawId() , 'store' => \Session::get('store') , 'product_id' => $product['id']] )  }}">
+                        href="{{ route('mobile.store.cart.remove', ['id' => $product->rawId() , 'store_category' => $store_category, 'store' => $store , 'product_id' => $product['id']] )  }}">
                           <i class="lni lni-close"></i>
                       </a>
                     </th>
-                    <td><a href="{{ route('mobile.store.product',['id' => $product->id , 'store' => \Session::get('store')]) }}"></a> <img src="{{ $product->thumbnail }}" alt=""></td>
+                    <td><a href="{{ route('mobile.store.product',['id' => $product->id , 'store_category' => $store_category, 'store' => $store]) }}"></a> <img src="{{ $product->thumbnail }}" alt=""></td>
                     <td>
-                      <a href="{{ route('mobile.store.product',['id' => $product->id , 'store' => \Session::get('store')]) }}">
+                      <a href="{{ route('mobile.store.product',['id' => $product->id , 'store_category' => $store_category, 'store' => $store]) }}">
                         {{ $product->name }}
                         <div class="product-col-{{ $product['id'] }}">
                           <span class="ps-block__shipping product-qty ">
@@ -78,7 +78,7 @@
                         <div class="empty-order">
                             <i class="icon-cart"></i>
                             <p>{{ __('Your shopping cart is empty') }}</p>
-                            <a class="ps-btn" href="/{{ \Session::get('store') }}">{{ __('Order now') }}</a>
+                            <a class="ps-btn" href="{{ route('mobile.store.home', ['store_category' => $store_category, 'store' => $store]) }}">{{ __('Order now') }}</a>
                         </div>
                   </div>
                 </div>
@@ -109,7 +109,7 @@
                 <h5 class="total-price mb-0">
                   <i class="TotalPrice"> {{ number_format(ShoppingCart::totalPrice(), 2, '.', '') }}</i> <i>{{ System::currency() }}</i>
                 </h5>
-                  <a class="btn btn-warning" href="{{ route('mobile.store.checkout', \Session::get('store')) }}">{{ __('Go to Checkout') }}</a>
+                  <a class="btn btn-warning" href="{{ route('mobile.store.checkout', ['store_category' => $store_category, 'store' => $store]) }}">{{ __('Go to Checkout') }}</a>
               </div>
             </div>
           @endif

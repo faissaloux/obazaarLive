@@ -17,7 +17,7 @@
 @section('content')
 <div class="page-content-wrapper">
   <div class="container">
-    <form action="{{ route('mobile.store.checkout.pay',['store' => $store]) }}" method="post">
+    <form action="{{ route('mobile.store.checkout.pay',['store_category' => $store_category, 'store' => $store]) }}" method="post">
       @csrf
       <input type="hidden" name="paymentmethod" value="">
       <div class="checkout-wrapper-area py-3 checkout-step-1">
@@ -45,12 +45,12 @@
                           <br> {{ $address->phone }}
                           <br>
                         </p>
-                        <a class="btn-link" href="{{ route('mobile.store.shipping.set', ['id' =>  $address->id , 'store' => $store]) }}">{{ __('ship here') }}</a>
+                        <a class="btn-link" href="{{ route('mobile.store.shipping.set', ['id' =>  $address->id , 'store_category' => $store_category, 'store' => $store]) }}">{{ __('ship here') }}</a>
                       </div>
                     </div>
                   @endforeach
                 </div>
-                <a class="btn btn-danger" href="{{ route('mobile.store.adresses.index', ['store' => \Session::get('store')]) }}">{{ __('+ New Address') }}</a>
+                <a class="btn btn-danger" href="{{ route('mobile.store.adresses.index', ['store_category' => $store_category, 'store' => $store]) }}">{{ __('+ New Address') }}</a>
               </div>
             </div>
           </div>

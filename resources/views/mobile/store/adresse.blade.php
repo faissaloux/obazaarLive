@@ -52,13 +52,13 @@
                     <div class="product-rating">{{ $addresse->state }}, {{ $addresse->housenumber }} ,  {{ $addresse->city }} , {{ $addresse->postal_code }} <br> {{ $addresse->country_code }} .</div>
                     <p class="product-rating"><i class="lni lni-phone"></i>{{ $addresse->phone }}</span></p>
                     <div class="row">
-                        <a class="col-md-6 adresses-btn btn btn-success btn-sm" href="{{ route('mobile.store.adresses.edit',['id' =>  $addresse->id , 'store' => \Session::get('store')  ]) }}"></i>{{ __('Edit') }}</a>
-                        <a class="col-md-6 adresses-btn btn btn-success btn-sm" href="{{ route('mobile.store.adresses.delete',['id' =>  $addresse->id , 'store' => \Session::get('store')  ]) }}"></i>{{ __('Delete') }}</a>
+                        <a class="col-md-6 adresses-btn btn btn-success btn-sm" href="{{ route('mobile.store.adresses.edit',['id' =>  $addresse->id , 'store' => $store, 'store_category' => $store_category  ]) }}"></i>{{ __('Edit') }}</a>
+                        <a class="col-md-6 adresses-btn btn btn-success btn-sm" href="{{ route('mobile.store.adresses.delete',['id' =>  $addresse->id , 'store' => $store, 'store_category' => $store_category  ]) }}"></i>{{ __('Delete') }}</a>
                     </div>
                     
                     @if(!$addresse->is_primary) 
                         <div class="row">
-                            <a class="col-md-12 adresses-btn btn btn-success btn-sm" href="{{ route('mobile.store.adresses.default',['id' =>  $addresse->id , 'store' => \Session::get('store') ]) }}">{{ __('set As Default') }}</a>
+                            <a class="col-md-12 adresses-btn btn btn-success btn-sm" href="{{ route('mobile.store.adresses.default',['id' =>  $addresse->id , 'store' => $store, 'store_category' => $store_category ]) }}">{{ __('set As Default') }}</a>
                         </div>
                     @endif
                 </div>
@@ -70,7 +70,7 @@
           <!-- Select All Products-->
           <div class="col-12">
             <div class="select-all-products-btn">
-                <a class="btn btn-danger w-100" href="{{ route('mobile.store.adresses.create', [  'store' => \Session::get('store')]) }}">{{ __('+ New Address') }}</a>
+                <a class="btn btn-danger w-100" href="{{ route('mobile.store.adresses.create', ['store' => $store, 'store_category' => $store_category]) }}">{{ __('+ New Address') }}</a>
             </div>
           </div>
         </div>

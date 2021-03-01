@@ -30,7 +30,7 @@
     </div>
     <!-- Contact Form-->
     <div class="contact-form mt-3 pb-3">
-      <form action="{{ route('mobile.store.adresses.add', ['store' => \Session::get('store')]) }}" method='post'>
+      <form action="{{ route('mobile.store.adresses.add', ['store' => $store, 'store_category' => $store_category]) }}" method='post'>
         @csrf
         <input class="form-control mb-3" name="given_name" type="text" placeholder="{{ __('Full Name ') }}">
         <input class="form-control mb-3" name="street" type="text" placeholder="{{ __('Street Address') }}">

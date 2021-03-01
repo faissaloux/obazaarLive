@@ -34,18 +34,18 @@
                 <div class="card top-product-card">
                   <div class="card-body">
                     <a class="btn btn-danger"
-                      href="{{ route('mobile.store.wishlist.remove', [  'store' => \Session::get('store'), 'id' => $wishlistItem->id ]) }}">
+                      href="{{ route('mobile.store.wishlist.remove', ['store' => $store, 'store_category' => $store_category, 'id' => $wishlistItem->id ]) }}">
                       <i class="fa fa-trash"></i>
                     </a>
-                    <a class="product-thumbnail d-block" href="{{ route('mobile.store.product', ['store' => \Session::get('store'), 'id' => $wishlistItem->product->id]) }}">
+                    <a class="product-thumbnail d-block" href="{{ route('mobile.store.product', ['store' => $store, 'store_category' => $store_category, 'id' => $wishlistItem->product->id]) }}">
                       <img class="mb-2" src="{{ $wishlistItem->product->thumbnail }}">
                     </a>
-                    <a class="product-title d-block" href="{{ route('mobile.store.product', ['store' => \Session::get('store'), 'id' => $wishlistItem->product->id]) }}">{{ $wishlistItem->product->name }}</a>
+                    <a class="product-title d-block" href="{{ route('mobile.store.product', ['store' => $store, 'store_category' => $store_category, 'id' => $wishlistItem->product->id]) }}">{{ $wishlistItem->product->name }}</a>
                     <p class="sale-price">{{ $wishlistItem->product->price }} €</p>
                     
                     <a class="btn btn-success btn-sm" 
                       id="addtocard"
-                      href="{{ route('mobile.store.cart.add', ['id' => $wishlistItem->product->id , 'store' => \Session::get('store')]) }}" 
+                      href="{{ route('mobile.store.cart.add', ['id' => $wishlistItem->product->id , 'store' => $store, 'store_category' => $store_category]) }}" 
                       data-product-id='{{$wishlistItem->product->id}}'>
                       <i class="lni lni-plus"></i>
                     </a>
@@ -62,7 +62,7 @@
                     <div class="empty-order">
                         <i class="icon-heart"></i>
                         <p>{{ __('You have no favorites') }}</p>
-                        <a class="ps-btn" href="/{{ \Session::get('store') }}">{{ __('Continue Shopping') }}</a>
+                        <a class="ps-btn" href="{{ route('home', ['store_category' => \Session::get('store_category'), 'store' => $store]) }}">{{ __('Continue Shopping') }}</a>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
           <!-- Select All Products-->
           @if($wishlist->count() != 0)
             <div class="col-12">
-              <div class="select-all-products-btn"><a class="btn btn-danger w-100"  href="{{ route('mobile.store.wishlist.clear',['store' => \Session::get('store') ]) }}">
+              <div class="select-all-products-btn"><a class="btn btn-danger w-100"  href="{{ route('mobile.store.wishlist.clear',['store' => $store, 'store_category' => $store_category ]) }}">
                 <i class="fa fa-trash" aria-hidden="true"></i>  {{ __('clear wishlist') }}</a></div>
             </div>
           @endif

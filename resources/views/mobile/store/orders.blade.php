@@ -31,7 +31,7 @@
                                 <div class="card-body">
                                 <div class="row">
                                     <div class="col-5">{{ __('Order N°') }} : </div>
-                                    <div class="col-7"><a href="{{ route('mobile.store.orders.orders_detail',['id' => $order->id , 'store' => \Session::get('store') ]) }}">{{ $order->id }}</a></div>
+                                    <div class="col-7"><a href="{{ route('mobile.store.orders.orders_detail',['id' => $order->id , 'store' => $store, 'store_category' => $store_category ]) }}">{{ $order->id }}</a></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-5">{{ __('Date') }} : </div>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-5">{{ __('order details') }} : </div>
-                                    <div class="col-7"><a href="{{ route('mobile.store.orders.orders_detail',['id' => $order->id , 'store' => \Session::get('store') ]) }}">{{ __('order details') }}</a></div>
+                                    <div class="col-7"><a href="{{ route('mobile.store.orders.orders_detail',['id' => $order->id , 'store' => $store, 'store_category' => $store_category ]) }}">{{ __('order details') }}</a></div>
                                 </div>
                                 </div>
                             </div>

@@ -24,21 +24,21 @@
                 <div class="card weekly-product-card">
                   <div class="card-body d-flex align-items-center">
                     <div class="product-thumbnail-side">
-                      <a class="product-thumbnail d-block"  href="{{ route('mobile.store.product',['id' => $wishlistItem->productID , 'store' => \Session::get('store')]) }}">
+                      <a class="product-thumbnail d-block"  href="{{ route('mobile.store.product',['id' => $wishlistItem->productID , 'store_category' => $store_category, 'store' => $store]) }}">
                         <img class="h-auto mb-2" src="{{ $wishlistItem->product->thumbnail }}">
                       </a>
                     </div>
                     <div class="product-description">
-                      <a class="product-title d-block" href="{{ route('mobile.store.product',['id' => $wishlistItem->productID , 'store' => \Session::get('store')]) }}">{{$wishlistItem->product->name }}</a>
+                      <a class="product-title d-block" href="{{ route('mobile.store.product',['id' => $wishlistItem->productID , 'store_category' => $store_category, 'store' => $store]) }}">{{$wishlistItem->product->name }}</a>
                       <p class="sale-price">{{ $wishlistItem->product->price }} €</p>
                       <a class="btn btn-success btn-sm" 
                         id="addtocard"
-                        href="{{ route('mobile.store.cart.add', ['id' => $wishlistItem->product->id , 'store' => \Session::get('store')]) }}" 
+                        href="{{ route('mobile.store.cart.add', ['id' => $wishlistItem->product->id , 'store_category' => $store_category, 'store' => $store]) }}" 
                         data-product-id='{{$wishlistItem->product->id}}'>
                         <i class="lni lni-plus"></i> Buy Now
                       </a>
                       <a class="btn btn-danger btn-sm"  
-                        href="{{ route('mobile.store.wishlist.remove', [  'store' => \Session::get('store'), 'id' => $wishlistItem->id ]) }}">
+                        href="{{ route('mobile.store.wishlist.remove', [  'store_category' => $store_category, 'store' => $store, 'id' => $wishlistItem->id ]) }}">
                         <i class="icon-cross"></i> Remove From Wishlist
                       </a>
                       </div>
@@ -61,7 +61,7 @@
           <!-- Select All Products-->
           @if($wishlist->count() != 0)
             <div class="col-12">
-              <div class="select-all-products-btn"><a class="btn btn-danger w-100"  href="{{ route('mobile.store.wishlist.clear',['store' => \Session::get('store') ]) }}">
+              <div class="select-all-products-btn"><a class="btn btn-danger w-100"  href="{{ route('mobile.store.wishlist.clear',['store_category' => $store_category, 'store' => $store ]) }}">
                 <i class="fa fa-trash" aria-hidden="true"></i>{{ __('clear wishlist') }}</a></div>
             </div>
           @endif

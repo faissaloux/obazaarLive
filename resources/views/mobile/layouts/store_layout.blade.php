@@ -22,7 +22,7 @@
     <div class="internet-connection-status" id="internetStatus"></div>
     {{-- Footer --}}
     <!-- Footer Nav-->
-    @include('mobile/inc/footer')
+    @include('mobile/inc/store_footer')
     @include('mobile/inc/scripts')
   </body>
 

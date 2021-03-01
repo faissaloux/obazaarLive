@@ -41,7 +41,7 @@
               <p class="mb-0"> {{ __('Didnt have an account?') }} <a class="ms-1" href="{{ route('mobile.register-view') }}">{{ __('Register') }}</a></p>
             </div>
             <!-- View As Guest-->
-            <div class="view-as-guest mt-3"><a class="btn" href="{{ route('mobile.stores') }}">{{ __('View as Guest') }}</a></div>
+            <div class="view-as-guest mt-3"><a class="btn" href="{{ route('mobile.categories') }}">{{ __('View as Guest') }}</a></div>
           </div>
         </div>
       </div>

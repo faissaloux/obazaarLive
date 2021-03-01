@@ -38,7 +38,7 @@
       <!-- User Meta Data-->
       <div class="card user-data-card">
         <div class="card-body">
-          <form action="{{ route('mobile.store.profile.update', \Session::get('store')) }}" method="post">
+          <form action="{{ route('mobile.store.profile.update', ['store' => $store, 'store_category' => $store_category]) }}" method="post">
             @csrf
             <div class="mb-3">
               <div class="title mb-2"><i class="lni lni-user"></i><span>{{ __('Username') }}</span></div>

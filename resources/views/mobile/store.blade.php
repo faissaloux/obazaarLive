@@ -17,7 +17,7 @@
   </a>
 </div>
 <div class="top-search-form">
-  <form action="{{ route('mobile.store.searchSubmit' , ['store' => \Session::get('store')]) }}" method="GET">
+  <form action="{{ route('mobile.store.searchSubmit' , ['store_category' => $store_category, 'store' => $store]) }}" method="GET">
     <input class="form-control" type="search" name="q" placeholder="{{ __('Search...') }}">
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
@@ -49,7 +49,7 @@
   <div class="top-products-area clearfix py-3">
     <div class="container">
       <div class="section-heading d-flex align-items-center justify-content-between">
-        <h6>{{ __('Top Products') }}</h6><a class="btn btn-danger btn-sm" href="{{ route('mobile.store.products', ['store' => \Session::get('store')]) }}">{{ __('View All') }}</a>
+        <h6>{{ __('Top Products') }}</h6><a class="btn btn-danger btn-sm" href="{{ route('mobile.store.products', ['store_category' => $store_category, 'store' => $store]) }}">{{ __('View All') }}</a>
       </div>
       <div class="row g-3">
         @foreach($products as $product)
@@ -59,11 +59,11 @@
                 <a class="wishlist-btn" 
                   id="wishlistMb"  
                   href="javascript:;" 
-                  data-link="{{ route('mobile.store.wishlist.add', ['store' => \Session::get('store'), 'id' => $product->id ]) }}">
+                  data-link="{{ route('mobile.store.wishlist.add', ['store_category' => $store_category, 'store' => $store, 'id' => $product->id ]) }}">
                   <i class="lni lni-heart"></i>
                 </a>
                 <a class="product-thumbnail d-block" 
-                  href="{{ route('mobile.store.product', ['store' => \Session::get('store'), 'id' => $product->id]) }}">
+                  href="{{ route('mobile.store.product', ['store_category' => $store_category, 'store' => $store, 'id' => $product->id]) }}">
                   <img class="mb-2" src="{{ $product->thumbnail }}">
                 </a>
                 <a class="product-title d-block" href="single-product.html">{{ $product->name }}</a>
@@ -77,7 +77,7 @@
                 </div-->
                 <a class="btn btn-success btn-sm" 
                   id="addtocard"
-                  href="{{ route('mobile.store.cart.add', ['id' => $product->id , 'store' => \Session::get('store')]) }}" 
+                  href="{{ route('mobile.store.cart.add', ['id' => $product->id , 'store_category' => $store_category, 'store' => $store]) }}" 
                   data-product-id='{{$product->id}}'>
                     <i class="lni lni-plus"></i>
                 </a>
