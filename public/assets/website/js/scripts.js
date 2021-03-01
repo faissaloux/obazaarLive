@@ -604,7 +604,7 @@ function searchKeyUp(link, formData, results) {
                                                     <img src="${response.products.data[i].thumbnail}"}>
                                                 </div>`);
 
-                    result.append(`<span>${response.products.data[i].name[lang]}</span>`);
+                    result.append(`<span>${JSON.parse(response.products.data[i].name)[lang]}</span>`);
                 }
                 $("p.result").click(function () {
                     let productId = $(this)[0].id;
