@@ -34,7 +34,6 @@ class SettingsController extends Controller
     }
 
     public function general(Request $request) {
-
        if($request->hasFile('logo')){
             $logo = $request->logo->store('media',['disk' => 'public']);   
             option(compact('logo'));  
