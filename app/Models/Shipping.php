@@ -10,7 +10,7 @@ use Jenssegers\Date\Date;
 
 class Shipping extends Base
 {
-     use SoftDeletes;
+  use SoftDeletes;
 
    protected $table = 'shipping';
     
@@ -18,9 +18,16 @@ class Shipping extends Base
    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
    public function PresentCost() {
+
+    
             return $this->cost;
   }
 
+  public function getCostAttribute($value)
+  {
+    return \ShoppingCart::totalPrice() > 30 ? 0 : $value;
+  }
 
-  
+
+
 }
