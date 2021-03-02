@@ -140,14 +140,6 @@
                                  <div class="ps-block__content bg--cover" data-background="https://i.imgur.com/YSn2gIJ.png">
                                     <figure>
                                        <h4>{{ $product->name }}</h4>
-                                       <br>
-                                       <p><i class="icon-map-marker pull-left"></i> {{ $product->street }}</p>
-                                       <p>
-                                          <i class="icon-telephone pull-left mt-1"></i>
-                                          <span dir="ltr">
-                                             <a class="phone-link" href="tel:{{ $product->store->owner->phone }}">{{ $product->store->owner->phone }}</a>
-                                          </span>
-                                       </p>
                                     </figure>
                                  </div>
                                  <div class="ps-block__author">
@@ -171,6 +163,30 @@
                         @endif
                      @endforeach
                   @endforeach
+                  @if(System::ismobile())
+                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 d-sm-none d-lg-none d-md-none">
+                        <article class="ps-block--store-2">
+                           <div class="ps-block__content bg--cover" data-background="https://i.imgur.com/YSn2gIJ.png">
+                              <figure>
+                                 <h4>{{ __('Other') }}</h4>
+                              </figure>
+                           </div>
+                           <div class="ps-block__author">
+                              <a class="ps-block__user" href="{{ route('stores-default', \Session::get('store_category')) }}">
+                              <img class="stroephimg" src="{{ asset('assets/website/img/store_category_default.jpg') }}" alt="">
+                              </a>
+                           </div>
+                        </article>
+                     </div>
+                  @else
+                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 hidden-xs inpconly ">
+                        <article class="ps-block--store">
+                           <div class="ps-block__thumbnail bg--cover" data-background="{{ asset('assets/website/img/store_category_default.jpg') }}">
+                              <a class="category-title" href="{{ route('stores-default') }}">{{ __('Other') }}</a>
+                           </div>
+                        </article>
+                     </div>
+                  @endif
                </div>
                </div>
                <div class="home-pagination">

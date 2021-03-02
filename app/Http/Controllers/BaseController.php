@@ -25,4 +25,13 @@ class BaseController extends Controller
         
         return view($view, compact('sliders', 'stores'));   
     }
+
+    public function stores_default()
+    {
+        $sliders    = HomeSlider::get();
+        $stores     = Stores::with('owner')->where('hide', null)->whereNull('category_id')->paginate(12);
+        $view       = $this->theme.'stores';
+        
+        return view($view, compact('sliders', 'stores'));   
+    }
 }

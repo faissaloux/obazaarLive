@@ -33,6 +33,7 @@ Route::post('/reset-password',          [WebsiteController::class,              
 Route::any('/reset_password/{token}',   [WebsiteController::class,                  'getPassword'           ])->name('getPassword'          );
 Route::post('/password/reset',          [WebsiteController::class,                  'resetPassword'         ])->name('password.request'     );
 Route::get('/',                         [BaseController::class,                     'index'                 ])->name('categories'           );
+Route::get('/other',                    [BaseController::class,                     'stores_default'        ])->name('stores-default'       )->middleware(['store_category']);
 Route::post('/couponcheck',             [PayementController::class,                 'applyCoupon'           ])->name('applyCoupon'          );
 
 Route::group(['prefix' => '/account', 'as' => 'account.', 'middleware' => 'MAccount'], function(){    

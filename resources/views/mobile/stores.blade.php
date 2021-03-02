@@ -43,7 +43,7 @@
           <div class="card blog-card list-card store">
             <!-- Post Image-->
             <div class="post-img"><img src="{{ asset('uploads/'.$store->thumbnail) }}" alt=""></div>
-            <!-- Read More Button--><a class="btn btn-danger btn-sm read-more-btn" href="{{ route('home', ['store_category' => $store_category, 'store' => $store->slug]) }}">{{ $store->name }}</a>
+            <!-- Read More Button--><a class="btn btn-danger btn-sm read-more-btn" href="{{ route('home', ['store_category' => \Session::get('store_category'), 'store' => $store->slug]) }}">{{ $store->name }}</a>
             <!-- Post Content-->
             <div class="post-content">
               <div class="bg-shapes">
@@ -52,8 +52,8 @@
                 <div class="circle3"></div>
                 <div class="circle4"></div>
               </div>
-              <!-- Post Catagory--><a class="post-catagory d-block" href="{{ route('home', ['store_category' => $store_category, 'store' => $store->slug]) }}">{{ $store->name }}</a>
-              <!-- Post Title--><a class="post-title d-block" href="{{ route('home', ['store_category' => $store_category, 'store' => $store->slug]) }}">{{ $store->street }}</a>
+              <!-- Post Catagory--><a class="post-catagory d-block" href="{{ route('home', ['store_category' => \Session::get('store_category'), 'store' => $store->slug]) }}">{{ $store->name }}</a>
+              <!-- Post Title--><a class="post-title d-block" href="{{ route('home', ['store_category' => \Session::get('store_category'), 'store' => $store->slug]) }}">{{ $store->street }}</a>
               <!-- Post Meta-->
               <div class="post-meta d-flex align-items-center justify-content-between flex-wrap"><a href="mailto:{{ $store->owner->email }}"><i >@</i>{{ $store->owner->email }}</a><span><i class="lni lni-phone"></i><a href="tel:{{$store->owner->phone}}">{{ $store->owner->phone }}</a></span></div>
             </div>

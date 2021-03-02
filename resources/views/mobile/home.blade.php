@@ -57,6 +57,23 @@
           </div>
         </div>
         @endforeach
+        <div class="col-12 col-md-6">
+          <div class="card blog-card list-card store">
+            <!-- Post Image-->
+            <div class="post-img"><img src="{{ asset('assets/website/img/store_category_default.jpg') }}" alt=""></div>
+            <!-- Post Content-->
+            <div class="post-content">
+              <div class="bg-shapes">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+              </div>
+              <!-- Post Catagory--><a class="post-catagory d-block" href="{{ route('mobile.stores-default') }}">{{ __('Other') }}</a>
+              <!-- Post Meta-->
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

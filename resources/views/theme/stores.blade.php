@@ -157,7 +157,7 @@
                                     <a class="ps-block__user" href="{{ $product->slug }}">
                                     <img class="stroephimg" src="{!!  $product->presentThumbnailback() !!}" alt="">
                                     </a>
-                                    <a class="ps-btn" href="{{ route('home', ['store_category' => $store_category, 'store' => $product->slug]) }}">{{ __('Visit Store') }}</a>
+                                    <a class="ps-btn" href="{{ route('home', ['store_category' => \Session::get('store_category'), 'store' => $product->slug]) }}">{{ __('Visit Store') }}</a>
                                  </div>
                               </article>
                            </div>
@@ -169,7 +169,7 @@
                               <article class="ps-block--store">
                                  <div class="ps-block__thumbnail bg--cover" data-background="{!!  $product->presentThumbnailback() !!}"></div>
                                  <div class="ps-block__content">
-                                    <div class="ps-block__author"></a><a class="ps-btn" href="{{ route('home', ['store_category' => $store_category, 'store' => $product->slug]) }}">{{ __('Visit Store') }}</a></div>
+                                    <div class="ps-block__author"></a><a class="ps-btn" href="{{ route('home', ['store_category' => \Session::get('store_category'), 'store' => $product->slug]) }}">{{ __('Visit Store') }}</a></div>
                                     <h4>{{ $product->name }}</h4>
                                     <ul class="ps-block__contact">
                                         <li><i class="icon-map-marker"></i> {{ $product->street }}</li>

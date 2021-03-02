@@ -217,6 +217,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/page/{slug}', 'WebsiteController@basepage')->name('basepage');
 
+Route::get('/other', 'BaseController@stores_default')->name('stores-default')->middleware(['store_category']);;
 
 Route::group(['prefix' => '{store_category}', 'middleware' => 'store_category'], function ($store_category) {
   Route::get('/', 'BaseController@stores')->name('stores');
