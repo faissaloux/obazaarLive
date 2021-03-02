@@ -8,7 +8,7 @@
 <input type="hidden" id='subtotal' value="{{ ShoppingCart::totalPrice() }}" />
 
 
-<form action="{{ route('checkout.pay',['store' => $store]) }}" method='post'>
+<form action="{{ route('checkout.pay',['store' => $store, 'store_category' => $store_category]) }}" method='post'>
 
 
 
@@ -21,7 +21,7 @@
                 </div>
                 <div class="ps-section__content">
              
-                    <form class="ps-form--checkout" action="{{ route('checkout.pay',['store' => $store]) }}" method="post">
+                    <form class="ps-form--checkout" action="{{ route('checkout.pay',['store' => $store, 'store_category' => $store_category]) }}" method="post">
                         <div class="ps-form__content">
                             @csrf
                             @auth
@@ -41,14 +41,14 @@
                                                             <br> {{ $addresse->country_code }}
                                                             <br> {{ $addresse->phone }}
                                                             <br>
-                                                            <a href="{{ route('shipping.set',['id' =>  $addresse->id , 'store' => $store]) }}" class="ps-btn"> {{ __('ship here') }}</a>
+                                                            <a href="{{ route('shipping.set',['id' =>  $addresse->id , 'store' => $store, 'store_category' => $store_category]) }}" class="ps-btn"> {{ __('ship here') }}</a>
                                                         </div>
                     
                                                     </div>
                                                     @endforeach
                                                 </div>
                     
-                                                <a href="{{ route('shipping.add',['store' => $store]) }}" class="ps-btn ps-btn--sm">
+                                                <a href="{{ route('shipping.add',['store' => $store, 'store_category' => $store_category]) }}" class="ps-btn ps-btn--sm">
                                                     {{ __('+ New Address') }}
                                                 </a>
                                             </figure>
@@ -155,7 +155,7 @@
                                             <div class="ps-block__content">
                                                 <ul class="ps-block__product">
                                                     @if(!empty(ShoppingCart::all())) @foreach(ShoppingCart::all() as $product)
-                                                    <li><span class="ps-block__shipping"><a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store]) }}"> {{ $product['name'] }} ×{{ $product['qty'] }}</a></span></li>
+                                                    <li><span class="ps-block__shipping"><a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store, 'store_category' => $store_category]) }}"> {{ $product['name'] }} ×{{ $product['qty'] }}</a></span></li>
                                                     @endforeach @endif                                                    
                                                 </ul>
                                                 <tr class="shippingRow d-none">
@@ -192,7 +192,7 @@
                             <div class="row">
                                 <div class="container needlogin">
                                     <h1>{{ __('Please login or sign up to checkout') }}</h1>
-                                    <a href="{{ route('user',['store' => $store ]) }}" class=" ps-btn "> {{ __('Login & Register') }} </a>
+                                    <a href="{{ route('user',['store' => $store, 'store_category' => $store_category ]) }}" class=" ps-btn "> {{ __('Login & Register') }} </a>
                                 </div>
                             </div>
                             @endguest

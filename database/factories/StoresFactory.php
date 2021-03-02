@@ -4,12 +4,15 @@
 
 use App\Models\User;
 use App\Models\Stores;
+use App\Models\StoresCategory;
 use Faker\Generator as Faker;
 
 $factory->define(Stores::class, function (Faker $faker) {
-    $users_id = User::get('id');
+    $users_id       = User::get('id');
+    $categories_id  = StoresCategory::get('id');
     return [
         'name' => $faker->name,
+        'category_id' => $faker->randomElement($categories_id),
         'street' => $faker->streetName,
         'description' => $faker->text,
         'logo' => 'logos/'.$faker->uuid.'.jpg',

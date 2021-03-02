@@ -27,11 +27,11 @@
                                 <div class="ps-product__shopping" style="display: none;">
                                     <div class="row">
                                         <div class="col-md-6 card-button mobi50">
-                                        <a id="addtocard" href="{{ route('cart.add', ['id' => $product->id , 'store' => $store]) }}"  data-product-id='{{$product->id}}'>
+                                        <a id="addtocard" href="{{ route('cart.add', ['id' => $product->id , 'store' => $store, 'store_category' => $store_category]) }}"  data-product-id='{{$product->id}}'>
                                             <div class="card-button-inner bag-button"><i class="icon-bag2"></i></div></a>
                                       </div>
                                       <div class="col-md-3 card-button mobi50">
-                                        <a id="wishlist" href="javascript:;" data-link="{{ route('wishlist.add', ['id' => $product->id , 'store' => $store ]) }}">
+                                        <a id="wishlist" href="javascript:;" data-link="{{ route('wishlist.add', ['id' => $product->id , 'store' => $store, 'store_category' => $store_category ]) }}">
                                             <div class="card-button-inner wish-button"><i class="icon-heart"></i></div></a>
                                       </div>
                                     </div>

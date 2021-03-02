@@ -31,6 +31,7 @@ class StoresHelper {
 
     public function manipulate($store,$request) {
         $store->name        = $request->storename;
+        $store->category_id = $request->storedirectory;
         $store->street      = $request->street;
         $store->description = $request->description;
         $store->postal_code = $request->postalcode;

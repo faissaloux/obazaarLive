@@ -7,7 +7,7 @@
    <div class="ps-breadcrumb">
       <div class="container">
          <ul class="breadcrumb">
-            <li><a href="{{ route('home',['store' => $store ]) }}">Home</a></li>
+            <li><a href="{{ route('home',['store' => $store, 'store_category' => $store_category ]) }}">Home</a></li>
             <li>{{ __('account') }}</li>
             <li>{{ __('Adresses') }}</li>
          </ul>
@@ -32,10 +32,10 @@
                         {{ $addresse->phone }}                                          
                      </p>
                      <div>
-                        <a class="ps-btn sm" href="{{ route('shipping.edit',['id' =>  $addresse->id  ,'store' => $store ]) }}"> {{ __('Edit') }}</a>
-                        <a class="ps-btn sm delete" style="display:none" href="{{ route('shipping.delete',['id' =>  $addresse->id ,'store' => $store ]) }}"> {{ __('Delete') }}</a>
+                        <a class="ps-btn sm" href="{{ route('shipping.edit',['id' =>  $addresse->id  ,'store' => $store, 'store_category' => $store_category ]) }}"> {{ __('Edit') }}</a>
+                        <a class="ps-btn sm delete" style="display:none" href="{{ route('shipping.delete',['id' =>  $addresse->id ,'store' => $store, 'store_category' => $store_category ]) }}"> {{ __('Delete') }}</a>
                         @if(!$addresse->is_primary) 
-                        <a class="ps-btn" href="{{ route('shipping.default',['id' =>  $addresse->id ,'store' => $store ]) }}"> {{ __('set As Default') }}</a>
+                        <a class="ps-btn" href="{{ route('shipping.default',['id' =>  $addresse->id ,'store' => $store, 'store_category' => $store_category ]) }}"> {{ __('set As Default') }}</a>
                         @endif
                      </div>
                   </div>
@@ -43,7 +43,7 @@
                @endforeach 
             </div>
             <div class="form-group">    
-               <a class="ps-btn" style="margin-top:30px;" href="{{ route('shipping.add',['store' => $store ]) }}" class="btn btn-sm btn-outline-secondary btn-new-address" >{{ __('+ New Address') }}</a>
+               <a class="ps-btn" style="margin-top:30px;" href="{{ route('shipping.add',['store' => $store, 'store_category' => $store_category ]) }}" class="btn btn-sm btn-outline-secondary btn-new-address" >{{ __('+ New Address') }}</a>
             </div>
          </div>
       </div>

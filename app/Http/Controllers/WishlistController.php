@@ -21,7 +21,6 @@ class WishlistController extends Controller {
           $user_id = Auth::user()->id;
          $data = [ 'user_id' => $user_id, 'productID' => $id ];
 
-        
          WishList::firstOrCreate($data);
          if($request->ajax()){
              return   WishList::where('user_id',$user_id)->count();

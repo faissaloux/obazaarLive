@@ -32,6 +32,12 @@ class AppHelper {
         }
     }
 
+    public function MerchantStoreCategories() {
+        $menu = Menus::Lang()->Merchant()->where('area', 'homeCategories')->first();
+        if($menu) return $menu->store_categories_mobile();
+        return '';
+    }
+
     public function dirAttribute() {
         return in_Array(App::getLocale() , System::$RTL_LANG) ? 'dir=rtl' : 'dir=ltr';
     }
@@ -60,14 +66,34 @@ class AppHelper {
         return $html;
     }
 
+    public function storecategoriesMobile() {
+        $categories = ProductCategories::Merchant()->orderby('id','desc')->get();
+        $html = '';
+        $slug  = \Session::get('store').'/category/';
+        foreach ($categories as $category) {
+            $image = "";
+            if(!is_null($category->image)) {
+                $image = '<img class="cat-img" src="/uploads/'. $category->image .'"/>';
+            }
+            $html .='<div class="card flash-sale-card">
+                    <div class="card-body">
+                        <a href="/'.$slug.$category->slug.'">
+                            <span class="product-title col-10 text-center">'. $category->name .'</span>
+                        </a>
+                    </div>
+              </div>';
+        }
+
+        return $html;
+    }
+
     public function currentstorecategories() {
-      //  dd(\Session::get('store_id'));
         $categories = ProductCategories::where('store_id',\Session::get('store_id'))->orderby('id','desc')->get();
         $html = '';
         $slug  = \Session::get('store').'/category/';
         foreach ($categories as $category) {
             $html .='<li class="drop-menu">
-                        <a class="" href="'. route('category',['store' => \Session::get('store') , 'slug'  =>  $category->slug   ]) .'">
+                        <a class="" href="'. route('category',['store' => \Session::get('store') , 'slug'  =>  $category->slug, 'store_category' => \Session::get('store_category')   ]) .'">
                             <span>'.$category->name.'</span>                        
                         </a>
                     </li>';

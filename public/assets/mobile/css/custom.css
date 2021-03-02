@@ -1,0 +1,126 @@
+.card.weekly-product-card,
+.product-thumbnail-side,
+.product-thumbnail-side img,
+.product-thumbnail.d-block {
+    height: 100%;
+}
+
+.top-products-area .product-thumbnail.d-block {
+    height: 70%;
+}
+
+.top-products-area .card.top-product-card {
+    height: 100%;
+}
+
+.top-products-area img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-thumbnail-side img {
+    max-height: 100% !important;
+}
+
+p {
+    font-size: 11px;
+}
+
+.guest-sidenav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 150px;
+}
+
+.pagination-center {
+    text-align: center !important;
+    margin-top: 15px;
+}
+
+.pagination {
+    text-align: center !important;
+    padding-left: initial !important;
+    display: inline-flex;
+}
+
+.page-item.active .page-link {
+    background-color: #100dd1 !important;
+    border-color: #100dd1 !important;
+}
+
+.page-link {
+    color: #100dd1;
+}
+
+div#addedTocCart h5.modaltitle {
+    text-align: center;
+}
+
+div#addedTocCart a {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+div#modalwishlist h5.modaltitle {
+    text-align: center;
+}
+
+div#modalwishlist a {
+    display: block;
+    margin-bottom: 5px;
+}
+
+a.ps-logo img {
+    width: 40px;
+}
+
+.card.blog-card.list-card.store img {
+    max-height: 200px;
+    width: 100% !important;
+    object-fit: cover;
+}
+
+.post-meta.d-flex.align-items-center.justify-content-between.flex-wrap a {
+    margin-bottom: 5px;
+}
+
+.bg-warning,
+.badge-warning {
+    text-align: center !important;
+    padding: 5px;
+}
+
+.top-products-area .card.top-product-card .card-body {
+    margin-bottom: 10px !important;
+}
+
+li.page-item {
+    display: none;
+}
+
+.page-item:first-child,
+.page-item:nth-child( 3),
+.page-item:nth-last-child( 3),
+.page-item:last-child,
+.page-item.active,
+.page-item.disabled {
+    display: block;
+}
+
+.pagination {
+    display: inline-flex;
+}
+
+div#modalUnauth h5 {
+    text-align: center;
+}
+
+.go-home-btn a {
+    color: white;
+    text-decoration: none;
+    line-height: 40px !important;
+    display: inline-block;
+    position: relative;
+}

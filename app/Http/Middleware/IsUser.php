@@ -20,7 +20,7 @@ class IsUser
         if (Auth::check()) {
             return $next($request);
         }else {
-            return redirect()->route('user',['store' => $request->store ]);
+            return redirect()->route('user',['store' => $request->store, 'store_category' => $request->store_category  ]);
         }
 
     }

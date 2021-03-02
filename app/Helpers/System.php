@@ -12,12 +12,14 @@ use \Mobile_Detect;
 class System {
     
 
-    public static $LANGS = ['ar','de','tr','ir'];
-    public static $LANGS_NAME = ['ar' => 'العربية','de'=> 'Deutsch','tr' => 'Turkish','ir' => 'فارسى'];
-    public static $LTR_LANG = ['tr','de'];
-    public static $RTL_LANG = ['ar','ir'];
+    public static $LANGS                    = ['ar','de','tr','ir'];
+    public static $LANGS_NAME               = ['ar' => 'العربية','de'=> 'Deutsch','tr' => 'Turkish','ir' => 'فارسى'];
+    public static $LANGS_IDS                = ['ar' => 'Arabic','de'=> 'Deutsch','tr' => 'Turkish','ir' => 'Persian'];
+    public static $LTR_LANG                 = ['tr','de'];
+    public static $RTL_LANG                 = ['ar','ir'];
     public static $CURRENT_LANG ;
-    public static $ACTIVE_THEME_PATH = 'theme' ;
+    public static $ACTIVE_THEME_PATH        = 'theme' ;
+    public static $ACTIVE_MOBILE_THEME_PATH = 'mobile';
 
 
 

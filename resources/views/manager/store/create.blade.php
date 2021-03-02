@@ -45,6 +45,20 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">{{ __('directory') }}</label>
+                                <div class="col-lg-10">
+                                    <div class="input-group">
+                                        <select class="form-control" name="storedirectory">
+                                            <option value="">{{ __('No directory') }}</option>
+                                            @foreach ($directories as $directory)
+                                                <option value="{{ $directory->id }}">{{ $directory->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
 
                             <div class="form-group">
                                 <label class="control-label col-lg-2">{{ __('url') }}</label>

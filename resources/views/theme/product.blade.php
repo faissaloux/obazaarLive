@@ -6,7 +6,7 @@
 @section('content')
 
 
-<nav class="navigation--mobile-product"><a class="ps-btn ps-btn--black" href="{{ route('cart.add', ['id' => $product->id , 'store' => $store ]) }}" data-product-id='{{$product->id}}'  title="{{ __('cart.add') }}">{{ __('cart.add') }}</a><a class="ps-btn" href="{{ route('checkout', ['store' => $store ]) }}">{{ __('Checkout') }}</a></nav>
+<nav class="navigation--mobile-product"><a class="ps-btn ps-btn--black" href="{{ route('cart.add', ['id' => $product->id , 'store' => $store, 'store_category' => $store_category ]) }}" data-product-id='{{$product->id}}'  title="{{ __('cart.add') }}">{{ __('cart.add') }}</a><a class="ps-btn" href="{{ route('checkout', ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('Checkout') }}</a></nav>
 <div class="ps-page--product">
     <div class="ps-container">
         <div class="ps-page__container">
@@ -55,7 +55,7 @@
                             </div>
                             <div class="ps-product__shopping">
                                 <form 	id="addToCartForm"
-                                		data-link="{{ route('cart.add', ['id' => $product->id , 'store' => $store ]) }}"
+                                		data-link="{{ route('cart.add', ['id' => $product->id , 'store' => $store, 'store_category' => $store_category ]) }}"
                                 		method="post">
                                     <figure>
                                         <figcaption>{{ __('quantity') }}</figcaption>
@@ -68,7 +68,7 @@
                                     </figure>
                                     <a class="ps-btn" style="display: none;" href="#">{{ __('Buy now') }}</a>
                                     <div class="ps-product__actions">
-                                        <a href="{{ route('wishlist.add', ['id' => $product->id, 'store' => $store  ]) }}" title="{{ __('wishlist.add') }}">
+                                        <a href="{{ route('wishlist.add', ['id' => $product->id, 'store' => $store, 'store_category' => $store_category ]) }}" title="{{ __('wishlist.add') }}">
                                             <i class="icon-heart" style="display: none;"></i>
                                         </a>
                                     </div> 

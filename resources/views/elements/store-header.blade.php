@@ -61,7 +61,7 @@
                     <div class="header-left header-dropdowns">
                         <div class="header-search">
                             <a href="javascript:;" class="search-toggle" role="button"><i class="icon-search"></i><span>{{ __('Search') }}</span></a>
-                            <form action="{{ route('search' ,[  'store' => $store] ) }}" method="get">
+                            <form action="{{ route('search' ,[  'store' => $store, 'store_category' => $store_category] ) }}" method="get">
                                 <div class="header-search-wrapper">
                                     <input type="{{ __('Search') }}" class="form-control" name="q" id="q" placeholder="{{ __('Search') }}" required>
                                     <button class="btn" type="submit"><i class="icon-search"></i></button>
@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="header-right" >
-                    	<a  class='cartheader' href="{{ route('cart' ,[  'store' => $store] ) }}"><i class="icon-cart"></i> {{ __('cart') }}  </a>
+                    	<a  class='cartheader' href="{{ route('cart' ,[  'store' => $store, 'store_category' => $store_category] ) }}"><i class="icon-cart"></i> {{ __('cart') }}  </a>
 
                         <div class="header-dropdown">
                             <a href="#">{{  app('SiteSetting')->PresentLang() }}</a>
@@ -141,12 +141,12 @@
                         </div>
                         <ul class="menu sf-arrows">
                             @auth
-                            <li><a href="{{ route('checkout',['store'  => $store ]) }}">{{ __('CART') }}</a></li>
-                            <li><a href="{{ route('wishlist' , ['store' => $store ]) }}">{{ __('MY WISHLIST ') }}</a></li>
-                            <li><a href="{{ route('edit' , ['store' => $store ]) }}">{{ __('ACCOUNT') }}</a></li>
-                            <li><a href="{{ route('logout' , ['store' => $store ]) }}">{{ __('LOGOUT') }}</a></li>
+                            <li><a href="{{ route('checkout',['store'  => $store, 'store_category' => $store_category ]) }}">{{ __('CART') }}</a></li>
+                            <li><a href="{{ route('wishlist' , ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('MY WISHLIST ') }}</a></li>
+                            <li><a href="{{ route('edit' , ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('ACCOUNT') }}</a></li>
+                            <li><a href="{{ route('logout' , ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('LOGOUT') }}</a></li>
                             @endauth @guest
-                            <li><a href="{{ route('user', ['store' => $store ]) }}">{{ __('LOGIN') }}</a></li>
+                            <li><a href="{{ route('user', ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('LOGIN') }}</a></li>
                             @endguest
 
                         </ul>
@@ -162,7 +162,7 @@
                             <div class="dropdownmenu-wrapper">
                                 <div class="dropdown-cart-header">
                                     <span> {{ ShoppingCart::count(false) }}{{ __(' Items') }}</span>
-                                    <a href="{{ route('cart', ['store' => $store ]) }}">{{ __('View Cart') }}</a>
+                                    <a href="{{ route('cart', ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('View Cart') }}</a>
                                 </div>
                                 <div class="dropdown-cart-products">
 
@@ -170,7 +170,7 @@
                                     <div class="product">
                                         <div class="product-details">
                                             <h4 class="product-title">
-                                                    <a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store ]) }}">  
+                                                    <a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store, 'store_category' => $store_category ]) }}">  
                                                         {{ $product['name'] }} 
                                                     </a>
                                                 </h4>
@@ -180,10 +180,10 @@
                                             </span>
                                         </div>
                                         <figure class="product-image-container">
-                                            <a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store ]) }}" class="product-image">
+                                            <a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store, 'store_category' => $store_category ]) }}" class="product-image">
                                                 <img src="{{ $product['thumbnail'] }}" alt="product">
                                             </a>
-                                            <a href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store ])  }}" class="btn-remove">
+                                            <a href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store, 'store_category' => $store_category ])  }}" class="btn-remove">
                                                 <i class="icon-cancel"></i>
                                             </a>
                                         </figure>
@@ -198,7 +198,7 @@
                                 </div>
 
                                 <div class="dropdown-cart-action">
-                                    <a href="{{ route('checkout', ['store' => $store ]) }}" class="btn btn-block">{{ __('Checkout') }}</a>
+                                    <a href="{{ route('checkout', ['store' => $store, 'store_category' => $store_category ]) }}" class="btn btn-block">{{ __('Checkout') }}</a>
                                 </div>
                             </div>
                         </div>

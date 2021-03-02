@@ -1,11 +1,12 @@
 /* Settings Ajax Links */
-var slug = $("body").attr("data-slug");
-var quickview = "";
-var wishlist = "";
-var cartupdate = "/" + slug + "/cart/update";
-var addtocard = "/" + slug + "/cart/add/";
-var loadcartAgain = "/loadcartAgain/" + slug + "";
-var couponlink = "/couponcheck";
+const slug                  = $("body").attr("data-slug");
+const store_category_slug   = $("body").attr("data-store-category");
+var quickview               = "";
+var wishlist                = "";
+const cartupdate            = "/" + store_category_slug + "/" + slug + "/cart/update";
+const addtocard             = "/" + store_category_slug + "/" + slug + "/cart/add/";
+const loadcartAgain         = "/loadcartAgain/" + slug + "";
+const couponlink            = "/couponcheck";
 
 /* End Settings Ajax Links */
 
@@ -302,7 +303,6 @@ function ikhaaaaan(input) {
 
 // add product to cart
 $(document).on('click', 'body #addtocard', function (e) {
-
 
     e.preventDefault();
     var formData = new FormData();
@@ -607,9 +607,9 @@ function searchKeyUp(link, formData, results) {
                     result.append(`<span>${JSON.parse(response.products.data[i].name)[lang]}</span>`);
                 }
                 $("p.result").click(function () {
-                    let productId = $(this)[0].id;
-                    let productSlug = response.storeSlug[0].slug;
-                    window.location.href = `/${productSlug}/shop/product/${productId}`;
+                    let productId        = $(this)[0].id;
+                    let productSlug      = response.storeSlug[0].slug;
+                    window.location.href = `/${store_category_slug}/${productSlug}/shop/product/${productId}`;
                 })
             } else {
                 results.empty();

@@ -3,7 +3,7 @@
 ### 1. clone the Package & install the packages
 
 ```
-git clone https://github.com/MedAkou/almogar.git
+git clone https://github.com/faissaloux/obazaarLive.git
 ```
 ```
 composer install

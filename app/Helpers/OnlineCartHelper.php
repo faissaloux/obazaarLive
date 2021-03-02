@@ -76,6 +76,7 @@ class OnlineCartHelper {
 
         $user_id = Auth::user()->id;
         //$product = Product::find($product_id)->get();
+        // dd("product_id" . $product->id . " || user_id" . $user_id);
         $cart = Cart::where("product_id",$product->id)->where("user_id",$user_id)->first();
         $cart->user_id = $user_id;
         $cart->store_id = $store_id;

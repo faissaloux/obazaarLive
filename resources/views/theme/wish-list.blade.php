@@ -7,7 +7,7 @@
    <div class="ps-breadcrumb">
       <div class="container">
           <ul class="breadcrumb">
-              <li><a href="{{ route('home',['store' => $store ]) }}"><i class="icon-home"></i></a></li>
+              <li><a href="{{ route('home',['store' => $store, 'store_category' => $store_category ]) }}"><i class="icon-home"></i></a></li>
               <li>{{ __('wishlist') }}</li>
           </ul>
       </div>
@@ -31,21 +31,21 @@
                            <tbody>
                               @foreach($wishlist as $product)
                               <tr>
-                                 <td><a href="{{ route('wishlist.remove', [ 'id' => $product->id , 'store' => $store ]) }}"><i class="icon-cross"></i></a></td>
+                                 <td><a href="{{ route('wishlist.remove', [ 'id' => $product->id , 'store' => $store, 'store_category' => $store_category ]) }}"><i class="icon-cross"></i></a></td>
                                  <td>
                                     <div class="ps-product--cart">
-                                       <div class="ps-product__thumbnail"><a href="{{ route('shop.product',['id' => $product->productID , 'store' => $store]) }}">{!! $product->product->presentThumbnail() !!}</a></div>
-                                       <div class="ps-product__content"><a href="{{ route('shop.product',['id' => $product->productID , 'store' => $store ]) }}">{{$product->product->name }}</a></div>
+                                       <div class="ps-product__thumbnail"><a href="{{ route('shop.product',['id' => $product->productID , 'store' => $store, 'store_category' => $store_category]) }}">{!! $product->product->presentThumbnail() !!}</a></div>
+                                       <div class="ps-product__content"><a href="{{ route('shop.product',['id' => $product->productID , 'store' => $store, 'store_category' => $store_category ]) }}">{{$product->product->name }}</a></div>
                                     </div>
                                  </td>
                                  <td class="price">{{ System::currency() }} {{ $product->product->presentPrice() }}</td>
-                                 <td><a class="ps-btn" id="addtocard" href="{{ route('cart.add', ['id' => $product->productID , 'store' => $store]) }}"  data-product-id='{{$product->productID}}'><i class="icon-bag2"></i></a></td>
+                                 <td><a class="ps-btn" id="addtocard" href="{{ route('cart.add', ['id' => $product->productID , 'store' => $store, 'store_category' => $store_category]) }}"  data-product-id='{{$product->productID}}'><i class="icon-bag2"></i></a></td>
                               </tr>
                               @endforeach
                            </tbody>
                            <tbody>
                               <tr class="wishclearall">
-                                 <th colspan="4"><a class="ps-btn" href="{{ route('wishlist.clear',['store' => $store ]) }}"><i class="fa fa-trash" aria-hidden="true"></i>
+                                 <th colspan="4"><a class="ps-btn" href="{{ route('wishlist.clear',['store' => $store, 'store_category' => $store_category ]) }}"><i class="fa fa-trash" aria-hidden="true"></i>
                                     {{ __('clear wishlist') }}</a>
                                  </th>
                               </tr>

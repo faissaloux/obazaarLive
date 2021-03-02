@@ -12,6 +12,7 @@ class CreateStoresTable extends Migration
 
 			$table->bigIncrements('id');
 			$table->string('name',250)->nullable()->default('NULL');
+			$table->string('category_id')->nullable()->default('NULL');
 			$table->string('street',250)->nullable()->default('NULL');
 			$table->string('description',250)->nullable()->default('NULL');
 			$table->text('logo')->nullable();

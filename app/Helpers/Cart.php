@@ -25,12 +25,7 @@ class Cart {
         return Session::get('cart.products');
     }
 
-
-
     public function add($id,$quantity) {
-
-          //  dd(ShoppingCart::all());
-
             $product = Product::find($id);
             $store_id = \Session::get('store_id');
             if($product){

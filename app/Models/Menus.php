@@ -53,6 +53,28 @@ class Menus extends Base
         
     }
 
+    public function store_categories_mobile()
+    {
+        $menu = json_decode( $this->menu , TRUE);
+        $html = '';
+        $slug  = \Session::get('store').'/category/';
+        foreach($menu as $li ):        
+        $chilren = ' ';
+        if(isset($li['children'])){
+            $chilren = $this->chilren($li['children']);
+        }        
+        $html .='<div class="card flash-sale-card">
+                    <div class="card-body">
+                        <a href="'.$li['slug'].'">
+                            <span class="product-title text-center">'.$li['name'].'</span>                        
+                        </a>
+                        '.$chilren.'
+                    </div>
+              </div>';
+        endforeach;
+
+        return $html;
+    }
 
 
 

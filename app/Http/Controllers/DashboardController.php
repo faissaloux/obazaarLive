@@ -16,9 +16,9 @@ class DashboardController extends Controller{
         $products = Product::where('store_id',$store)->count();
         $pages    = Page::count();
         $users    = User::count();
-        $orders = Orders::where('store_id',$store)->count();
-        $sales = Orders::where('store_id',$store)->where('statue','success')->count();
-        $pending = Orders::where('store_id',$store)->where('statue','pending')->count();
+        $orders   = Orders::where('store_id',$store)->count();
+        $sales    = Orders::where('store_id',$store)->where('statue','success')->count();
+        $pending  = Orders::where('store_id',$store)->where('statue','pending')->count();
         return view('admin.statique.home',compact('products','pages','users','orders','sales','pending'));
     }    
 

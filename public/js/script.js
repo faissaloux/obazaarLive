@@ -39632,13 +39632,14 @@ if (typeof Object.create !== 'function') {
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /* Settings Ajax Links */
-var slug = $("body").attr("data-slug");
+const slug = $("body").attr("data-slug");
+const store_category_slug = $("body").attr("data-store-category");
 var quickview = "";
 var wishlist = "";
-var cartupdate = "/" + slug + "/cart/update";
-var addtocard = "/" + slug + "/cart/add/";
-var loadcartAgain = "/loadcartAgain/" + slug + "";
-var couponlink = "/couponcheck";
+const cartupdate = "/" + store_category_slug + "/" + slug + "/cart/update";
+const addtocard = "/" + store_category_slug + "/" + slug + "/cart/add/";
+const loadcartAgain = "/" + store_category_slug + "/loadcartAgain/" + slug + "";
+const couponlink = "/couponcheck";
 /* End Settings Ajax Links */
 
 $('body').on('click', '.ps-product__remove', function (e) {

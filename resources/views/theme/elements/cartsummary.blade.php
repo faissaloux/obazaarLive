@@ -15,13 +15,13 @@
                 <tr>
                     <td class="product-col product-col-{{ $product['id'] }}">
                         <figure class="product-image-container">
-                            <a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store]) }}" class="product-image">
+                            <a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store, 'store_category' => $store_category]) }}" class="product-image">
                                 <img src="{{ $product['thumbnail'] }}">
                             </a>
                         </figure>
                         <div>
                             <h2 class="product-title">
-                                <a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store]) }}">{{ $product['name'] }}</a>
+                                <a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store, 'store_category' => $store_category]) }}">{{ $product['name'] }}</a>
                             </h2>
 
                             <span class="product-qty">{{ __('Qty') }}: <i>{{ $product['qty'] }}</i></span>

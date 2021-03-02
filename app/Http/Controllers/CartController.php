@@ -16,7 +16,7 @@ class CartController extends Controller
         return view ('website/cart',compact('cart','total'));
     }
 
-    public function add($store,$id,Request $request) {
+    public function add($store_category, $store, $id, Request $request) {
 		$quantity = $request->quantity;
         (new Cart())->add($id,$quantity);
         if($request->ajax()){
@@ -26,18 +26,18 @@ class CartController extends Controller
         return redirect()->route('cart',compact('store'))->with('message',trans('cart.added'));
     }
    
-    public function remove($store,$id){
+    public function remove($store_category, $store,$id){
         (new Cart())->remove($id);
         return redirect()->back()->with('message',trans('cart.removed'));
         return redirect()->route('cart',compact('store'))->with('message',trans('cart.removed'));
     }
 
-    public function update($store , Request $request){
+    public function update($store_category, $store , Request $request){
         (new Cart())->update($request);
         return redirect()->route('cart',compact('store'))->with('message',trans('cart.updated'));
     }
 
-    public function clear($store){
+    public function clear($store_category, $store){
         (new Cart())->clear();
         return redirect()->back()->with('message',trans('cart.cleared'));
     }

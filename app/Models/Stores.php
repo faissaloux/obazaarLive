@@ -14,6 +14,10 @@ class Stores extends Model
    protected $guarded = ['id', 'created_at', 'updated_at'];
    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
+  public function category(){
+    return $this->belongsTo('App\Models\StoresCategory',  'category_id')->withDefault(['name' => 'N-A',]);
+  }
+
     public function presentThumbnail($setting = false){
       if(!empty($this->thumbnail)){
         return '<img src="/uploads/'. $this->thumbnail .'"/>';
@@ -29,14 +33,11 @@ class Stores extends Model
       return '';
     }
 
-
     public function owner(){
            return $this->belongsTo('App\Models\User','user_id')->withDefault([
           		'name' => 'N-A',
            ]);
     }
-
-
 
     public function products(){
            return $this->hasMany('App\Models\Product','store_id')->withDefault([

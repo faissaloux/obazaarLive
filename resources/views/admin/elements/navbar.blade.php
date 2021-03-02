@@ -16,12 +16,15 @@
             <li><a class="sidebar-control sidebar-main-toggle hidden-xs "><i class="icon-paragraph-justify3"></i></a></li>
     
             @php
-                    $store = \Auth::User()->store->slug;
+                    $store          = \Auth::User()->store->slug;
+                    $store_category = \Auth::user()->store->category->slug;
             @endphp
-
-            <li><a class="goout" target="_blank" href="{{ route('home',['store' => $store]) }}">
-            <i class="icon-enter"></i>
-            {{ __('visite website') }}</a></li>
+            <li>
+                <a class="goout" target="_blank" href="{{ route('home',['store' => $store, 'store_category' => $store_category ]) }}">
+                    <i class="icon-enter"></i>
+                    {{ __('visite website') }}
+                </a>
+            </li>
 
 
              

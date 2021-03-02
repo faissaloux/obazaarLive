@@ -5,7 +5,7 @@
                $logo = option('logo');
                @endphp
                @if(!empty($logo))
-               <a class="ps-logo" href="/{{ $store }}">
+               <a class="ps-logo" href="/">
                <img src="/uploads/{{ $logo }}" alt="">
                </a>
                @endif
@@ -14,7 +14,7 @@
                <div class="header__actions">
                   <div class="ps-block--user-header">
                      <div class="ps-block__left"> 
-                        <a class="header__extra" href="{{ route('edit', ['store' => $store ]) }}"><i class="icon-user"></i></a> 
+                        <a class="header__extra" href="{{ route('edit', ['store' => $store, 'store_category' => $store_category ]) }}"><i class="icon-user"></i></a> 
                      </div>
                   </div>
                   <div class="ps-cart--mini">
@@ -41,10 +41,10 @@
                   <div class="ps-product--cart-mobile">
                      <div class="tachbkat align-self-center">
                         <div class="removit align-self-center">
-                        <a class="ps-product__remove" href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store ])  }}"><i class="icon-cross"></i></a>
+                        <a class="ps-product__remove" href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store, 'store_category' => $store_category ])  }}"><i class="icon-cross"></i></a>
                      </div>
-                     <div class="ps-product__thumbnail"><a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store ]) }}"><img src="{{ $product['thumbnail'] }}" alt=""></a></div>
-                     <div class="ps-product__content lhsabbdyaltele"><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store ]) }}">{{ $product['name'] }}</a><br>
+                     <div class="ps-product__thumbnail"><a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store, 'store_category' => $store_category ]) }}"><img src="{{ $product['thumbnail'] }}" alt=""></a></div>
+                     <div class="ps-product__content lhsabbdyaltele"><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store, 'store_category' => $store_category ]) }}">{{ $product['name'] }}</a><br>
                         <small class="product-col-tele-{{ $product['id'] }}"> <span class="prdqty">{{ $product['qty'] }}</span> x {{ System::currency() }} {{ $product['price'] }} <input type="hidden" class="preis" value="{{ $product['total'] }}"> </small>
                      </div>
                      <div class="form-group--number zaydnaks updowntintele align-self-center">
@@ -70,7 +70,7 @@
                @if(\System::shoppingCartIsNotEmpty())
                   <div class="ps-cart__footer origin">
                      <h3>{{ __('Total') }}<strong>{{ System::currency() }} <span class="TotalPriceM">{{  number_format((float)ShoppingCart::total(), 2, '.', '') }}</span> </strong></h3>
-                     <figure><a class="ps-btn" href="{{ route('checkout', ['store' => $store ]) }}">{{ __('Checkout') }}</a></figure>
+                     <figure><a class="ps-btn" href="{{ route('checkout', ['store' => $store, 'store_category' => $store_category ]) }}">{{ __('Checkout') }}</a></figure>
                   </div>
                @endif
             </div>
@@ -116,8 +116,8 @@
             <form class="ps-form--search-mobile"
                   id="search-form-mobile"
                   autocomplete="off"
-                  data-link="{{ route('search' ,[  'store' => $store] ) }}"
-                  action="{{ route('searchSubmit' ,[  'store' => $store] ) }}"
+                  data-link="{{ route('search' ,[  'store' => $store, 'store_category' => $store_category] ) }}"
+                  action="{{ route('searchSubmit' ,[  'store' => $store, 'store_category' => $store_category] ) }}"
                   method="get"
             >
 

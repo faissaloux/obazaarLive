@@ -150,14 +150,14 @@ class WebsiteController extends Controller
         return view($this->theme . 'shipping_add');
     }
 
-    public function shipping_store(Request $request, $store)
+    public function shipping_store(Request $request, $store_category, $store)
     {
 
         $adresse = ['given_name' => $request->given_name, 'country_code' => $request->country_code, 'street' => $request->street, 'state' => $request->state, 'housenumber' => $request->housenumber, 'city' => $request->city, 'postal_code' => $request->postal_code, 'phone' => $request->phone, 'user_id' => Auth::user()->id, ];
 
         Addresses::create($adresse);
 
-        return redirect()->route('adresses', ['store' => $store])->with('success', trans('user.shipping.created'));
+        return redirect()->route('adresses', ['store' => $store, 'store_category' => $store_category])->with('success', trans('user.shipping.created'));
     }
 
     public function order_detail($store, $id)
@@ -194,7 +194,6 @@ class WebsiteController extends Controller
 
     public function userAuth(Request $request)
     {
-
         if (!$request->filled('username') and !$request->filled('password'))
         {
             return redirect()
@@ -224,14 +223,13 @@ class WebsiteController extends Controller
             $lastlogin->save();
 
             return redirect()
-                ->route('home', ['store' => $request->store]);
+                ->route('home', ['store' => $request->store, 'store_category' => $request->store_category]);
         }
 
         else
         {
             return redirect()
-                ->route('user', ['store' => $request
-                ->store])
+                ->route('user', ['store' => $request->store, 'store_category' => $request->store_category])
                 ->with('error', trans('user.wrong.auth'));
         }
 
@@ -333,7 +331,7 @@ class WebsiteController extends Controller
         }
         else
         {
-            $id             = Stores::where('slug', $request->store)->first()->id;
+            $id             = Stores::where('slug', $request->store)->firstOrFail()->id;
             $products       = Product::where('store_id', $id)->where('active', 1)->paginate(12);
             $sliders        = Slider::Merchant()->get();
             return view($this->theme . 'index', compact('products', 'sliders'));

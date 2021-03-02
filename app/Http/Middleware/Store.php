@@ -31,18 +31,15 @@ class Store {
             }else {
                  Session::forget('admin_views');
             }
-
+            
             Session::put('currentRoute',$routeName);
-
             $store = Stores::where('slug',$request->store)->first();
-            //dd($store->categories);
             
             if($store){
-
-               		Session::put('store_id',$store->id);
-               		Session::put('store',$store->slug);
-                  View::share('store', $request->store);
-                  View::share('activeStore', $store);
+                Session::put('store_id',$store->id);
+                Session::put('store',$store->slug);
+                View::share('store', $request->store);
+                View::share('activeStore', $store);
 
 
 

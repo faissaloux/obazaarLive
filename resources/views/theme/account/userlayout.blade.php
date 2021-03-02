@@ -256,29 +256,29 @@ a.navigation__item.ps-toggle--sidebar {
                     $logo = option('logo');
                     @endphp
                     @if(!empty($logo))
-                    <a class="ps-logo" href="/{{ $store }}">
+                    <a class="ps-logo" href="/">
                         <img src="/uploads/{{ $logo }}" alt="">
                     </a>
                     @endif
                 </div>
                 <div class="header__content-center">
                     
-                    <form class="ps-form--quick-search" action="{{ route('search' ,[  'store' => $store] ) }}" method="get">
+                    <form class="ps-form--quick-search" action="{{ route('search' ,['store' => $store, 'store_category' => $store_category] ) }}" method="get">
                         <input type="{{ __('Search') }}" class="form-control" name="q" value="{{ app('request')->input('q') }}"  placeholder="{{ __('Search') }}" required>
                         <button class="btn" type="submit"><i class="icon-search"></i>{{ __('Search') }}</button>
                     </form>
                 </div>
                 <div class="header__content-right">
                     <div class="header__actions">
-                        <a class="header__extra" href="{{ route('wishlist' ,[  'store' => $store] ) }}"><i class="icon-heart"></i><span><i class="wishlist_count">{{ $wishlist_count }}</i></span>
+                        <a class="header__extra" href="{{ route('wishlist' ,['store' => $store, 'store_category' => $store_category] ) }}"><i class="icon-heart"></i><span><i class="wishlist_count">{{ $wishlist_count }}</i></span>
                         </a>
-                        <div class="ps-cart--mini"><a class="header__extra" href="{{ route('cart' ,[  'store' => $store] ) }}"><i class="icon-cart"></i><span><i>{{ ShoppingCart::count(false) }}</i></span></a>
+                        <div class="ps-cart--mini"><a class="header__extra" href="{{ route('cart' ,['store' => $store, 'store_category' => $store_category] ) }}"><i class="icon-cart"></i><span><i>{{ ShoppingCart::count(false) }}</i></span></a>
                             <div class="ps-cart__content">
                                 <div class="ps-cart__items">
                                     @if(!empty(ShoppingCart::all())) @foreach(ShoppingCart::all() as $product)
                                     <div class="ps-product--cart-mobile">
                                         <div class="ps-product__thumbnail"><a href="#"><img src="{{ $product['thumbnail'] }}" alt="product"></a></div>
-                                        <div class="ps-product__content"><a class="ps-product__remove" href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store ])  }}"><i class="icon-cross"></i></a><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store ]) }}">{{ $product['name'] }} </a>
+                                        <div class="ps-product__content"><a class="ps-product__remove" href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store, 'store_category' => $store_category ])  }}"><i class="icon-cross"></i></a><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store, 'store_category' => $store_category ]) }}">{{ $product['name'] }} </a>
                                             <p><strong>Sold by</strong> {{ $store }}</p>
                                             <small>{{ $product['qty'] }} x {{ System::currency() }}{{ $product['price'] }}</small>
                                         </div>
@@ -330,7 +330,7 @@ a.navigation__item.ps-toggle--sidebar {
                 $logo = option('logo');
                 @endphp
                 @if(!empty($logo))
-                <a class="ps-logo" href="/{{ $store }}">
+                <a class="ps-logo" href="/">
                     <img src="/uploads/{{ $logo }}" alt="">
                 </a>
                 @endif
@@ -356,7 +356,7 @@ a.navigation__item.ps-toggle--sidebar {
             </div>
         </div>
         <div class="ps-search--mobile">
-            <form class="ps-form--search-mobile" action="{{ route('search' ,[  'store' => $store] ) }}" method="get">
+            <form class="ps-form--search-mobile" action="{{ route('search' ,['store' => $store, 'store_category' => $store_category] ) }}" method="get">
                 <div class="form-group--nest">
                     <input class="form-control"type="{{ __('Search') }}" name="q" value="{{ app('request')->input('q') }}"  placeholder="{{ __('Search') }}">
                     <button><i class="icon-magnifier" type="submit"></i></button>
@@ -373,8 +373,8 @@ a.navigation__item.ps-toggle--sidebar {
                 <div class="ps-cart__content">
                     @if(!empty(ShoppingCart::all())) @foreach(ShoppingCart::all() as $product)
                     <div class="ps-product--cart-mobile">
-                        <div class="ps-product__thumbnail"><a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store ]) }}"><img src="{{ $product['thumbnail'] }}" alt=""></a></div>
-                        <div class="ps-product__content lhsabbdyaltele"><a class="ps-product__remove" href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store ])  }}"><i class="icon-cross"></i></a><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store ]) }}">{{ $product['name'] }}</a><br>
+                        <div class="ps-product__thumbnail"><a href="{{ route('shop.product',['id' => $product['id'], 'store' => $store, 'store_category' => $store_category ]) }}"><img src="{{ $product['thumbnail'] }}" alt=""></a></div>
+                        <div class="ps-product__content lhsabbdyaltele"><a class="ps-product__remove" href="{{ route('cart.remove', ['id' => $product->rawId() , 'store' => $store, 'store_category' => $store_category ])  }}"><i class="icon-cross"></i></a><a href="{{ route('shop.product',['id' => $product['id'] , 'store' => $store, 'store_category' => $store_category ]) }}">{{ $product['name'] }}</a><br>
                             <small class="product-col-tele-{{ $product['id'] }}"> <span class="prdqty">{{ $product['qty'] }}</span> x €{{ $product['price'] }} <input type="hidden" class="preis" value="{{ $product['total'] }}"> </small>
                         </div>
                         <div class="form-group--number zaydnaks updowntintele">
@@ -428,7 +428,7 @@ a.navigation__item.ps-toggle--sidebar {
     </div>
     <div class="ps-panel--sidebar" id="search-sidebar">
         <div class="ps-panel__header">
-            <form class="ps-form--search-mobile" action="{{ route('search' ,[  'store' => $store] ) }}" method="get">
+            <form class="ps-form--search-mobile" action="{{ route('search' ,['store' => $store, 'store_category' => $store_category] ) }}" method="get">
                 <div class="form-group--nest">
                     <input class="form-control"type="{{ __('Search') }}" name="q" value="{{ app('request')->input('q') }}"  placeholder="{{ __('Search') }}">
                     <button><i class="icon-magnifier" type="submit"></i></button>
@@ -463,7 +463,7 @@ a.navigation__item.ps-toggle--sidebar {
     </div>
     <div class="ps-search" id="site-search"><a class="ps-btn--close" href="#"></a>
         <div class="ps-search__content">
-            <form class="ps-form--primary-search" action="{{ route('search' ,[  'store' => $store] ) }}" method="get">
+            <form class="ps-form--primary-search" action="{{ route('search' ,['store' => $store, 'store_category' => $store_category] ) }}" method="get">
                 <input class="form-control"type="{{ __('Search') }}" name="q" value="{{ app('request')->input('q') }}" placeholder="{{ __('Search') }}">
                 <button><i class="aroma-magnifying-glass"></i></button>
             </form>
@@ -497,7 +497,7 @@ a.navigation__item.ps-toggle--sidebar {
                 
               <h5 class="modaltitle">{{ __('wishlist.added') }}</h5>
           <center>
-          <a href="{{ route('wishlist',['store' => $store ]) }}"  class="ps-btn">{{ __('My Wishlist') }}</a>
+          <a href="{{ route('wishlist',['store' => $store, 'store_category' => $store_category]) }}"  class="ps-btn">{{ __('My Wishlist') }}</a>
           <a href="#" data-toggle="modal" title="{{ __('Continue Shopping') }}" data-target="#addedTocCart" class="ps-btn">{{ __('Continue Shopping') }}</a>
           </center>
             </div>
@@ -852,7 +852,7 @@ function getTotalM(){
             
             $.ajax({
               type: 'POST',
-              url: '{{ route('cart.update', ['store' => $store ]) }}',
+              url: '{{ route('cart.update', ['store' => $store, 'store_category' => $store_category ]) }}',
               data:formData,
               cache:false,
               contentType: false,
