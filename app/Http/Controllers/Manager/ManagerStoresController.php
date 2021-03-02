@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Manager;
 use \App\Http\Controllers\Controller;
-use App\Models\{Stores , User};
+use App\Models\{Stores , StoresCategory, User};
 use Illuminate\Http\Request;
 use App\Helpers\StoresHelper;
 
@@ -30,13 +30,12 @@ class ManagerStoresController extends Controller {
 
    
     public function create() {
-        return view('manager.store.create');
+        $directories = StoresCategory::get();
+        return view('manager.store.create', compact('directories'));
     
     }
 
     public function store(Request $request) {
-
-
         $rules = [
           'email'       => 'required|email|unique:users', 
           'name'        => 'required|string|min:4',
@@ -88,8 +87,9 @@ class ManagerStoresController extends Controller {
 
   
     public function edit($id) {
-          $content = Stores::find($id);
-        return view('manager.store.edit',compact('content'));
+        $content        = Stores::find($id);
+        $directories    = StoresCategory::get();
+        return view('manager.store.edit',compact('content', 'directories'));
     }
 
     

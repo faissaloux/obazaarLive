@@ -98,6 +98,14 @@ Route::group(['prefix' => '/manager', 'as' => 'manager.', 'middleware' => 'manag
         Route::any('/activate/{id}', 'ManagerStoresController@activate')->name('activate');
         Route::any('/deactivate/{id}', 'ManagerStoresController@deactivate')->name('deactivate');
     });
+    Route::group(['prefix' => 'directory', 'as' => 'directory.'], function () {
+        Route::get('/', 'ManagerDirectoriesController@index')->name('home');
+        Route::view('/create', 'manager.directory.create')->name('create');
+        Route::post('/store', 'ManagerDirectoriesController@store')->name('store');
+        Route::get('/edit/{id}', 'ManagerDirectoriesController@edit')->name('edit');
+        Route::post('/update/{id}', 'ManagerDirectoriesController@update')->name('update');
+        Route::get('/delete/{id}', 'ManagerDirectoriesController@delete')->name('delete');
+    });
 
 
     Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
