@@ -20,6 +20,9 @@ class StoreCategory
         if($store_category){
             \Session::put('store_category', $request->store_category);
             \View::share('store_category', $request->store_category);
+        }else{
+            \Session::put('store_category', 'other');
+            \View::share('store_category', 'other');
         }
         return $next($request);
     }
