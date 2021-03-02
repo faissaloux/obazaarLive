@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Http\Controllers\Controller;
-use App\Models\StoresCategory;
+use App\Models\Stores;
 use Illuminate\Http\Request;
+use App\Models\StoresCategory;
 use App\Helpers\DirectoriesHelper;
+use App\Http\Controllers\Controller;
 
 class ManagerDirectoriesController extends Controller
 {
@@ -48,6 +49,11 @@ class ManagerDirectoriesController extends Controller
 
     public function delete($id)
     {
+        $stores = Stores::where('category_id', $id)->get();
+        foreach($stores as $store){
+            $store->category_id = NULL;
+            $store->save();
+        }
         StoresCategory::find($id)->delete();
         return redirect()->route('manager.directory.home')->with('success',trans('directory.deleted'));
     }
