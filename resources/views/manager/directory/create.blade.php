@@ -82,7 +82,7 @@
             </div>
 
 
-            <div class="text-right">
+            <div class="col-md-12">
                 <button type="submit" class="btn btn-primary">
                     {{ __('create new directory') }}
                     <i class="icon-arrow-left13 position-right"></i>

@@ -52,7 +52,7 @@
  @if ($stores_categories->isEmpty())
 <div class="empty_state text-center">
     <i class="icon-library2 empty_state_icon"></i>
-    <h4>{{ __("it looks like you didn't Add any stores yet") }}</h4>
+    <h4>{{ __("it looks like you didn't Add any directories yet") }}</h4>
     <a href="{{ route('manager.directory.create') }}" class="btn bg-blue btn-labeled heading-btn showUploader2"><b>
         <i class="icon-plus3"></i></b>
         {{ __('Add new Directory') }}
