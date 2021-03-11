@@ -59,7 +59,7 @@
                                   <div class="empty-order">
                                       <i class="icon-heart"></i>
                                       <p>{{ __('You have no favorites') }}</p>
-                                      <a class="ps-btn" href="/{{ $store }}">{{ __('Continue Shopping') }}</a>
+                                      <a class="ps-btn" href="/{{ $store_category }}/{{ $store }}">{{ __('Continue Shopping') }}</a>
                                   </div>
                              </div>
                           </div>

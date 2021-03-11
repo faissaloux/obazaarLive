@@ -30,7 +30,7 @@ class CartController extends Controller
         return redirect()->route('cart',compact('store'))->with('message',trans('cart.added'));
     }
    
-    public function remove(Request $request, $store, $id){
+    public function remove(Request $request, $store_category, $store, $id){
         (new Cart())->remove($request->product_id,$id);
         return redirect()->back()->with('message',trans('cart.removed'));
         return redirect()->route('cart',compact('store'))->with('message',trans('cart.removed'));

@@ -17,6 +17,7 @@ class AccountController extends Controller {
 
 
     public function order_detail($id) {
+        dd($id);
         $content = Orders::where('user_id',\Auth::user()->id)->where('id',$id)->first();
         if(!$content){
             abort(404);

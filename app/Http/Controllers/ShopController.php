@@ -46,7 +46,7 @@ class ShopController extends Controller {
         return view($this->theme.'product',compact('product','related','reviews','wishlist'));     
     }
 
-    public function quickview($store,$id) {
+    public function quickview($store_category, $store, $id) {
 
         if(is_numeric($id)){
             $product = Product::find($id);

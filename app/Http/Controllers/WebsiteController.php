@@ -160,7 +160,7 @@ class WebsiteController extends Controller
         return redirect()->route('adresses', ['store' => $store, 'store_category' => $store_category])->with('success', trans('user.shipping.created'));
     }
 
-    public function order_detail($store, $id)
+    public function order_detail($store_category, $store, $id)
     {
         $content = Orders::where('user_id',\Auth::user()->id)->where('id',$id)->first();
         if(!$content){

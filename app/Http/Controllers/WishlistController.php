@@ -9,14 +9,14 @@ use Auth;
 class WishlistController extends Controller {
  
 
-    public function clear(Request $request) {
+    public function clear($store_category, $store, Request $request) {
        $user = Auth::user();
        $user->wishlist->each->delete();
-       return redirect()->route('wishlist',['store' => $request->store ])->with('success',trans('wishlist.cleared'));   
+       return redirect()->route('wishlist',['store_category' => $store_category, 'store' => $request->store ])->with('success',trans('wishlist.cleared'));   
     }
 
    
-    public function add($store,$id,Request $request) {
+    public function add($store_category, $store, $id, Request $request) {
       if (Auth::check()) {
           $user_id = Auth::user()->id;
          $data = [ 'user_id' => $user_id, 'productID' => $id ];
@@ -31,13 +31,13 @@ class WishlistController extends Controller {
     }
 
     
-    public function remove($store,$id,Request $request){
+    public function remove($store_category, $store, $id, Request $request){
         $wish = WishList::find($id);
         if($wish){
             $wish->delete();
-            return redirect()->route('wishlist',['store' => $request->store ])->with('success',trans('wishlist.removed'));   
+            return redirect()->route('wishlist',['store_category' => $store_category, 'store' => $request->store ])->with('success',trans('wishlist.removed'));   
         }
-        return redirect()->route('wishlist',['store' => $request->store ]);   
+        return redirect()->route('wishlist',['store_category' => $store_category, 'store' => $request->store ]);   
     }
 
 }

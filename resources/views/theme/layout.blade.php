@@ -116,7 +116,7 @@
                                           <div class="empty-order">
                                              <i class="icon-cart"></i>
                                              <p>{{ __('Your shopping cart is empty') }}</p>
-                                             <a class="ps-btn" href="/{{ $store }}">{{ __('Order now') }}</a>
+                                             <a class="ps-btn" href="/{{$store_category}}/{{ $store }}">{{ __('Order now') }}</a>
                                           </div>
                                     </div>
                                  </div>

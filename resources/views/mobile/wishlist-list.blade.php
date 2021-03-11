@@ -52,7 +52,7 @@
                     <div class="empty-order">
                         <i class="icon-heart"></i>
                         <p>{{ __('You have no favorites') }}</p>
-                        <a class="ps-btn" href="/{{\Session::get('store') }}">{{ __('Continue Shopping') }}</a>
+                        <a class="ps-btn" href="/{{ \Session::get('store_category') }}/{{\Session::get('store') }}">{{ __('Continue Shopping') }}</a>
                     </div>
                 </div>
             </div>

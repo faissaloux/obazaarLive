@@ -56,7 +56,7 @@ class ProfileController extends Controller {
     
 
     
-    public function edit_shipping($store , $id) {
+    public function edit_shipping($store_category, $store , $id) {
             $address = Addresses::find($id);
             return view ($this->theme.'update-adress',compact('address'));   
     }
@@ -68,6 +68,7 @@ class ProfileController extends Controller {
             $address->given_name   = $request->given_name;
             $address->country_code = $request->country_code;
             $address->street       = $request->street;
+            $address->housenumber  = $request->housenumber;
             $address->state        = $request->state;
             $address->city         = $request->city;
             $address->postal_code  = $request->postal_code;
