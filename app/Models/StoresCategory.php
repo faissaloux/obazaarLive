@@ -22,7 +22,7 @@ class StoresCategory extends Model
         return '';
     }
 
-    public function store(){
-        return $this->belongsTo('App\Models\Stores', 'id', 'category_id')->withDefault(['name' => 'N-A']);
+    public function stores(){
+        return $this->hasMany('App\Models\Stores', 'category_id');
     }
 }

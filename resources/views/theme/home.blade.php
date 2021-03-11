@@ -132,30 +132,30 @@
                <div class="product-intro divide-line up-effect">
                   <div class="row">
                   @foreach($stores_categories->chunk(3) as $items)
-                     @foreach($items as $product)
+                     @foreach($items as $category)
                         @if(System::ismobile())
-                           @if($product->id != 68)
+                           @if(count($category->stores))
                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 d-sm-none d-lg-none d-md-none">
                               <article class="ps-block--store-2">
                                  <div class="ps-block__content bg--cover" data-background="https://i.imgur.com/YSn2gIJ.png">
                                     <figure>
-                                       <h4>{{ $product->name }}</h4>
+                                       <h4>{{ $category->name }}</h4>
                                     </figure>
                                  </div>
                                  <div class="ps-block__author">
-                                    <a class="ps-block__user" href="{{ $product->slug }}">
-                                    <img class="stroephimg" src="{!!  $product->presentThumbnailback() !!}" alt="">
+                                    <a class="ps-block__user" href="{{ $category->slug }}">
+                                    <img class="stroephimg" src="{!!  $category->presentThumbnailback() !!}" alt="">
                                     </a>
                                  </div>
                               </article>
                            </div>
                            @endif
                         @else
-                           @if($product->id != 68)
+                           @if(count($category->stores))
                               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 hidden-xs inpconly ">
                                  <article class="ps-block--store">
-                                    <div class="ps-block__thumbnail bg--cover" data-background="{!!  $product->presentThumbnailback() !!}">
-                                       <a class="category-title" href="{{ $product->slug }}">{{ $product->name }}</a>
+                                    <div class="ps-block__thumbnail bg--cover" data-background="{!!  $category->presentThumbnailback() !!}">
+                                       <a class="category-title" href="{{ $category->slug }}">{{ $category->name }}</a>
                                     </div>
                                  </article>
                               </div>
@@ -163,29 +163,31 @@
                         @endif
                      @endforeach
                   @endforeach
-                  @if(System::ismobile())
-                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 d-sm-none d-lg-none d-md-none">
-                        <article class="ps-block--store-2">
-                           <div class="ps-block__content bg--cover" data-background="https://i.imgur.com/YSn2gIJ.png">
-                              <figure>
-                                 <h4>{{ __('Other') }}</h4>
-                              </figure>
-                           </div>
-                           <div class="ps-block__author">
-                              <a class="ps-block__user" href="{{ route('stores-default', \Session::get('store_category')) }}">
-                              <img class="stroephimg" src="{{ asset('assets/website/img/store_category_default.jpg') }}" alt="">
-                              </a>
-                           </div>
-                        </article>
-                     </div>
-                  @else
-                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 hidden-xs inpconly ">
-                        <article class="ps-block--store">
-                           <div class="ps-block__thumbnail bg--cover" data-background="{{ asset('assets/website/img/store_category_default.jpg') }}">
-                              <a class="category-title" href="{{ route('stores-default') }}">{{ __('Other') }}</a>
-                           </div>
-                        </article>
-                     </div>
+                  @if(count($stores_with_no_category))
+                     @if(System::ismobile())
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 d-sm-none d-lg-none d-md-none">
+                           <article class="ps-block--store-2">
+                              <div class="ps-block__content bg--cover" data-background="https://i.imgur.com/YSn2gIJ.png">
+                                 <figure>
+                                    <h4>{{ __('Other') }}</h4>
+                                 </figure>
+                              </div>
+                              <div class="ps-block__author">
+                                 <a class="ps-block__user" href="{{ route('stores-default', \Session::get('store_category')) }}">
+                                 <img class="stroephimg" src="{{ asset('assets/website/img/store_category_default.jpg') }}" alt="">
+                                 </a>
+                              </div>
+                           </article>
+                        </div>
+                     @else
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 hidden-xs inpconly ">
+                           <article class="ps-block--store">
+                              <div class="ps-block__thumbnail bg--cover" data-background="{{ asset('assets/website/img/store_category_default.jpg') }}">
+                                 <a class="category-title" href="{{ route('stores-default') }}">{{ __('Other') }}</a>
+                              </div>
+                           </article>
+                        </div>
+                     @endif
                   @endif
                </div>
                </div>

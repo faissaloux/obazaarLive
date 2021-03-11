@@ -9,11 +9,10 @@ class BaseController extends Controller
 {
     public function index() {
         $sliders = HomeSlider::get();
-        
         $stores_categories = StoresCategory::paginate(12);
+        $stores_with_no_category = Stores::whereNull('category_id')->whereNull('hide')->get();
         $view = $this->theme.'home';
-        
-        return view($view, compact('sliders', 'stores_categories'));   
+        return view($view, compact('sliders', 'stores_categories', 'stores_with_no_category'));   
     }
 
     public function stores($store_category)
