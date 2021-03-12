@@ -431,6 +431,10 @@ img.stroephimg {
     margin-bottom: 30px;
 }
 
+.categories.ps-block--store-2 .ps-block__content.bg--cover {
+    padding-top: 60px !important;
+}
+
 a.ps-block__user {
     top: -10px;
     width: 150px;

@@ -136,7 +136,7 @@
                         @if(System::ismobile())
                            @if(count($category->stores))
                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 d-sm-none d-lg-none d-md-none">
-                              <article class="ps-block--store-2">
+                              <article class="categories ps-block--store-2">
                                  <div class="ps-block__content bg--cover" data-background="https://i.imgur.com/YSn2gIJ.png">
                                     <figure>
                                        <h4>{{ $category->name }}</h4>
